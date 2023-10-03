@@ -81,8 +81,8 @@ def seed_teas():
         image_url="https://www.filepicker.io/api/file/XGTQheU2TmzRR21gCGIH/convert?fit=max&h=480&w=940"
     )
 
-    user1_teas = [tea1, tea2, tea3, tea4, tea5, tea6]
-    add_user1_teas = [db.session.add(user1_tea) for user1_tea in user1_teas]
+    user2_teas = [tea1, tea2, tea3, tea4, tea5, tea6]
+    add_user2_teas = [db.session.add(user2_tea) for user2_tea in user2_teas]
     db.session.commit()
 
     tea7 = Tea(
@@ -163,8 +163,38 @@ def seed_teas():
         image_url="https://www.filepicker.io/api/file/OKhaP6spTVWcHBb0fRqK/convert?fit=max&h=480&w=940"
     )
 
-    user2_teas = [tea7, tea8, tea9, tea10, tea11, tea12]
-    add_user2_teas = [db.session.add(user2_tea) for user2_tea in user2_teas]
+    user3_teas = [tea7, tea8, tea9, tea10, tea11, tea12]
+    add_user3_teas = [db.session.add(user3_tea) for user3_tea in user3_teas]
+    db.session.commit()
+
+    tea13 = Tea(
+        user_id=4,
+        name='"King of Duck Shit Aroma" Dan Cong Oolong Tea (Spring 2017)',
+        company="Yunnan Sourcing",
+        type="Oolong Tea",
+        sold_in="Bulk, Loose Leaf",
+        certification="",
+        ingredients="Oolong Tea Leaves",
+        caffeine="",
+        description="It’s called “duck shit aroma” because in the Ping Keng Tou village area the soil has a somewhat yellow brown look to it and is unique to that area. With all teas the soil type is a key element in the tea’s taste. Villagers wanting to guard the uniqueness of their tea bushes told outsiders that the color and uniqueness of the soil in their village was due to copious amounts of duck shit and began to call the their Dan Cong “duck shit aroma”. True or not it’s an entertaining story which reveals why the tea has such a gross name.",
+        image_url="https://www.filepicker.io/api/file/S0rP3pN3TRep79jQGnK1/convert?fit=max&h=480&w=940"
+    )
+
+    tea14 = Tea(
+        user_id=4,
+        name="Rivendell",
+        company="Whispering Pines Tea Company",
+        type="Oolong Tea",
+        sold_in="Loose Leaf",
+        certification="",
+        ingredients="Oolong Tea, Tahitian Vanilla, Wildcrafted Roasted Cedar Leaves",
+        caffeine="Medium",
+        description="Rivendell opens with the taste of cedar, cherry, and caramel flowing through a luscious sweet body. The middle of the sip coats your mouth with a nectar-like sweetness and hints at vanilla and chocolate, with a touch of pine nut and mineral, reminiscent of spring water that has flowed over miles of untouched granite. The finish is clean with hints of lilac and pear, leaving an aftertaste of cedar and caramel. It tastes as if the purest water in the world flowed through miles of sugarcane fields, scattered with nectar-filled lilacs and orchids, passed through a forest of cedar and cherry trees, then poured over a pristine granite cliff straight into your cup. It’s pure nectar and caramel with light florals, a hint of berries and chocolate, a touch of pine nut, and heady evergreen sweetness.",
+        image_url="https://www.filepicker.io/api/file/cLjVJp8rQdeg6S6t1lNP/convert?fit=max&h=480&w=940"
+    )
+
+    user4_teas = [tea13, tea14]
+    add_user4_teas = [db.session.add(user4_tea) for user4_tea in user4_teas]
     db.session.commit()
 
     # tea7 = Tea(
