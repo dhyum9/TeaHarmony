@@ -85,7 +85,89 @@ def seed_teas():
     add_user1_teas = [db.session.add(user1_tea) for user1_tea in user1_teas]
     db.session.commit()
 
-    # tea5 = Tea(
+    tea7 = Tea(
+        user_id=3,
+        name="Creme de la Earl Grey",
+        company="TeaLuxe",
+        type="Black Tea",
+        sold_in="Bulk, Loose Leaf",
+        certification="",
+        ingredients="Bergamot, Black Tea, Flower Petals",
+        caffeine="",
+        description="Quintessential English style tea with blended blue flowers and a twist of cream. A fabulous tea.",
+        image_url="https://www.filepicker.io/api/file/1xcyNVAR163Dyu5cZDT7/convert?fit=max&h=480&w=940"
+    )
+
+    tea8 = Tea(
+        user_id=3,
+        name="Zhu Lu Alishan High Mt. Oolong Tea",
+        company="fongmongtea",
+        type="Oolong Tea",
+        sold_in="Loose Leaf",
+        certification="Fair Trade, Vegan",
+        ingredients="Oolong, Oolong Tea, Oolong Tea Leaves",
+        caffeine="Low",
+        description="The tea liquor has a pale yellow hue matching its faintly fresh aroma. Once tasted, the tea presents itself with a fresh taste followed by a faintly sweet aftertaste. A relaxing and memorable oolong, ultimate comfort tea, is a great introduction to Taiwanese High Mt. Tea.",
+        image_url="https://www.filepicker.io/api/file/T1rdJhT9T8WnhsrdcgvO/convert?fit=max&h=480&w=940"
+    )
+
+    tea9 = Tea(
+        user_id=3,
+        name="Maple Pecan Oolong",
+        company="Butiki Teas",
+        type="Oolong Tea",
+        sold_in="Loose Leaf",
+        certification="",
+        ingredients="Nilgiri Frost Oolong, Organic Natural Flavors (Vegan), Pecans",
+        caffeine="",
+        description="Our Maple Pecan Oolong utilizes our Nilgiri Frost Oolong base. This smooth, silky tea has maple notes that develop into pecan notes then finish with maple notes that linger. Some citrus notes may also be detected. The flavors weave together brilliantly and are well balanced with the oolong base. With a little sugar the maple and pecan intensify for a wonderful desert treat that resembles a pecan pie. We recommend adding sugar slowly; too much sugar and the tea will taste like exactly like fresh maple syrup with a hint of pecan.",
+        image_url="https://www.filepicker.io/api/file/vmXahoGCRTSoR9AsddnD/convert?fit=max&h=480&w=940"
+    )
+
+    tea10 = Tea(
+        user_id=3,
+        name="Hand Picked Tieguanyin Spring Oolong (2011)",
+        company="Verdant Tea",
+        type="Oolong Tea",
+        sold_in="Loose Leaf",
+        certification="",
+        ingredients="Oolong Tea",
+        caffeine="Medium",
+        description="Through the first few steepings this tea tastes almost candy like. There are strong notes of orchid and honeysuckle that linger in the back of the throat like licorice root. In steeping three the extremely creamy and buttery quality of this tea comes through to support the floral nature. It tastes almost like fresh Spanish saffron and clover honey. Late in steeping, the floral and creamy notes continue and the complexity builds with the introduction of sweet grass notes. The flavor yields excellent infusions for about thirty steepings in a gaiwan, or 10 in a traditional tea pot.",
+        image_url="https://www.filepicker.io/api/file/84cnuVtQM2H3tOExihbL/convert?fit=max&h=480&w=940"
+    )
+
+    tea11 = Tea(
+        user_id=3,
+        name="Alice",
+        company="Whispering Pines Tea Company",
+        type="Black Tea",
+        sold_in="Loose Leaf",
+        certification="",
+        ingredients="Jasmine, Yunnan Black Tea",
+        caffeine="High",
+        description="After years of seeking the perfect jasmine black tea, the search comes to this — Alice. The highest quality Yunnan black tea scented perfectly with warm, inviting jasmine. Rich, powerful jasmine wafting through fields of malt and honey…It’s almost impossible to believe how much magic can fit in one tea, though some of us try to believe at least 6 impossible things before breakfast.",
+        image_url="https://www.filepicker.io/api/file/sBSmjDwMS6oRMOFDazXG/convert?fit=max&h=480&w=940"
+    )
+
+    tea12 = Tea(
+        user_id=3,
+        name="Lapsang Souchong",
+        company="Fortnum & Mason",
+        type="Black Tea",
+        sold_in="Loose Leaf",
+        certification="",
+        ingredients="",
+        caffeine="",
+        description="To give this tea its unmistakable flavour, the plucked leaves are placed in bamboo baskets and smoked over smouldering fires from particular pine trees. Once confined to China’s Fujian province, it is now enjoyed across the globe. Drink it alone, or add a spoonful to other black teas to lend them a hint of its aromatic flavour.",
+        image_url="https://www.filepicker.io/api/file/OKhaP6spTVWcHBb0fRqK/convert?fit=max&h=480&w=940"
+    )
+
+    user2_teas = [tea7, tea8, tea9, tea10, tea11, tea12]
+    add_user2_teas = [db.session.add(user2_tea) for user2_tea in user2_teas]
+    db.session.commit()
+
+    # tea7 = Tea(
     #     user_id=2,
     #     name="",
     #     company="",
@@ -97,7 +179,6 @@ def seed_teas():
     #     description="",
     #     image_url=""
     # )
-
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
