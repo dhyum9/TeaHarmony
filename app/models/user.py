@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
 
     #relationships
     teas = db.relationship("Tea", back_populates="user", cascade="all, delete-orphan")
+    tasting_notes = db.relationship("TastingNote", back_populates="user", cascade="all, delete-orphan")
 
     @property
     def password(self):
