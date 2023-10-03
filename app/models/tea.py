@@ -24,7 +24,8 @@ class Tea(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     #relationships
-    tasting_notes = db.relationship("TastingNote", back_populates="tea")
+    user = db.relationship("User", back_populates="teas")
+    tasting_notes = db.relationship("TastingNote", back_populates="tea", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
