@@ -29,16 +29,14 @@ class TastingNote(db.Model):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'name': self.name,
-            'company': self.company,
-            'type': self.type,
+            'tea_id': self.tea_id,
+            'note': self.note,
+            'score': self.score,
+            # 'tea_amount': self.tea_amount,
+            # 'water_amount': self.water_amount,
+            # 'steep_time': self.steep_time,
+            # 'temperature': self.temperature,
             'flavors': self.flavors,
-            'sold_in': self.sold_in,
-            'certification': self.certification,
-            'ingredients': self.ingredients,
-            'caffeine': self.caffeine,
-            'description': self.description,
-            'image_url': self.image_url,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

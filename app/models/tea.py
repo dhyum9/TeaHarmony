@@ -34,7 +34,7 @@ class Tea(db.Model):
             'name': self.name,
             'company': self.company,
             'type': self.type,
-            'flavors': self.flavors,
+            # 'flavors': self.flavors,
             'sold_in': self.sold_in,
             'certification': self.certification,
             'ingredients': self.ingredients,
