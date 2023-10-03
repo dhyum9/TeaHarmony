@@ -1,19 +1,99 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, Tea, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
 def seed_teas():
-    tea1 = User(
-        username='Demo', email='demo@aa.io', password='password')
-    tea2 = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    tea3 = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+    tea1 = Tea(
+        user_id=2,
+        name="Taiwan Wild 'Shan Cha' Black Tea",
+        company='What-Cha',
+        type='Black Tea',
+        sold_in='Loose Leaf',
+        certification='',
+        ingredients='Black Tea Leaves',
+        caffeine='High',
+        description='A most unique tea which is indigenous to Taiwan and still grows wild in certain areas. It is rarely sold as the plant loses it’s distinct characteristics when cultivated and so the only tea production is from the surviving wild growing bushes.',
+        image_url='https://www.filepicker.io/api/file/TBYaZlNR5svTwLegnptw/convert?fit=max&h=480&w=940'
+    )
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-    db.session.commit()
+    tea2 = Tea(
+        user_id=2,
+        name='',
+        company='',
+        type='',
+        sold_in='',
+        certification='',
+        ingredients='',
+        caffeine='',
+        description='',
+        image_url=''
+    )
+
+    tea3 = Tea(
+        user_id=2,
+        name='',
+        company='',
+        type='',
+        sold_in='',
+        certification='',
+        ingredients='',
+        caffeine='',
+        description='',
+        image_url=''
+    )
+
+    tea4 = Tea(
+        user_id=2,
+        name='',
+        company='',
+        type='',
+        sold_in='',
+        certification='',
+        ingredients='',
+        caffeine='',
+        description='',
+        image_url=''
+    )
+
+    tea5 = Tea(
+        user_id=2,
+        name='',
+        company='',
+        type='',
+        sold_in='',
+        certification='',
+        ingredients='',
+        caffeine='',
+        description='',
+        image_url=''
+    )
+
+    tea6 = Tea(
+        user_id=2,
+        name='',
+        company='',
+        type='',
+        sold_in='',
+        certification='',
+        ingredients='',
+        caffeine='',
+        description='',
+        image_url=''
+    )
+
+        tea2 = Tea(
+        user_id=2,
+        name='',
+        company='',
+        type='',
+        sold_in='',
+        certification='',
+        ingredients='',
+        caffeine='',
+        description='',
+        image_url=''
+    )
+
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
