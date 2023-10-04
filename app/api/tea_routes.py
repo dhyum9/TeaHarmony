@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import Tea
+from app.models import Tea, TastingNote
 
 tea_routes = Blueprint('teas', __name__)
 
@@ -12,22 +12,23 @@ def get_all_teas():
     """
 
     teas = Tea.query.all()
-    # reviews = Review.query.all()
+    notes = TastingNote.query.all()
 
     teas_list = [tea.to_dict() for tea in teas]
-    # all_review_list = [review.to_dict() for review in reviews]
+    notes_list = [note.to_dict() for note in notes]
 
-
-    # for restaurant_obj in all_restaurant_list:
-    #     # print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>", restaurant_obj.review)
-    #     restaurant_reviews = [ review for review in all_review_list if review["restaurant_id"] == restaurant_obj["id"] ]
-    #     sum_stars = 0
-    #     for restaurant_review in restaurant_reviews:
-    #         sum_stars += restaurant_review["stars"]
-    #     if sum_stars > 0:
-    #         avg_rating = sum_stars / len(restaurant_reviews)
-    #         restaurant_obj["avg_rating"] = avg_rating
-    #         restaurant_obj["num_reviews"] = len(restaurant_reviews)
+    for tea in teas_list:
+        tea_notes = [ note for note in notes_list if note["tea_id"] == tea["id"] ]
+        sum_score = 0
+        for tea_note in tea_notes:
+            sum_score += tea_note["score"]
+        if sum_score > 0:
+            avg_rating = sum_score / len(tea_notes)
+            tea["avg_score"] = avg_rating
+            tea["num_notes"] = len(tea_notes)
+        else:
+            tea["avg_score"] = None
+            tea["num_notes"] = 0
 
     return {"teas": teas_list}
 
@@ -38,22 +39,28 @@ def get_tea_by_id(id):
     Query for tea by tea.id
     """
 
-    one_tea = Tea.query.get(id).to_dict()
-    # reviews = Review.query.all()
-    # all_reviews = [review.to_dict() for review in reviews]
+    target_tea = Tea.query.get(id)
 
-    # restaurant_reviews = [ review for review in all_reviews if review["restaurant_id"] == one_restaurant["id"] ]
-    # sum_stars = 0
+    if not target_tea:
+      return { "message": "Tea not found!" }, 404
 
-    # for review in restaurant_reviews:
-    #     sum_stars += review["stars"]
-    # if sum_stars > 0:
-    #     avg_rating = sum_stars / len(restaurant_reviews)
-    #     one_restaurant["avg_rating"] = avg_rating
-    #     one_restaurant["num_reviews"] = len(restaurant_reviews)
+    one_tea = target_tea.to_dict()
 
-    if not one_tea:
-        return { "message": "Tea not found!" }, 404
+    notes = TastingNote.query.all()
+    notes_list = [note.to_dict() for note in notes]
+
+    tea_notes = [ note for note in notes_list if note["tea_id"] == one_tea["id"] ]
+    sum_score = 0
+
+    for tea_note in tea_notes:
+        sum_score += tea_note["score"]
+    if sum_score > 0:
+        avg_rating = sum_score / len(tea_notes)
+        one_tea["avg_score"] = avg_rating
+        one_tea["num_notes"] = len(tea_notes)
+    else:
+        one_tea["avg_score"] = None
+        one_tea["num_notes"] = 0
 
     return one_tea
 
@@ -66,20 +73,23 @@ def get_owned_teas():
     """
 
     teas = Tea.query.all()
-    # reviews = Review.query.all()
+    notes = TastingNote.query.all()
     owned_teas = [ tea.to_dict() for tea in teas if tea.user_id == current_user.id ]
 
-    # all_review_list = [review.to_dict() for review in reviews]
+    notes_list = [note.to_dict() for note in notes]
 
-    # for restaurant_obj in owned_restaurants:
-    #     restaurant_reviews = [ review for review in all_review_list if review["restaurant_id"] == restaurant_obj["id"] ]
-    #     sum_stars = 0
-    #     for restaurant_review in restaurant_reviews:
-    #         sum_stars += restaurant_review["stars"]
-    #     if sum_stars > 0:
-    #         avg_rating = sum_stars / len(restaurant_reviews)
-    #         restaurant_obj["avg_rating"] = avg_rating
-    #         restaurant_obj["num_reviews"] = len(restaurant_reviews)
+    for tea in owned_teas:
+        tea_notes = [ note for note in notes_list if note["tea_id"] == tea["id"] ]
+        sum_score = 0
+        for tea_note in tea_notes:
+            sum_score += tea_note["score"]
+        if sum_score > 0:
+            avg_rating = sum_score / len(tea_notes)
+            tea["avg_score"] = avg_rating
+            tea["num_notes"] = len(tea_notes)
+        else:
+            tea["avg_score"] = None
+            tea["num_notes"] = 0
 
 
     return { "teas": owned_teas }
