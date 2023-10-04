@@ -87,7 +87,7 @@ def seed_tasting_notes():
         user_id=3,
         tea_id=6,
         note="Very smooth with a slightly bitter sweetnes and a great Qi.",
-        score=90,
+        score=85,
         flavors=""
     )
 
@@ -99,124 +99,165 @@ def seed_tasting_notes():
         flavors="Astringent, Drying, Herbaceous, Resin, Sweet"
     )
 
-    all_tasting_notes = [note1, note2, note3, note4, note5, note6,
+    all_tasting_notes1 = [note1, note2, note3, note4, note5, note6,
                          note7, note8, note9, note10, note11, note12]
-    add_tasting_notes = [db.session.add(tasting_note) for tasting_note in all_tasting_notes]
+    add_tasting_notes = [db.session.add(tasting_note) for tasting_note in all_tasting_notes1]
     db.session.commit()
+
 
     note13 = TastingNote(
         user_id=2,
         tea_id=7,
-        note="",
-        score=,
-        flavors=""
+        note="This is quite possibly my favorite Earl Grey. So smooth, so creamy, doesn’t need anything added to it for the absolute perfect cup for breakfast or with a mid-afternoon piece of chocolate.",
+        score=95,
+        flavors="Cream"
     )
 
     note14 = TastingNote(
         user_id=4,
         tea_id=7,
-        note="",
-        score=,
-        flavors=""
+        note="This tea is a cup of coziness. Vanilla and earl grey together definitely give off a birthday cake-y essence. Divine with milk and sugar.",
+        score=85,
+        flavors="Bergamot, Vanilla"
     )
 
     note15 = TastingNote(
         user_id=2,
         tea_id=8,
-        note="",
-        score=,
+        note="I apologize; this tea deserves a better tasting note than I have energy to write. It is a delicious, somewhat floral, creamy oolong though, and that’s what I needed/wanted tonight. Looking forward to trying the rest of my oolong samples from Fong Mong Tea! I did reserve enough of this to try it again when I have time to properly review it.",
+        score=91,
         flavors=""
     )
 
     note16 = TastingNote(
         user_id=4,
         tea_id=8,
-        note="",
-        score=,
-        flavors=""
+        note="Mmm, this is good. It tastes like a combination of a green oolong and a plain ol’ green tea to me. There is a slight floral aspect, but it’s very mellow. There’s a bright, fresh “green” taste to it with a little nuttiness and strong notes of fruit, with a slightly creamy texture. Thanks for the sample, Fong Mong Tea!",
+        score=87,
+        flavors="Creamy, Floral, Vegetal"
     )
 
     note17 = TastingNote(
         user_id=2,
         tea_id=9,
-        note="",
-        score=,
+        note="One of my all-time favourites. The base tastes stronger than usual, fuller and more robust, but probably because I used more leaf. It’s good though! I should do that in the morning rather than 9pm.",
+        score=100,
         flavors=""
     )
 
     note18 = TastingNote(
         user_id=4,
         tea_id=9,
-        note="",
-        score=,
+        note="I got this as a sample with my recent order and I have been dying to try it. The leaves have a very strong maple fragrance. The tea itself is more nutty than anything. I had high hopes for maple, but it’s still a great tea. Sweet and light!",
+        score=80,
         flavors=""
     )
 
     note19 = TastingNote(
         user_id=2,
         tea_id=10,
-        note="",
-        score=,
+        note="As soon as the liquor hits the tongue it IS quite candy-like…nice and sweet! Then it’s smooth, creamy, buttery, and sweet. There is a lovely smooth-floral after taste – much like honeysuckle! I’m going to do multiple infusions on this one!",
+        score=89,
         flavors=""
     )
 
     note20 = TastingNote(
         user_id=4,
         tea_id=10,
-        note="",
-        score=,
+        note="What a gorgeous tea! Intoxicating-smelling and delicious, this is definitely the nicest Tieguanyin I’ve got my hands on so far. This is my tea happy place, for sure. It’s fascinating to evolve with it through the infusions, and the experience makes me feel so privileged and content. This is floral, green, sweet, and creamy in ways that change slightly between infusions but that remain perfectly balanced. Delicate and yet satisfyingly robust!",
+        score=88,
         flavors=""
     )
 
     note21 = TastingNote(
         user_id=2,
         tea_id=11,
-        note="",
-        score=,
-        flavors=""
+        note="Wow, this tea is pretty extraordinary. The jasmine is incredibly fragrant, and pairs perfectly with the cherry and stone fruit notes of the black tea. This is one of those teas that made my jaw drop.",
+        score=92,
+        flavors="Cherry, Jasmine, Stonefruit"
     )
 
     note22 = TastingNote(
         user_id=4,
         tea_id=11,
-        note="",
-        score=,
-        flavors=""
+        note="This is the first true tea I am trying from the new set of samples I got from derk, thanks a lot my friend! :) As for the tea, it’s magnificent. Bitter-sweet. Very mouth-watering, soft and biting mouthfeel. Perfect balance of the jasmine florals and dian hong maltiness. Long lasting and evolving aftertaste. One of a kind.",
+        score=85,
+        flavors="Anise, Biting, Bitter, Citrus, Coffee, Floral, Jasmine, Malt, Smooth, Sweet, Vanilla"
     )
 
     note23 = TastingNote(
         user_id=2,
         tea_id=12,
-        note="",
-        score=,
-        flavors=""
+        note="One of my all time favourites. Can’t stand this smoking aroma!",
+        score=99,
+        flavors="Earth, Plum, Smoke, Smoked"
     )
 
     note24 = TastingNote(
         user_id=4,
         tea_id=12,
-        note="",
-        score=,
+        note="Has the aroma of Laphroiag or Talisker whisky with the smell of phenols, creosote and tar coming strongly through. If you like peaty whiskies you’ll love this taste but the aroma is even more incredible. If it tasted like it smelt it would probably be undrinakable but the taste though peaty has no bad aftertastes and is quite rich in texture. I thought I would try a cup and ended up having another straight after.",
+        score=90,
+        flavors="Campfire, Earth, Medicinal, Pine, Smoke, Tobacco, Whiskey"
+    )
+
+    all_tasting_notes2 = [note13, note14, note15, note16, note17, note18,
+                         note19, note20, note21, note22, note23, note24]
+    add_tasting_notes2 = [db.session.add(tasting_note) for tasting_note in all_tasting_notes2]
+    db.session.commit()
+
+
+    note25 = TastingNote(
+        user_id=2,
+        tea_id=13,
+        note="The aroma of the rinse was rich, buttery, like a floral crispy pastry. The first sip reminded me of the caramelization of meat or sweet potatoes roasted in honey. Later, I got an intensely floral flavor – again like honey. There was something in the experience that reminded of a church smell if churches smelled good – maybe somewhere in the area of old library book about bees and summer flowers.",
+        score=95,
+        flavors="Floral, Honey, Meat, Sweet Potatoes"
+    )
+
+    note26 = TastingNote(
+        user_id=3,
+        tea_id=13,
+        note="The brewed tea smells lovely, I’m getting notes of caramel, subtle roast, nuts (pecan?), and minerals. It sort of smells like a “more roasty” praline! On the sip I’m getting notes of minerally earth, roasted nuts, and a touch of honey-baked bread. There is a florality in the aftertaste, but I can’t place it. The sweetness and toasty/nutty notes really do give me a sort of praline or nougat impression. I think my only complaint is that it is a touch drying, and I wonder if dropping my leaf amount just slightly might smooth that out.",
+        score=88,
+        flavors="Bread, Candy, Caramel, Drying, Earth, Floral, Honey, Mineral, Nutty, Roasted, Roasted Nuts, Sweet"
+    )
+
+    note27 = TastingNote(
+        user_id=2,
+        tea_id=14,
+        note="The first time I tried this I didn’t care for it, so I stashed it in a drawer and forgot about it. That was about 2 years ago, and I just dug it back out again. With some aging, the vanilla has become so strong, with just a touch of cedar. The oolong is bright green and fresh, with a pop of lilac. Really interesting base combined with the vanilla and cedar.",
+        score=85,
         flavors=""
     )
 
-  # note1 = TastingNote(
-  #       user_id=3,
-  #       tea_id=1,
-  #       note="",
-  #       score=,
-  #       flavors=""
-  #   )
+    note28 = TastingNote(
+        user_id=3,
+        tea_id=14,
+        note="Smelled amazing, but the taste was just a bit off!",
+        score=86,
+        flavors=""
+    )
 
-  #   note2 = TastingNote(
-  #       user_id=4,
-  #       tea_id=1,
-  #       note="",
-  #       score=,
-  #       flavors=""
-  #   )
+    all_tasting_notes3 = [note25, note26, note27, note28]
+    add_tasting_notes3 = [db.session.add(tasting_note) for tasting_note in all_tasting_notes3]
+    db.session.commit()
 
+    # note1 = TastingNote(
+    #     user_id=3,
+    #     tea_id=1,
+    #     note="",
+    #     score=,
+    #     flavors=""
+    # )
 
+    # note2 = TastingNote(
+    #     user_id=4,
+    #     tea_id=1,
+    #     note="",
+    #     score=,
+    #     flavors=""
+    # )
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
