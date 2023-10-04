@@ -102,7 +102,7 @@ def get_owned_teas():
 @login_required
 def create_tea():
     """
-    Route to POST a new tea
+    Route to create a new tea
     """
 
     form = TeaForm()
@@ -136,3 +136,40 @@ def create_tea():
     else:
         print(form.errors)
         return { "errors": form.errors }, 400
+
+
+@tea_routes.route("/<int:teaId>", methods=["PUT"])
+@login_required
+def update_tea(teaId):
+    """
+    Route to update a tea
+    """
+    form = TeaForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    target_tea = Tea.query.get(teaId)
+    if target_tea.user_id == current_user.id:
+        if form.validate_on_submit():
+
+            type_string = ', '.join(form.data["type"])
+            sold_in_string = ', '.join(form.data["sold_in"])
+            certification_string = ', '.join(form.data["certification"])
+
+            target_tea.name = form.data["name"]
+            target_tea.company = form.data["company"]
+            target_tea.type = type_string
+            target_tea.sold_in = sold_in_string
+            target_tea.certification = certification_string
+            target_tea.ingredients = form.data["ingredients"]
+            target_tea.caffeine = form.data["caffeine"]
+            target_tea.description = form.data["description"]
+            target_tea.image_url = form.data["image_url"]
+            db.session.commit()
+            return target_tea.to_dict()
+
+        else:
+            return { "errors": form.errors }, 400
+
+    else:
+        return { "message": "FORBIDDEN" }, 403
