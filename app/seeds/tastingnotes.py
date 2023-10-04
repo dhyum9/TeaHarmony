@@ -104,21 +104,117 @@ def seed_tasting_notes():
     add_tasting_notes = [db.session.add(tasting_note) for tasting_note in all_tasting_notes]
     db.session.commit()
 
-    # note1 = TastingNote(
-    #     user_id=3,
-    #     tea_id=1,
-    #     note="",
-    #     score=,
-    #     flavors=""
-    # )
+    note13 = TastingNote(
+        user_id=2,
+        tea_id=7,
+        note="",
+        score=,
+        flavors=""
+    )
 
-    # note2 = TastingNote(
-    #     user_id=4,
-    #     tea_id=1,
-    #     note="",
-    #     score=,
-    #     flavors=""
-    # )
+    note14 = TastingNote(
+        user_id=4,
+        tea_id=7,
+        note="",
+        score=,
+        flavors=""
+    )
+
+    note15 = TastingNote(
+        user_id=2,
+        tea_id=8,
+        note="",
+        score=,
+        flavors=""
+    )
+
+    note16 = TastingNote(
+        user_id=4,
+        tea_id=8,
+        note="",
+        score=,
+        flavors=""
+    )
+
+    note17 = TastingNote(
+        user_id=2,
+        tea_id=9,
+        note="",
+        score=,
+        flavors=""
+    )
+
+    note18 = TastingNote(
+        user_id=4,
+        tea_id=9,
+        note="",
+        score=,
+        flavors=""
+    )
+
+    note19 = TastingNote(
+        user_id=2,
+        tea_id=10,
+        note="",
+        score=,
+        flavors=""
+    )
+
+    note20 = TastingNote(
+        user_id=4,
+        tea_id=10,
+        note="",
+        score=,
+        flavors=""
+    )
+
+    note21 = TastingNote(
+        user_id=2,
+        tea_id=11,
+        note="",
+        score=,
+        flavors=""
+    )
+
+    note22 = TastingNote(
+        user_id=4,
+        tea_id=11,
+        note="",
+        score=,
+        flavors=""
+    )
+
+    note23 = TastingNote(
+        user_id=2,
+        tea_id=12,
+        note="",
+        score=,
+        flavors=""
+    )
+
+    note24 = TastingNote(
+        user_id=4,
+        tea_id=12,
+        note="",
+        score=,
+        flavors=""
+    )
+
+  # note1 = TastingNote(
+  #       user_id=3,
+  #       tea_id=1,
+  #       note="",
+  #       score=,
+  #       flavors=""
+  #   )
+
+  #   note2 = TastingNote(
+  #       user_id=4,
+  #       tea_id=1,
+  #       note="",
+  #       score=,
+  #       flavors=""
+  #   )
 
 
 
