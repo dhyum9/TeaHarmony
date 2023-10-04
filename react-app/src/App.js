@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import TeaIndex from "./components/TeaIndex";
 import TeaDetails from "./components/TeaDetails";
 import HomePage from "./components/HomePage";
+import CreateTeaForm from "./components/CreateTeaForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route exact path="/teas">
             <TeaIndex />
+          </Route>
+          <Route exact path="/teas/new">
+            <CreateTeaForm />
           </Route>
           <Route exact path="/teas/:teaId">
             <TeaDetails />
