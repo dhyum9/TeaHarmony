@@ -30,3 +30,29 @@ def get_all_teas():
     #         restaurant_obj["num_reviews"] = len(restaurant_reviews)
 
     return {"teas": teas_list}
+
+
+@tea_routes.route('/<int:id>')
+def get_tea_by_id(id):
+    """
+    Query for tea by tea.id
+    """
+
+    one_tea = Tea.query.get(id).to_dict()
+    # reviews = Review.query.all()
+    # all_reviews = [review.to_dict() for review in reviews]
+
+    # restaurant_reviews = [ review for review in all_reviews if review["restaurant_id"] == one_restaurant["id"] ]
+    # sum_stars = 0
+
+    # for review in restaurant_reviews:
+    #     sum_stars += review["stars"]
+    # if sum_stars > 0:
+    #     avg_rating = sum_stars / len(restaurant_reviews)
+    #     one_restaurant["avg_rating"] = avg_rating
+    #     one_restaurant["num_reviews"] = len(restaurant_reviews)
+
+    if not one_tea:
+        return { "message": "Tea not found!" }, 404
+
+    return one_tea
