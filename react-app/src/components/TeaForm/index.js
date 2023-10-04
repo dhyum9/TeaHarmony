@@ -77,7 +77,7 @@ const TeaForm = ({tea, formType}) => {
     // }
   };
 
-  const type_choices=["Black", "Bubble Tea", "Chai", "Dark/Heicha", "Flavored", "Flowering",
+  const type_choices = ["Black", "Bubble Tea", "Chai", "Dark/Heicha", "Flavored", "Flowering",
               "Food", "Fruit", "Green", "Guayusa", "Herbal", "Honeybush",
               "Kombucha", "Matcha", "Oolong", "Pu'erh", "Pu'erh (Sheng)", "Pu'erh (Shou)",
               "Purple", "Rooibos", "Spice", "White", "Yaupon", "Yellow", "Yerba Maté"]
@@ -124,35 +124,14 @@ const TeaForm = ({tea, formType}) => {
             <div>Type</div>
             <div>Check all that apply</div>
           </label>
-          {type_choices.forEach((type) => (
+          {type_choices.map((type) => (
             <div>
-              {type}
               <input
                 type="checkbox"
                 value={type}/>
+                {type}
             </div>
           ))}
-          {/* <input
-            type="checkbox"
-            value="Black"/> Black
-          <input
-            type="checkbox"
-            value="Bubble Tea"/> Bubble Tea
-          <input
-            type="checkbox"
-            value="Chai"/> Chai <br/>
-          <input
-            type="checkbox"
-            value="Dark/Heicha"/> Dark/Heicha
-          <input
-            type="checkbox"
-            value="Flavored"/> Flavored
-          <input
-            type="checkbox"
-            value="Flowering"/> Flowering <br/>
-          <input
-            type="checkbox"
-            value="Food"/> Food */}
 
 
         </div>
