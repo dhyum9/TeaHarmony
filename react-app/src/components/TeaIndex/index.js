@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import TeaTile from "../TeaTile"
 
-
-export const TeaIndex = () => {
+const TeaIndex = () => {
   const dispatch = useDispatch();
 
   const getTeas = useSelector(
@@ -29,3 +29,5 @@ export const TeaIndex = () => {
     </div>
   );
 };
+
+export default TeaIndex;
