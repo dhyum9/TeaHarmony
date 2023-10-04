@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import Tea
 
 tea_routes = Blueprint('teas', __name__)
@@ -56,3 +56,30 @@ def get_tea_by_id(id):
         return { "message": "Tea not found!" }, 404
 
     return one_tea
+
+
+@tea_routes.route('/current')
+@login_required
+def get_owned_teas():
+    """
+    GET all owned teas of the current user
+    """
+
+    teas = Tea.query.all()
+    # reviews = Review.query.all()
+    owned_teas = [ tea.to_dict() for tea in teas if tea.user_id == current_user.id ]
+
+    # all_review_list = [review.to_dict() for review in reviews]
+
+    # for restaurant_obj in owned_restaurants:
+    #     restaurant_reviews = [ review for review in all_review_list if review["restaurant_id"] == restaurant_obj["id"] ]
+    #     sum_stars = 0
+    #     for restaurant_review in restaurant_reviews:
+    #         sum_stars += restaurant_review["stars"]
+    #     if sum_stars > 0:
+    #         avg_rating = sum_stars / len(restaurant_reviews)
+    #         restaurant_obj["avg_rating"] = avg_rating
+    #         restaurant_obj["num_reviews"] = len(restaurant_reviews)
+
+
+    return { "teas": owned_teas }
