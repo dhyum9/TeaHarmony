@@ -173,3 +173,22 @@ def update_tea(teaId):
 
     else:
         return { "message": "FORBIDDEN" }, 403
+
+
+@tea_routes.route("/<int:teaId>", methods=["DELETE"])
+@login_required
+def delete(teaId):
+    """
+    Route to delete a tea
+    """
+    target_tea = Tea.query.get(teaId)
+
+    if target_tea:
+        if target_tea.user_id == current_user.id:
+            db.session.delete(target_tea)
+            db.session.commit()
+            return { "message": "Delete successful!" }
+        else:
+            return { "message": "FORBIDDEN" }, 403
+    else:
+        return { "message": "Tea not found!" }, 404
