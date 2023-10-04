@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TeaTile from "../TeaTile"
+import { thunkGetTeas } from "../../store/teas";
 
 const TeaIndex = () => {
   const dispatch = useDispatch();

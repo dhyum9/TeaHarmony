@@ -1,6 +1,6 @@
 import { useHistory } from "react-router";
-
-const TeaTile = ({ key, tea }) => {
+import './TeaTile.css'
+const TeaTile = ({ tea }) => {
   const {
     id,
     user_id,
@@ -24,10 +24,13 @@ const TeaTile = ({ key, tea }) => {
   };
 
   return (
-    <div className="tea-grid" key={key} onClick={handleClick}>
-      <div>TEA NAME {name}</div>
-      <div>TEA COMPANY {company}</div>
-      <div>TEA NOTES {num_notes}</div>
+    <div className="tea-tile" key={tea.id} onClick={handleClick}>
+      <img
+        className="tea-tile-image"
+        src={image_url}></img>
+      <div>{name}</div>
+      <div>{company}</div>
+      <div>{num_notes} Tasting Notes</div>
     </div>
   );
 };
