@@ -8,7 +8,7 @@ tea_routes = Blueprint('teas', __name__)
 @tea_routes.route('/')
 def get_all_teas():
     """
-    Returns a list of all teas in dictionary form
+    Query for all teas and returns them in a list of tea dictionaries
     """
 
     teas = Tea.query.all()
@@ -29,4 +29,4 @@ def get_all_teas():
     #         restaurant_obj["avg_rating"] = avg_rating
     #         restaurant_obj["num_reviews"] = len(restaurant_reviews)
 
-    return teas_list
+    return {"teas": teas_list}

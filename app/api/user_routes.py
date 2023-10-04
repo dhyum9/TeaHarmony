@@ -29,7 +29,7 @@ def user(id):
 # @login_required
 def get_current_user():
     """
-    Get current user
+    Query for the current logged in user
     """
     try:
         user = User.query.get(current_user.id)
