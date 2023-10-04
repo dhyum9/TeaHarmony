@@ -24,6 +24,7 @@ const TeaIndex = () => {
 
   return (
     <div>
+      <h1>Tea Index</h1>
       {teas.map((tea) => (
         <TeaTile key={tea.id} tea={tea} />
       ))}
