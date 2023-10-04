@@ -1,6 +1,9 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Tea, TastingNote
+from ..forms.tea_form import TeaForm
+from datetime import date
+from ..models.db import db
 
 tea_routes = Blueprint('teas', __name__)
 
@@ -93,3 +96,43 @@ def get_owned_teas():
 
 
     return { "teas": owned_teas }
+
+
+@tea_routes.route('/', methods=["POST"])
+@login_required
+def create_tea():
+    """
+    Route to POST a new tea
+    """
+
+    form = TeaForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+
+        type_string = ', '.join(form.data["type"])
+        sold_in_string = ', '.join(form.data["sold_in"])
+        certification_string = ', '.join(form.data["certification"])
+
+        new_tea = Tea(
+            user_id=current_user.id,
+            name=form.data["name"],
+            company=form.data["company"],
+            type=type_string,
+            sold_in=sold_in_string,
+            certification=certification_string,
+            ingredients=form.data["ingredients"],
+            caffeine=form.data["caffeine"],
+            description=form.data["description"],
+            image_url=form.data["image_url"],
+            created_at = date.today(),
+            updated_at = date.today()
+        )
+        db.session.add(new_tea)
+        db.session.commit()
+        return new_tea.to_dict(), 201
+
+    else:
+        print(form.errors)
+        return { "errors": form.errors }, 400

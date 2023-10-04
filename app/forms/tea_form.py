@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import SelectField, StringField, SubmitField, URLField, TextAreaField, SelectMultipleField
-from wtforms.validators import DataRequired, Length, NumberRange
+from wtforms.validators import DataRequired
 
 type_choices=["Black", "Bubble Tea", "Chai", "Dark/Heicha", "Flavored", "Flowering",
               "Food", "Fruit", "Green", "Guayusa", "Herbal", "Honeybush",
@@ -14,7 +14,7 @@ certification_choices=["Fair Trade", "Kosher", "Organic", "Vegan"]
 
 caffeine_choices=["Low", "Medium", "High", "Decaffeinated", "Caffeine Free"]
 
-class RestaurantForm(FlaskForm):
+class TeaForm(FlaskForm):
     image_url = URLField("Featured Image")
     name = StringField("Tea Name", validators=[DataRequired()])
     company = StringField("Company Name", validators=[DataRequired()])
