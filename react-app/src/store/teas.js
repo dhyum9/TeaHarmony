@@ -72,6 +72,19 @@ export const thunkCreateTea = (tea) => async (dispatch) => {
   }
 };
 
+export const thunkGetUserTeas = () => async (dispatch) => {
+  const res = await csrfFetch("/api/teas/current");
+
+  if (res.ok) {
+    const teas = await res.json();
+    dispatch(getTeas(teas));
+    return res;
+  } else {
+    const errors = await res.json();
+    return errors;
+  }
+};
+
 
 // REDUCERS
 const initialState = { allTeas: {}, singleTea: {} };

@@ -9,6 +9,7 @@ import TeaIndex from "./components/TeaIndex";
 import TeaDetails from "./components/TeaDetails";
 import HomePage from "./components/HomePage";
 import CreateTeaForm from "./components/CreateTeaForm";
+import TeaLog from "./components/Tealog";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/tealog">
+            <TeaLog />
           </Route>
           <Route exact path="/teas">
             <TeaIndex />
