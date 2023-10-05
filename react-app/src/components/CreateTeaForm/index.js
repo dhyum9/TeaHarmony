@@ -4,9 +4,9 @@ const CreateTeaForm = () => {
   const tea = {
     name: '',
     company: '',
-    type: '',
-    sold_in: '',
-    certification: '',
+    type: [],
+    sold_in: [],
+    certification: [],
     ingredients: '',
     caffeine: '',
     description: '',

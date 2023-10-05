@@ -1,6 +1,9 @@
 import { useHistory } from "react-router";
+import OpenModalButton from '../OpenModalButton';
+import { DeleteTeaModal } from '../DeleteTeaModal';
 import './TeaTile.css'
-const TeaTile = ({ tea }) => {
+
+const TeaTile = ({ tea, tiletype }) => {
   const {
     id,
     user_id,
@@ -23,15 +26,31 @@ const TeaTile = ({ tea }) => {
     history.push(`/teas/${id}`);
   };
 
+  const goToEditTeaForm = () => {
+    history.push(`/teas/${id}/edit`);
+  };
+
+
   return (
-    <div className="tea-tile" key={tea.id} onClick={handleClick}>
-      <img
-        className="tea-tile-image"
-        src={image_url}></img>
-      <div>{name}</div>
-      <div>{company}</div>
-      <div>{num_notes} Tasting Notes</div>
-    </div>
+    <>
+      <div className="tea-tile" key={tea.id} onClick={handleClick}>
+        <img
+          className="tea-tile-image"
+          src={image_url}></img>
+        <div>{name}</div>
+        <div>{company}</div>
+        <div>{num_notes} Tasting Notes</div>
+      </div>
+        {tiletype === "tealog" && (
+        <button onClick={goToEditTeaForm}>Edit</button>)}
+        {tiletype==="tealog" && (
+          <OpenModalButton
+          buttonText="Delete This Tea"
+          modalComponent={
+            <DeleteTeaModal teaId={tea.id} />
+          }/>
+        )}
+    </>
   );
 };
 

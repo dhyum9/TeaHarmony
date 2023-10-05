@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { thunkGetTeaInfo } from '../../store/teas';
+import { thunkCreateTea, thunkUpdateTea } from '../../store/teas';
 
 const TeaForm = ({tea, formType}) => {
   const [name, setName] = useState(tea.name);
@@ -13,6 +13,8 @@ const TeaForm = ({tea, formType}) => {
   const [caffeine, setCaffeine] = useState(tea.caffeine);
   const [description, setDescription] = useState(tea.description);
   const [image_url, setImageUrl] = useState(tea.image_url);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
@@ -30,11 +32,23 @@ const TeaForm = ({tea, formType}) => {
     setImageUrl(tea.image_url);
   }, [dispatch, tea]);
 
+  useEffect(() => {
+    const errors = {};
+
+    if (!name) errors.name = "Name is required.";
+    if (!company) errors.company = "Company is required.";
+    setErrors(errors);
+  }, [name, company]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors({});
 
-    const payload = {
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitted(true);
+
+    const newTea = {
       ...tea,
       name,
       company,
@@ -47,34 +61,32 @@ const TeaForm = ({tea, formType}) => {
       image_url
     };
 
-    // if(formType==='create'){
-    //   const createdTea = await dispatch(createTea(payload))
-    //   .catch(async(res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) {
-    //       setErrors(data.errors);
-    //     }
-    //   });
+    if(formType==='create'){
+      if (!Object.values(errors).length) {
+        const addTea = await dispatch(thunkCreateTea(newTea));
 
-    //   if (createdTea) {
-    //     await dispatch(thunkGetTeaInfo(createdTea.id));
-    //     history.push(`/teas/${createdTea.id}`);
-    //   }
-    // }
-    // else if (formType==='Update'){
-    //   const updatedSpot = await dispatch(updateSpot(payload, spot.id))
-    //   .catch(async(res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) {
-    //       setErrors(data.errors);
-    //     }
-    //   });
+        const combinedErrors = { ...errors, Errors: addTea.errors };
 
-    //   if (updatedSpot) {
-    //     await dispatch(fetchSpotDetails(updatedSpot.id));
-    //     history.push(`/spots/${updatedSpot.id}`);
-    //   }
-    // }
+        if (addTea.errors) {
+          setErrors(combinedErrors);
+        } else {
+          history.push(`/teas/${addTea.id}`);
+        }
+      }
+    } else {
+      if (!Object.values(errors).length) {
+        const updateTea = await dispatch(thunkUpdateTea(newTea, tea.id));
+
+        const combinedErrors = { ...errors, Errors: updateTea.errors };
+
+        if (updateTea.errors) {
+          setErrors(combinedErrors);
+        } else {
+          history.push(`/teas/${updateTea.id}`);
+        }
+      }
+    }
+    setIsSubmitting(false);
   };
 
   const type_choices = ["Black", "Bubble Tea", "Chai", "Dark/Heicha", "Flavored", "Flowering",
@@ -87,44 +99,116 @@ const TeaForm = ({tea, formType}) => {
 
   const certification_choices = ["Fair Trade", "Kosher", "Organic", "Vegan"]
 
+  const modifyType = (name) => {
+    let teatypes = document.getElementsByClassName('form-type')
+    let decider;
+
+    for (let i = 0; i < teatypes.length; i++){
+      let teatype = teatypes[i];
+      if (teatype.value === name){
+        decider = teatype;
+      }
+    }
+
+    if(decider.checked){
+      type.push(decider.value)
+    } else {
+      type.pop()
+    }
+  }
+
+  const modifySoldIn = (name) => {
+    let teaforms = document.getElementsByClassName('form-sold-in')
+    let decider;
+
+    for (let i = 0; i < teaforms.length; i++){
+      let teaform = teaforms[i];
+      if (teaform.value === name){
+        decider = teaform;
+      }
+    }
+
+    if(decider.checked){
+      sold_in.push(decider.value)
+    } else {
+      sold_in.pop()
+    }
+  }
+
+  const modifyCertification = (name) => {
+    let teacertifications = document.getElementsByClassName('form-certification')
+    let decider;
+
+    for (let i = 0; i < teacertifications.length; i++){
+      let teacertification = teacertifications[i];
+      if (teacertification.value === name){
+        decider = teacertification;
+      }
+    }
+
+    if(decider.checked){
+      certification.push(decider.value)
+    } else {
+      certification.pop()
+    }
+  }
+
+  const checkCheckboxes = () => {
+    let allCheckboxes = document.getElementsByClassName('checkbox')
+    for (let i = 0; i < allCheckboxes.length; i++){
+      let checkbox = allCheckboxes[i];
+      if (type.indexOf(checkbox.value) !== -1 || sold_in.indexOf(checkbox.value) !== -1 || certification.indexOf(checkbox.value) !== -1){
+        checkbox.checked = true;
+      }
+
+    }
+  }
+
+  checkCheckboxes();
+
   return (
     <div>
-      <form>
-        <h1>Create a Tea</h1>
-
+      <form onSubmit={handleSubmit}>
+        {formType === "create" ? <h1>Create a Tea</h1> : <h1>Update a Tea</h1>}
         <div className='tea-form-image-container'>
-          <label for='form-image-url'>
+          <label>
             <div>Image Url (optional)</div>
           </label>
           <input
-            id='form-image-url'
+            className='form-image-url'
             type="url"
             value={image_url}
             onChange={(e) => setImageUrl(e.target.value)}/>
         </div>
 
         <div className='tea-form-name-container'>
-          <label for='form-name'>
+          <label>
             <div>Tea Name</div>
             <div>ie. Earl Grey, Golden Yunnan</div>
           </label>
           <input
-            id='form-name'
+            className='form-name'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}/>
+          {errors.name && submitted && (
+            <div className="tea-form-submit-errors">{errors.name}</div>
+          )}
         </div>
 
         <div className='tea-form-company-container'>
-          <label for='form-company'>
+          <label>
             <div>Company Name</div>
             <div>ie. Mighty Leaf, Adagio Teas</div>
           </label>
           <input
-            id='form-company'
+            className='form-company'
             type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}/>
+          {errors.company && submitted && (
+            <div className="tea-form-submit-errors">{errors.company}</div>
+          )}
         </div>
 
         <div className='tea-form-type-container'>
@@ -136,7 +220,10 @@ const TeaForm = ({tea, formType}) => {
             <div>
               <input
                 type="checkbox"
-                value={type}/>
+                value={type}
+                className='form-type checkbox'
+                onClick={() => modifyType(type)}
+                />
                 {type}
             </div>
           ))}
@@ -151,7 +238,9 @@ const TeaForm = ({tea, formType}) => {
             <div>
               <input
                 type="checkbox"
-                value={sold_in}/>
+                value={sold_in}
+                className='form-sold-in checkbox'
+                onClick={() => modifySoldIn(sold_in)}/>
                 {sold_in}
             </div>
           ))}
@@ -166,18 +255,20 @@ const TeaForm = ({tea, formType}) => {
             <div>
               <input
                 type="checkbox"
-                value={certification}/>
+                value={certification}
+                className='form-certification checkbox'
+                onClick={() => modifyCertification(certification)}/>
                 {certification}
             </div>
           ))}
         </div>
 
         <div className='tea-form-ingredients-container'>
-          <label for='form-ingredients'>
+          <label>
             <div>Ingredients</div>
           </label>
           <input
-            id='form-ingredients'
+            className='form-ingredients'
             type="text"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}/>
@@ -188,7 +279,8 @@ const TeaForm = ({tea, formType}) => {
             <div>Caffeine Level</div>
           </label>
           <select
-            onChange={(e) => setCaffeine(e.target.value)}>
+            onChange={(e) => setCaffeine(e.target.value)}
+            className='form-caffeine'>
               <option></option>
               <option value='Low'>Low</option>
               <option value='Medium'>Medium</option>
@@ -199,17 +291,17 @@ const TeaForm = ({tea, formType}) => {
         </div>
 
         <div className='tea-form-description-container'>
-          <label for='form-description'>
+          <label>
             <div>Tea Info</div>
             <div>How the tea company describes it (optional)</div>
           </label>
           <textarea
-            id='form-description'
+            className='form-description'
             value={description}
             onChange={(e) => setDescription(e.target.value)}/>
         </div>
 
-        <button>Submit Tea</button>
+        <button type="submit">Submit Tea</button>
       </form>
     </div>
   );
