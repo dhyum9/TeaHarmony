@@ -5,6 +5,7 @@ import { csrfFetch } from "./csrf";
 const GET_TEAS = "teas/getTeas";
 const GET_TEA = "teas/getTea";
 const CREATE_TEA = "teas/createTea";
+const UPDATE_TEA = "teas/updateTea";
 
 
 // ACTION CREATORS
@@ -25,6 +26,13 @@ const getTea = (tea) => {
 const createTea = (tea) => {
   return {
     type: CREATE_TEA,
+    tea,
+  };
+};
+
+const updateTea = (tea) => {
+  return {
+    type: UPDATE_TEA,
     tea,
   };
 };
@@ -85,6 +93,21 @@ export const thunkGetUserTeas = () => async (dispatch) => {
   }
 };
 
+export const thunkUpdateTea = (tea, teaId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/teas/${teaId}`, {
+      method: "PUT",
+      body: JSON.stringify(tea),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      dispatch(updateTea(data));
+      return data;
+    } else {
+      const errors = await res.json();
+      return errors;
+    }
+  };
 
 // REDUCERS
 const initialState = { allTeas: {}, singleTea: {} };
@@ -114,6 +137,15 @@ const teaReducer = (state = initialState, action) => {
       };
       newState.allTeas[action.tea.id] = action.tea;
       return newState;
+
+      case UPDATE_TEA:
+        newState = {
+          ...state,
+          allTeas: {...state.allTeas},
+          singleTea: { ...action.tea },
+        };
+        newState.allTeas[action.tea.id] = action.tea;
+        return newState;
 
     default:
       return state;

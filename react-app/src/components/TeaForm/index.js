@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { thunkCreateTea, thunkGetTeaInfo } from '../../store/teas';
+import { thunkCreateTea, thunkUpdateTea } from '../../store/teas';
 
 const TeaForm = ({tea, formType}) => {
   const [name, setName] = useState(tea.name);
@@ -73,6 +73,18 @@ const TeaForm = ({tea, formType}) => {
           history.push(`/teas/${addTea.id}`);
         }
       }
+    } else {
+      if (!Object.values(errors).length) {
+        const updateTea = await dispatch(thunkUpdateTea(newTea, tea.id));
+
+        const combinedErrors = { ...errors, Errors: updateTea.errors };
+
+        if (updateTea.errors) {
+          setErrors(combinedErrors);
+        } else {
+          history.push(`/teas/${updateTea.id}`);
+        }
+      }
     }
     setIsSubmitting(false);
   };
@@ -141,10 +153,23 @@ const TeaForm = ({tea, formType}) => {
     }
   }
 
+  const checkCheckboxes = () => {
+    let allCheckboxes = document.getElementsByClassName('checkbox')
+    for (let i = 0; i < allCheckboxes.length; i++){
+      let checkbox = allCheckboxes[i];
+      if (type.indexOf(checkbox.value) !== -1 || sold_in.indexOf(checkbox.value) !== -1 || certification.indexOf(checkbox.value) !== -1){
+        checkbox.checked = true;
+      }
+
+    }
+  }
+
+  checkCheckboxes();
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h1>Create a Tea</h1>
+        {formType === "create" ? <h1>Create a Tea</h1> : <h1>Update a Tea</h1>}
         <div className='tea-form-image-container'>
           <label>
             <div>Image Url (optional)</div>
@@ -196,8 +221,9 @@ const TeaForm = ({tea, formType}) => {
               <input
                 type="checkbox"
                 value={type}
-                className='form-type'
-                onClick={() => modifyType(type)}/>
+                className='form-type checkbox'
+                onClick={() => modifyType(type)}
+                />
                 {type}
             </div>
           ))}
@@ -213,7 +239,7 @@ const TeaForm = ({tea, formType}) => {
               <input
                 type="checkbox"
                 value={sold_in}
-                className='form-sold-in'
+                className='form-sold-in checkbox'
                 onClick={() => modifySoldIn(sold_in)}/>
                 {sold_in}
             </div>
@@ -230,7 +256,7 @@ const TeaForm = ({tea, formType}) => {
               <input
                 type="checkbox"
                 value={certification}
-                className='form-certification'
+                className='form-certification checkbox'
                 onClick={() => modifyCertification(certification)}/>
                 {certification}
             </div>

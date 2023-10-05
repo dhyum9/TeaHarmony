@@ -35,7 +35,7 @@ const TeaIndex = () => {
         <button onClick={goToCreateTeaForm}>Add a Tea</button>
       }
       {teas.map((tea) => (
-        <TeaTile key={tea.id} tea={tea} />
+        <TeaTile key={tea.id} tea={tea} tiletype={"teaindex"} />
       ))}
     </div>
   );
