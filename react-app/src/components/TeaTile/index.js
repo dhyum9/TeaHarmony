@@ -1,5 +1,8 @@
 import { useHistory } from "react-router";
+import OpenModalButton from '../OpenModalButton';
+import { DeleteTeaModal } from '../DeleteTeaModal';
 import './TeaTile.css'
+
 const TeaTile = ({ tea, tiletype }) => {
   const {
     id,
@@ -40,6 +43,13 @@ const TeaTile = ({ tea, tiletype }) => {
       </div>
         {tiletype === "tealog" && (
         <button onClick={goToEditTeaForm}>Edit</button>)}
+        {tiletype==="tealog" && (
+          <OpenModalButton
+          buttonText="Delete This Tea"
+          modalComponent={
+            <DeleteTeaModal teaId={tea.id} />
+          }/>
+        )}
     </>
   );
 };

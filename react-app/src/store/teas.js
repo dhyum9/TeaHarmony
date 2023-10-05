@@ -6,6 +6,7 @@ const GET_TEAS = "teas/getTeas";
 const GET_TEA = "teas/getTea";
 const CREATE_TEA = "teas/createTea";
 const UPDATE_TEA = "teas/updateTea";
+const DELETE_TEA = "teas/deleteTea";
 
 
 // ACTION CREATORS
@@ -34,6 +35,13 @@ const updateTea = (tea) => {
   return {
     type: UPDATE_TEA,
     tea,
+  };
+};
+
+const deleteTea = (teaId) => {
+  return {
+    type: DELETE_TEA,
+    teaId,
   };
 };
 
@@ -109,6 +117,15 @@ export const thunkUpdateTea = (tea, teaId) => async (dispatch) => {
     }
   };
 
+  export const thunkDeleteTea = (teaId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/teas/${teaId}`, {
+      method: "DELETE",
+    });
+
+    dispatch(deleteTea(teaId));
+    return res;
+  };
+
 // REDUCERS
 const initialState = { allTeas: {}, singleTea: {} };
 
@@ -145,6 +162,15 @@ const teaReducer = (state = initialState, action) => {
           singleTea: { ...action.tea },
         };
         newState.allTeas[action.tea.id] = action.tea;
+        return newState;
+
+      case DELETE_TEA:
+        newState = {
+          ...state,
+          allTeas: { ...state.allTeas },
+          singleTea: {...state.singleTea},
+        };
+        delete newState.allTeas[action.teaId];
         return newState;
 
     default:
