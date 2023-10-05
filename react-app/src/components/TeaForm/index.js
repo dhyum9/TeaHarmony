@@ -82,6 +82,11 @@ const TeaForm = ({tea, formType}) => {
               "Kombucha", "Matcha", "Oolong", "Pu'erh", "Pu'erh (Sheng)", "Pu'erh (Shou)",
               "Purple", "Rooibos", "Spice", "White", "Yaupon", "Yellow", "Yerba Maté"]
 
+  const sold_in_choices = ["Bulk", "Canned/Bottled", "Compressed", "Loose Leaf", "Powder/Instant",
+              "Sachet", "Tea Bag"]
+
+  const certification_choices = ["Fair Trade", "Kosher", "Organic", "Vegan"]
+
   return (
     <div>
       <form>
@@ -119,7 +124,7 @@ const TeaForm = ({tea, formType}) => {
             onChange={(e) => setCompany(e.target.value)}/>
         </div>
 
-        <div className='tea-form-company-container'>
+        <div className='tea-form-type-container'>
           <label>
             <div>Type</div>
             <div>Check all that apply</div>
@@ -132,10 +137,74 @@ const TeaForm = ({tea, formType}) => {
                 {type}
             </div>
           ))}
-
-
         </div>
 
+        <div className='tea-form-sold-in-container'>
+          <label>
+            <div>Available In</div>
+            <div>Check all that apply</div>
+          </label>
+          {sold_in_choices.map((sold_in) => (
+            <div>
+              <input
+                type="checkbox"
+                value={sold_in}/>
+                {sold_in}
+            </div>
+          ))}
+        </div>
+
+        <div className='tea-form-certification-container'>
+          <label>
+            <div>Certifications</div>
+            <div>Check all that apply</div>
+          </label>
+          {certification_choices.map((certification) => (
+            <div>
+              <input
+                type="checkbox"
+                value={certification}/>
+                {certification}
+            </div>
+          ))}
+        </div>
+
+        <div className='tea-form-ingredients-container'>
+          <label>
+            <div>Ingredients</div>
+          </label>
+          <input
+            type="text"
+            value={ingredients}
+            onChange={(e) => setIngredients(e.target.value)}/>
+        </div>
+
+        <div className='tea-form-caffeine-container'>
+          <label>
+            <div>Caffeine Level</div>
+          </label>
+          <select
+            onChange={(e) => setCaffeine(e.target.value)}>
+              <option></option>
+              <option value='Low'>Low</option>
+              <option value='Medium'>Medium</option>
+              <option value='High'>High</option>
+              <option value='Decaffeinated'>Decaffeinated</option>
+              <option value='Caffeine Free'>Caffeine Free</option>
+          </select>
+        </div>
+
+        <div className='tea-form-description-container'>
+          <label>
+            <div>Tea Info</div>
+            <div>How the tea company describes it (optional)</div>
+          </label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}/>
+        </div>
+
+        <button>Submit Tea</button>
       </form>
     </div>
   );
