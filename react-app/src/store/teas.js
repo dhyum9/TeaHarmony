@@ -3,7 +3,8 @@ import { csrfFetch } from "./csrf";
 
 // TYPE CONSTANTS
 const GET_TEAS = "teas/getTeas";
-const GET_TEA = "restaurants/getTea";
+const GET_TEA = "teas/getTea";
+const CREATE_TEA = "teas/createTea";
 
 
 // ACTION CREATORS
@@ -17,6 +18,13 @@ const getTeas = (teas) => {
 const getTea = (tea) => {
   return {
     type: GET_TEA,
+    tea,
+  };
+};
+
+const createTea = (tea) => {
+  return {
+    type: CREATE_TEA,
     tea,
   };
 };
@@ -49,6 +57,21 @@ export const thunkGetTeaInfo = (teaId) => async (dispatch) => {
   }
 };
 
+export const thunkCreateTea = (tea) => async (dispatch) => {
+  const res = await csrfFetch("/api/restaurants/", {
+    method: "POST",
+    body: JSON.stringify(tea)
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  } else {
+    const errors = await res.json();
+    return errors;
+  }
+};
+
 
 // REDUCERS
 const initialState = { allTeas: {}, singleTea: {} };
@@ -68,6 +91,15 @@ const teaReducer = (state = initialState, action) => {
     case GET_TEA:
       newState = { ...state, singleTea: {} };
       newState.singleTea = action.tea;
+      return newState;
+
+    case CREATE_TEA:
+      newState = {
+        ...state,
+        allTeas: { ...state.allTeas },
+        singleTea: { ...action.tea },
+      };
+      newState.allTeas[action.tea.id] = action.tea;
       return newState;
 
     default:

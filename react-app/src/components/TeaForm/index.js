@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { thunkGetTeaInfo } from '../../store/teas';
+import { thunkCreateTea, thunkGetTeaInfo } from '../../store/teas';
 
 const TeaForm = ({tea, formType}) => {
   const [name, setName] = useState(tea.name);
@@ -47,20 +47,20 @@ const TeaForm = ({tea, formType}) => {
       image_url
     };
 
-    // if(formType==='create'){
-    //   const createdTea = await dispatch(createTea(payload))
-    //   .catch(async(res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) {
-    //       setErrors(data.errors);
-    //     }
-    //   });
+    if(formType==='create'){
+      const createdTea = await dispatch(thunkCreateTea(payload))
+      .catch(async(res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
 
-    //   if (createdTea) {
-    //     await dispatch(thunkGetTeaInfo(createdTea.id));
-    //     history.push(`/teas/${createdTea.id}`);
-    //   }
-    // }
+      if (createdTea) {
+        await dispatch(thunkGetTeaInfo(createdTea.id));
+        history.push(`/teas/${createdTea.id}`);
+      }
+    }
     // else if (formType==='Update'){
     //   const updatedSpot = await dispatch(updateSpot(payload, spot.id))
     //   .catch(async(res) => {
@@ -91,7 +91,7 @@ const TeaForm = ({tea, formType}) => {
     <div>
       <form>
         <h1>Create a Tea</h1>
-
+        {errors.name}
         <div className='tea-form-image-container'>
           <label for='form-image-url'>
             <div>Image Url (optional)</div>
