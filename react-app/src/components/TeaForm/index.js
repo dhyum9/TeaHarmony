@@ -74,20 +74,6 @@ const TeaForm = ({tea, formType}) => {
         }
       }
     }
-    // else if (formType==='Update'){
-    //   const updatedSpot = await dispatch(updateSpot(payload, spot.id))
-    //   .catch(async(res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) {
-    //       setErrors(data.errors);
-    //     }
-    //   });
-
-    //   if (updatedSpot) {
-    //     await dispatch(fetchSpotDetails(updatedSpot.id));
-    //     history.push(`/spots/${updatedSpot.id}`);
-    //   }
-    // }
     setIsSubmitting(false);
   };
 
@@ -100,6 +86,16 @@ const TeaForm = ({tea, formType}) => {
               "Sachet", "Tea Bag"]
 
   const certification_choices = ["Fair Trade", "Kosher", "Organic", "Vegan"]
+
+  const modifyType = () => {
+    var decider = document.getElementById('Black-tea')
+    if(decider.checked){
+      type += "Black"
+      console.log('check')
+    } else {
+      console.log('uncheck')
+    }
+  }
 
   return (
     <div>
@@ -149,14 +145,22 @@ const TeaForm = ({tea, formType}) => {
             <div>Type</div>
             <div>Check all that apply</div>
           </label>
-          {type_choices.map((type) => (
+          <div>
+              <input
+                type="checkbox"
+                value="Black"
+                id='Black-tea'
+                onClick={modifyType}/>
+                "Black"
+            </div>
+          {/* {type_choices.map((type) => (
             <div>
               <input
                 type="checkbox"
                 value={type}/>
                 {type}
             </div>
-          ))}
+          ))} */}
         </div>
 
         <div className='tea-form-sold-in-container'>
