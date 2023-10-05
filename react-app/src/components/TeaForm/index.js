@@ -93,32 +93,35 @@ const TeaForm = ({tea, formType}) => {
         <h1>Create a Tea</h1>
 
         <div className='tea-form-image-container'>
-          <label>
+          <label for='form-image-url'>
             <div>Image Url (optional)</div>
           </label>
           <input
+            id='form-image-url'
             type="url"
             value={image_url}
             onChange={(e) => setImageUrl(e.target.value)}/>
         </div>
 
         <div className='tea-form-name-container'>
-          <label>
+          <label for='form-name'>
             <div>Tea Name</div>
             <div>ie. Earl Grey, Golden Yunnan</div>
           </label>
           <input
+            id='form-name'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}/>
         </div>
 
         <div className='tea-form-company-container'>
-          <label>
+          <label for='form-company'>
             <div>Company Name</div>
             <div>ie. Mighty Leaf, Adagio Teas</div>
           </label>
           <input
+            id='form-company'
             type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}/>
@@ -170,10 +173,11 @@ const TeaForm = ({tea, formType}) => {
         </div>
 
         <div className='tea-form-ingredients-container'>
-          <label>
+          <label for='form-ingredients'>
             <div>Ingredients</div>
           </label>
           <input
+            id='form-ingredients'
             type="text"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}/>
@@ -195,11 +199,12 @@ const TeaForm = ({tea, formType}) => {
         </div>
 
         <div className='tea-form-description-container'>
-          <label>
+          <label for='form-description'>
             <div>Tea Info</div>
             <div>How the tea company describes it (optional)</div>
           </label>
           <textarea
+            id='form-description'
             value={description}
             onChange={(e) => setDescription(e.target.value)}/>
         </div>
