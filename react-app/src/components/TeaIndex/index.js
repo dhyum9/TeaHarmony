@@ -12,6 +12,10 @@ const TeaIndex = () => {
     (state) => state.teas.allTeas
   );
 
+  const sessionUser = useSelector(
+    (state) => state.session.user
+  );
+
   const teas = Object.values(getTeas);
 
   useEffect(() => {
@@ -27,7 +31,9 @@ const TeaIndex = () => {
   return (
     <div>
       <h1>Tea Index</h1>
-      <button onClick={goToTeaForm}>Add a Tea</button>
+      {sessionUser &&
+        <button onClick={goToTeaForm}>Add a Tea</button>
+      }
       {teas.map((tea) => (
         <TeaTile key={tea.id} tea={tea} />
       ))}
