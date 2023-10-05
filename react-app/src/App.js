@@ -5,6 +5,10 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import TeaIndex from "./components/TeaIndex";
+import TeaDetails from "./components/TeaDetails";
+import HomePage from "./components/HomePage";
+import CreateTeaForm from "./components/CreateTeaForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,11 +22,23 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/" >
+            <HomePage />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/teas">
+            <TeaIndex />
+          </Route>
+          <Route exact path="/teas/new">
+            <CreateTeaForm />
+          </Route>
+          <Route exact path="/teas/:teaId">
+            <TeaDetails />
           </Route>
         </Switch>
       )}
