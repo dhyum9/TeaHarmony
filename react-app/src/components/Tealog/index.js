@@ -13,11 +13,18 @@ const TeaLog = () => {
     dispatch(thunkGetUserTeas());
   }, [dispatch]);
 
+  const goToEditTeaForm = () => {
+    history.push(`/teas/new`);
+  };
+
   return (
     <div>
       <h1>Tealog</h1>
       {teas.map((tea) => (
-        <TeaTile key={tea.id} tea={tea} />
+        <>
+          <TeaTile key={tea.id} tea={tea} />
+          <button onClick={goToEditTeaForm}>Edit</button>
+        </>
       ))}
     </div>
   );

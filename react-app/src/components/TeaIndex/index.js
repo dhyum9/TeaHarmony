@@ -24,7 +24,7 @@ const TeaIndex = () => {
 
   if (!teas.length) return null;
 
-  const goToTeaForm = () => {
+  const goToCreateTeaForm = () => {
     history.push(`/teas/new`);
   };
 
@@ -32,7 +32,7 @@ const TeaIndex = () => {
     <div>
       <h1>Tea Index</h1>
       {sessionUser &&
-        <button onClick={goToTeaForm}>Add a Tea</button>
+        <button onClick={goToCreateTeaForm}>Add a Tea</button>
       }
       {teas.map((tea) => (
         <TeaTile key={tea.id} tea={tea} />
