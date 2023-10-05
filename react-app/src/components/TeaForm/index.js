@@ -87,13 +87,57 @@ const TeaForm = ({tea, formType}) => {
 
   const certification_choices = ["Fair Trade", "Kosher", "Organic", "Vegan"]
 
-  const modifyType = () => {
-    var decider = document.getElementById('Black-tea')
+  const modifyType = (name) => {
+    let teatypes = document.getElementsByClassName('form-type')
+    let decider;
+
+    for (let i = 0; i < teatypes.length; i++){
+      let teatype = teatypes[i];
+      if (teatype.value === name){
+        decider = teatype;
+      }
+    }
+
     if(decider.checked){
-      type += "Black"
-      console.log('check')
+      type.push(decider.value)
     } else {
-      console.log('uncheck')
+      type.pop()
+    }
+  }
+
+  const modifySoldIn = (name) => {
+    let teaforms = document.getElementsByClassName('form-sold-in')
+    let decider;
+
+    for (let i = 0; i < teaforms.length; i++){
+      let teaform = teaforms[i];
+      if (teaform.value === name){
+        decider = teaform;
+      }
+    }
+
+    if(decider.checked){
+      sold_in.push(decider.value)
+    } else {
+      sold_in.pop()
+    }
+  }
+
+  const modifyCertification = (name) => {
+    let teacertifications = document.getElementsByClassName('form-certification')
+    let decider;
+
+    for (let i = 0; i < teacertifications.length; i++){
+      let teacertification = teacertifications[i];
+      if (teacertification.value === name){
+        decider = teacertification;
+      }
+    }
+
+    if(decider.checked){
+      certification.push(decider.value)
+    } else {
+      certification.pop()
     }
   }
 
@@ -101,43 +145,45 @@ const TeaForm = ({tea, formType}) => {
     <div>
       <form onSubmit={handleSubmit}>
         <h1>Create a Tea</h1>
-        <h3>
-          {errors.name}
-          {errors.company}
-        </h3>
         <div className='tea-form-image-container'>
-          <label for='form-image-url'>
+          <label>
             <div>Image Url (optional)</div>
           </label>
           <input
-            id='form-image-url'
+            className='form-image-url'
             type="url"
             value={image_url}
             onChange={(e) => setImageUrl(e.target.value)}/>
         </div>
 
         <div className='tea-form-name-container'>
-          <label for='form-name'>
+          <label>
             <div>Tea Name</div>
             <div>ie. Earl Grey, Golden Yunnan</div>
           </label>
           <input
-            id='form-name'
+            className='form-name'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}/>
+          {errors.name && submitted && (
+            <div className="tea-form-submit-errors">{errors.name}</div>
+          )}
         </div>
 
         <div className='tea-form-company-container'>
-          <label for='form-company'>
+          <label>
             <div>Company Name</div>
             <div>ie. Mighty Leaf, Adagio Teas</div>
           </label>
           <input
-            id='form-company'
+            className='form-company'
             type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}/>
+          {errors.company && submitted && (
+            <div className="tea-form-submit-errors">{errors.company}</div>
+          )}
         </div>
 
         <div className='tea-form-type-container'>
@@ -145,22 +191,16 @@ const TeaForm = ({tea, formType}) => {
             <div>Type</div>
             <div>Check all that apply</div>
           </label>
-          <div>
-              <input
-                type="checkbox"
-                value="Black"
-                id='Black-tea'
-                onClick={modifyType}/>
-                "Black"
-            </div>
-          {/* {type_choices.map((type) => (
+          {type_choices.map((type) => (
             <div>
               <input
                 type="checkbox"
-                value={type}/>
+                value={type}
+                className='form-type'
+                onClick={() => modifyType(type)}/>
                 {type}
             </div>
-          ))} */}
+          ))}
         </div>
 
         <div className='tea-form-sold-in-container'>
@@ -172,7 +212,9 @@ const TeaForm = ({tea, formType}) => {
             <div>
               <input
                 type="checkbox"
-                value={sold_in}/>
+                value={sold_in}
+                className='form-sold-in'
+                onClick={() => modifySoldIn(sold_in)}/>
                 {sold_in}
             </div>
           ))}
@@ -187,18 +229,20 @@ const TeaForm = ({tea, formType}) => {
             <div>
               <input
                 type="checkbox"
-                value={certification}/>
+                value={certification}
+                className='form-certification'
+                onClick={() => modifyCertification(certification)}/>
                 {certification}
             </div>
           ))}
         </div>
 
         <div className='tea-form-ingredients-container'>
-          <label for='form-ingredients'>
+          <label>
             <div>Ingredients</div>
           </label>
           <input
-            id='form-ingredients'
+            className='form-ingredients'
             type="text"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}/>
@@ -209,7 +253,8 @@ const TeaForm = ({tea, formType}) => {
             <div>Caffeine Level</div>
           </label>
           <select
-            onChange={(e) => setCaffeine(e.target.value)}>
+            onChange={(e) => setCaffeine(e.target.value)}
+            className='form-caffeine'>
               <option></option>
               <option value='Low'>Low</option>
               <option value='Medium'>Medium</option>
@@ -220,12 +265,12 @@ const TeaForm = ({tea, formType}) => {
         </div>
 
         <div className='tea-form-description-container'>
-          <label for='form-description'>
+          <label>
             <div>Tea Info</div>
             <div>How the tea company describes it (optional)</div>
           </label>
           <textarea
-            id='form-description'
+            className='form-description'
             value={description}
             onChange={(e) => setDescription(e.target.value)}/>
         </div>
