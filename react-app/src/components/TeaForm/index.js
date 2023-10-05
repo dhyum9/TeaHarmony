@@ -62,18 +62,6 @@ const TeaForm = ({tea, formType}) => {
     };
 
     if(formType==='create'){
-      // const createdTea = await dispatch(thunkCreateTea(payload))
-      // .catch(async(res) => {
-      //   const data = await res.json();
-      //   if (data && data.errors) {
-      //     setErrors(data.errors);
-      //   }
-      // });
-
-      // if (createdTea) {
-      //   await dispatch(thunkGetTeaInfo(createdTea.id));
-      //   history.push(`/teas/${createdTea.id}`);
-      // }
       if (!Object.values(errors).length) {
         const addTea = await dispatch(thunkCreateTea(newTea));
 
@@ -100,6 +88,7 @@ const TeaForm = ({tea, formType}) => {
     //     history.push(`/spots/${updatedSpot.id}`);
     //   }
     // }
+    setIsSubmitting(false);
   };
 
   const type_choices = ["Black", "Bubble Tea", "Chai", "Dark/Heicha", "Flavored", "Flowering",

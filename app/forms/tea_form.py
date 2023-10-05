@@ -12,7 +12,7 @@ from wtforms.validators import DataRequired, Optional
 
 # certification_choices=["Fair Trade", "Kosher", "Organic", "Vegan"]
 
-caffeine_choices=["Low", "Medium", "High", "Decaffeinated", "Caffeine Free"]
+# caffeine_choices=["Low", "Medium", "High", "Decaffeinated", "Caffeine Free"]
 
 class TeaForm(FlaskForm):
     image_url = URLField("Featured Image")
@@ -22,6 +22,6 @@ class TeaForm(FlaskForm):
     sold_in = StringField("Available In")
     certification = StringField("Certifications")
     ingredients = StringField("Ingredients")
-    caffeine = SelectField("Certifications", choices=caffeine_choices, validators=[Optional()])
+    caffeine = StringField("Caffeine")
     description = TextAreaField("Tea Info")
     submit = SubmitField("SUBMIT TEA")
