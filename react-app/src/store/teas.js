@@ -58,7 +58,7 @@ export const thunkGetTeaInfo = (teaId) => async (dispatch) => {
 };
 
 export const thunkCreateTea = (tea) => async (dispatch) => {
-  const res = await csrfFetch("/api/restaurants/", {
+  const res = await csrfFetch("/api/teas/", {
     method: "POST",
     body: JSON.stringify(tea)
   });

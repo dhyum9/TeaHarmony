@@ -13,6 +13,8 @@ const TeaForm = ({tea, formType}) => {
   const [caffeine, setCaffeine] = useState(tea.caffeine);
   const [description, setDescription] = useState(tea.description);
   const [image_url, setImageUrl] = useState(tea.image_url);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
@@ -30,11 +32,23 @@ const TeaForm = ({tea, formType}) => {
     setImageUrl(tea.image_url);
   }, [dispatch, tea]);
 
+  useEffect(() => {
+    const errors = {};
+
+    if (!name) errors.name = "Name is required.";
+    if (!company) errors.company = "Company is required.";
+    setErrors(errors);
+  }, [name, company]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors({});
 
-    const payload = {
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitted(true);
+
+    const newTea = {
       ...tea,
       name,
       company,
@@ -48,17 +62,28 @@ const TeaForm = ({tea, formType}) => {
     };
 
     if(formType==='create'){
-      const createdTea = await dispatch(thunkCreateTea(payload))
-      .catch(async(res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors);
-        }
-      });
+      // const createdTea = await dispatch(thunkCreateTea(payload))
+      // .catch(async(res) => {
+      //   const data = await res.json();
+      //   if (data && data.errors) {
+      //     setErrors(data.errors);
+      //   }
+      // });
 
-      if (createdTea) {
-        await dispatch(thunkGetTeaInfo(createdTea.id));
-        history.push(`/teas/${createdTea.id}`);
+      // if (createdTea) {
+      //   await dispatch(thunkGetTeaInfo(createdTea.id));
+      //   history.push(`/teas/${createdTea.id}`);
+      // }
+      if (!Object.values(errors).length) {
+        const addTea = await dispatch(thunkCreateTea(newTea));
+
+        const combinedErrors = { ...errors, Errors: addTea.errors };
+
+        if (addTea.errors) {
+          setErrors(combinedErrors);
+        } else {
+          history.push(`/teas/${addTea.id}`);
+        }
       }
     }
     // else if (formType==='Update'){
@@ -89,9 +114,12 @@ const TeaForm = ({tea, formType}) => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h1>Create a Tea</h1>
-        {errors.name}
+        <h3>
+          {errors.name}
+          {errors.company}
+        </h3>
         <div className='tea-form-image-container'>
           <label for='form-image-url'>
             <div>Image Url (optional)</div>
@@ -209,7 +237,7 @@ const TeaForm = ({tea, formType}) => {
             onChange={(e) => setDescription(e.target.value)}/>
         </div>
 
-        <button>Submit Tea</button>
+        <button type="submit">Submit Tea</button>
       </form>
     </div>
   );

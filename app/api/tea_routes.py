@@ -111,17 +111,17 @@ def create_tea():
 
     if form.validate_on_submit():
 
-        type_string = ', '.join(form.data["type"])
-        sold_in_string = ', '.join(form.data["sold_in"])
-        certification_string = ', '.join(form.data["certification"])
+        # type_string = ', '.join(form.data["type"])
+        # sold_in_string = ', '.join(form.data["sold_in"])
+        # certification_string = ', '.join(form.data["certification"])
 
         new_tea = Tea(
             user_id=current_user.id,
             name=form.data["name"],
             company=form.data["company"],
-            type=type_string,
-            sold_in=sold_in_string,
-            certification=certification_string,
+            type=form.data["type"],
+            sold_in=form.data["sold_in"],
+            certification=form.data["certification"],
             ingredients=form.data["ingredients"],
             caffeine=form.data["caffeine"],
             description=form.data["description"],
