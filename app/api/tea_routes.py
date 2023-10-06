@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Tea, TastingNote
 from ..forms.tea_form import TeaForm
+from ..forms.tastingnote_form import TastingNoteForm
 from datetime import date
 from ..models.db import db
 
@@ -192,3 +193,47 @@ def delete(teaId):
             return { "message": "FORBIDDEN" }, 403
     else:
         return { "message": "Tea not found!" }, 404
+
+
+@tea_routes.route('/<int:teaId>/tastingnotes')
+def get_all_tea_tastingnotes(teaId):
+    """
+    Query for all notes for a specific tea
+    """
+
+    notes = TastingNote.query.all()
+
+    notes_list = [note.to_dict() for note in notes if note.tea_id == teaId]
+
+    return {"tastingnotes": notes_list}
+
+
+@tea_routes.route('/<int:teaId>/tastingnotes', methods=["POST"])
+@login_required
+def create_tastingnote(teaId):
+    """
+    Route to create a new note
+    """
+
+    form = TastingNoteForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+
+        new_note = TastingNote(
+            tea_id=teaId,
+            user_id=current_user.id,
+            note=form.data["note"],
+            score=form.data["score"],
+            flavors=form.data["flavors"],
+            created_at = date.today(),
+            updated_at = date.today()
+        )
+        db.session.add(new_note)
+        db.session.commit()
+        return new_note.to_dict(), 201
+
+    else:
+        print(form.errors)
+        return { "errors": form.errors }, 400
