@@ -17,9 +17,9 @@ const getTeaTastingNotes = (tastingnotes) => {
 
 // THUNK ACTION CREATORS
 
-export const thunkGetTeaTastingNotes = () => async (dispatch) => {
+export const thunkGetTeaTastingNotes = (teaId) => async (dispatch) => {
 
-  const res = await csrfFetch("/api/tastingnotes/");
+  const res = await csrfFetch(`/api/teas/${teaId}/tastingnotes`);
 
   if (res.ok) {
       const tastingnotes = await res.json();
@@ -52,4 +52,4 @@ const tastingNotesReducer = (state = initialState, action) => {
     }
 };
 
-export default reviewsReducer;
+export default tastingNotesReducer;

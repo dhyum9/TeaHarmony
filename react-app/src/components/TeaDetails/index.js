@@ -2,19 +2,24 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { thunkGetTeaInfo } from "../../store/teas";
+import { thunkGetTeaTastingNotes } from "../../store/tastingnotes";
+import TeaTastingNote from "../TeaTastingNote";
 
 const TeaDetails = () => {
   const dispatch = useDispatch();
 
   const { teaId } = useParams();
 
-  const singleTea = useSelector(
-    (state) => state.teas.singleTea
-  );
+  const singleTea = useSelector((state) => state.teas.singleTea);
+  const notes = useSelector((state) => state.tastingnotes.tea);
+  const currentUser = useSelector(state => state.session.user);
+
+  const notesList = Object.values(notes);
 
   useEffect(() => {
     dispatch(thunkGetTeaInfo(teaId));
-  }, [dispatch, teaId]);
+    dispatch(thunkGetTeaTastingNotes(teaId));
+  }, [dispatch, teaId, notesList.length]);
 
   if (!singleTea) return null;
 
@@ -44,6 +49,14 @@ const TeaDetails = () => {
         <li>Caffeine: {caffeine}</li>
         <li>Tea Info: {description}</li>
       </ul>
+
+      <div>
+        {notesList.reverse().map((note) => {
+            return (
+              <TeaTastingNote key={note.id} currentUserId={currentUser.Id} tastingNote={note} teaId={teaId}/>
+            );
+          })}
+      </div>
     </div>
   );
 };
