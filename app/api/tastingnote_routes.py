@@ -62,20 +62,20 @@ def update_tastingnote(tastingNoteId):
         return { "message": "FORBIDDEN" }, 403
 
 
-# @tea_routes.route("/<int:teaId>", methods=["DELETE"])
-# @login_required
-# def delete(teaId):
-#     """
-#     Route to delete a tea
-#     """
-#     target_tea = Tea.query.get(teaId)
+@tastingnote_routes.route("/<int:tastingNoteId>", methods=["DELETE"])
+@login_required
+def delete(tastingNoteId):
+    """
+    Route to delete a note
+    """
+    note = TastingNote.query.get(tastingNoteId)
 
-#     if target_tea:
-#         if target_tea.user_id == current_user.id:
-#             db.session.delete(target_tea)
-#             db.session.commit()
-#             return { "message": "Delete successful!" }
-#         else:
-#             return { "message": "FORBIDDEN" }, 403
-#     else:
-#         return { "message": "Tea not found!" }, 404
+    if note:
+        if note.user_id == current_user.id:
+            db.session.delete(note)
+            db.session.commit()
+            return { "message": "Delete successful!" }
+        else:
+            return { "message": "FORBIDDEN" }, 403
+    else:
+        return { "message": "Tasting Note not found!" }, 404
