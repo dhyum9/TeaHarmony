@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { thunkGetTeaInfo } from "../../store/teas";
 import { thunkGetTeaTastingNotes } from "../../store/tastingnotes";
 import TeaTastingNote from "../TeaTastingNote";
+import OpenModalButton from "../OpenModalButton";
+import CreateNoteForm from "../CreateNoteForm";
 
 const TeaDetails = () => {
   const dispatch = useDispatch();
@@ -49,6 +51,14 @@ const TeaDetails = () => {
         <li>Caffeine: {caffeine}</li>
         <li>Tea Info: {description}</li>
       </ul>
+
+      {currentUser && (
+          <OpenModalButton
+          buttonText="Review this tea"
+          modalComponent={
+            <CreateNoteForm />
+          }/>
+      )}
 
       <div>
         {notesList.reverse().map((note) => {
