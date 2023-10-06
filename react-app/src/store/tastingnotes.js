@@ -69,6 +69,7 @@ export const thunkCreateTastingNote = (note, teaId) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
+    await dispatch(thunkGetTeaTastingNotes(teaId))
     return data;
   } else {
     const errors = await res.json();
