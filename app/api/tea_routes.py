@@ -192,3 +192,16 @@ def delete(teaId):
             return { "message": "FORBIDDEN" }, 403
     else:
         return { "message": "Tea not found!" }, 404
+
+
+@tea_routes.route('/<int:teaId>/tastingnotes')
+def get_all_tea_tastingnotes(teaId):
+    """
+    Query for all notes for a specific tea
+    """
+
+    notes = TastingNote.query.all()
+
+    notes_list = [note.to_dict() for note in notes if note.tea_id == teaId]
+
+    return {"tastingnotes": notes_list}
