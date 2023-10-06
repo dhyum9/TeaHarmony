@@ -11,6 +11,7 @@ import HomePage from "./components/HomePage";
 import CreateTeaForm from "./components/CreateTeaForm";
 import TeaLog from "./components/Tealog";
 import EditTeaForm from "./components/EditTeaForm";
+import TastingNotesLog from "./components/TastingNotesLog";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route exact path="/tealog">
             <TeaLog />
+          </Route>
+          <Route exact path="/tastingnotes">
+            <TastingNotesLog />
           </Route>
           <Route exact path="/teas">
             <TeaIndex />

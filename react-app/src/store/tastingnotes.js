@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 // TYPE CONSTANTS
 
 const GET_TEA_TASTINGNOTES = "tastingnotes/getTeaTastingNotes";
+const GET_USER_TASTINGNOTES = "tastingnotes/getUserTastingNotes"
 
 
 // ACTION CREATORS
@@ -10,6 +11,13 @@ const GET_TEA_TASTINGNOTES = "tastingnotes/getTeaTastingNotes";
 const getTeaTastingNotes = (tastingnotes) => {
   return {
       type: GET_TEA_TASTINGNOTES,
+      tastingnotes
+  }
+}
+
+const getUserTastingNotes = (tastingnotes) => {
+  return {
+      type: GET_USER_TASTINGNOTES,
       tastingnotes
   }
 }
@@ -24,6 +32,20 @@ export const thunkGetTeaTastingNotes = (teaId) => async (dispatch) => {
   if (res.ok) {
       const tastingnotes = await res.json();
       dispatch(getTeaTastingNotes(tastingnotes));
+      return res;
+  } else {
+      const errors = await res.json();
+      return errors;
+  }
+};
+
+export const thunkGetUserTastingNotes = () => async (dispatch) => {
+
+  const res = await csrfFetch(`/api/tastingnotes/current`);
+
+  if (res.ok) {
+      const tastingnotes = await res.json();
+      dispatch(getUserTastingNotes(tastingnotes));
       return res;
   } else {
       const errors = await res.json();
@@ -46,6 +68,13 @@ const tastingNotesReducer = (state = initialState, action) => {
                 newState.tea[tastingnote.id] = tastingnote;
             });
             return newState;
+
+        case GET_USER_TASTINGNOTES:
+          newState = {...state, user: {}}
+          action.tastingnotes.tastingnotes.forEach((tastingnote) => {
+              newState.user[tastingnote.id] = tastingnote;
+          });
+          return newState;
 
         default:
             return state;
