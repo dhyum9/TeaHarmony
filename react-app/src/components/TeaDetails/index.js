@@ -56,7 +56,7 @@ const TeaDetails = () => {
           <OpenModalButton
           buttonText="Review this tea"
           modalComponent={
-            <CreateNoteForm />
+            <CreateNoteForm teaId={teaId}/>
           }/>
       )}
 

@@ -4,6 +4,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_TEA_TASTINGNOTES = "tastingnotes/getTeaTastingNotes";
 const GET_USER_TASTINGNOTES = "tastingnotes/getUserTastingNotes"
+// const CREATE_TASTINGNOTE = "tastingnotes/createTastingNote";
 
 
 // ACTION CREATORS
@@ -21,6 +22,13 @@ const getUserTastingNotes = (tastingnotes) => {
       tastingnotes
   }
 }
+
+// const createTastingNote = (tastingnote) => {
+//   return {
+//       type: CREATE_TASTINGNOTE,
+//       tastingnote,
+//   }
+// }
 
 
 // THUNK ACTION CREATORS
@@ -50,6 +58,21 @@ export const thunkGetUserTastingNotes = () => async (dispatch) => {
   } else {
       const errors = await res.json();
       return errors;
+  }
+};
+
+export const thunkCreateTastingNote = (note, teaId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/teas/${teaId}/tastingnotes`, {
+    method: "POST",
+    body: JSON.stringify(note)
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  } else {
+    const errors = await res.json();
+    return errors;
   }
 };
 
