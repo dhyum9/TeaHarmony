@@ -1,42 +1,27 @@
 .score-slider {
-  height: 200px;
+  height: 50px;
+  width: 300px;
 }
 
 .score-thumb {
-  height: 25px;
-  line-height: 25px;
-  width: 25px;
-  text-align: center;
-  background-color: #000;
-  color: #fff;
-  border-radius: 50%;
+  padding: 3px 25px;
+  background-color: white;
+  color: grey;
+  border: 1px solid grey;
   cursor: grab;
 }
 
 .score-track {
-  top: 0;
-  bottom: 0;
-  background: gray;
-  border-radius: 999px;
-  left: 5px;
-  width: 15px;
+  background-color: grey;
+  top: 11px;
+  height: 3px;
 }
 
-.score-track.score-track-0 {
+/* .score-track.score-track-0 {
   background: red;
-}
+} */
 
 .actual-score {
   width: 200px;
   text-align: center;
-  margin-bottom: 20px;
-}
-
-section {
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }

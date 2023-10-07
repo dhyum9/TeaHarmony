@@ -79,7 +79,7 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
           <label>
             <div>Score</div>
           </label>
-          <div className="actual-score">Actual Humidity: {score}%</div>
+          <div className="actual-score">Score: {score}</div>
           <ReactSlider
             value={score}
             onAfterChange={(val) => {
@@ -88,15 +88,9 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
             className="score-slider"
             thumbClassName="score-thumb"
             trackClassName="score-track"
-            ariaLabel={"Hygrometer"}
-            min={0}
+            min={1}
             max={100}
             renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
-            renderTrack={(props, state) => (
-              <div {...props} index={state.index}></div>
-            )}
-            pearling
-            minDistance={1}
           />
         </div>
 
