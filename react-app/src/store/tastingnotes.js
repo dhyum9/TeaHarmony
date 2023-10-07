@@ -6,6 +6,7 @@ const GET_TEA_TASTINGNOTES = "tastingnotes/getTeaTastingNotes";
 const GET_USER_TASTINGNOTES = "tastingnotes/getUserTastingNotes"
 // const CREATE_TASTINGNOTE = "tastingnotes/createTastingNote";
 // const UPDATE_TASTINGNOTE = "tastingnotes/updateTastingNote";
+const DELETE_TASTINGNOTE = "tastingnotes/deleteTastingNote"
 
 
 // ACTION CREATORS
@@ -38,6 +39,12 @@ const getUserTastingNotes = (tastingnotes) => {
 //   }
 // }
 
+const deleteTastingNote = (noteId) => {
+  return {
+      type: DELETE_TASTINGNOTE,
+      noteId
+  }
+}
 
 // THUNK ACTION CREATORS
 
@@ -101,6 +108,15 @@ export const thunkUpdateTastingNote = (note, noteId) => async (dispatch) => {
   }
 };
 
+export const thunkDeleteTastingNote = (noteId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/tastingnotes/${noteId}`, {
+      method: "DELETE"
+  });
+
+  dispatch(deleteTastingNote(noteId));
+  return res;
+}
+
 
 // REDUCERS
 
@@ -123,6 +139,16 @@ const tastingNotesReducer = (state = initialState, action) => {
               newState.user[tastingnote.id] = tastingnote;
           });
           return newState;
+
+          case DELETE_TASTINGNOTE:
+            newState = {
+                ...state,
+                spot: {...state.spot},
+                user: {...state.user}
+            };
+            delete newState.spot[action.noteId];
+            delete newState.user[action.noteId];
+            return newState;
 
         default:
             return state;

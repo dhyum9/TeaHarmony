@@ -1,5 +1,6 @@
 import OpenModalButton from "../OpenModalButton";
 import EditNoteForm from "../EditNoteForm";
+import { DeleteNoteModal } from "../DeleteNoteModal";
 
 const UserTastingNote = ({tastingNote}) => {
   const {
@@ -26,7 +27,11 @@ const UserTastingNote = ({tastingNote}) => {
           modalComponent={
             <EditNoteForm note={tastingNote}/>
       }/>
-      <button>Delete this Note</button>
+      <OpenModalButton
+      buttonText="Delete This Note"
+      modalComponent={
+        <DeleteNoteModal noteId={tastingNote.id} />
+      }/>
     </div>
   );
 }
