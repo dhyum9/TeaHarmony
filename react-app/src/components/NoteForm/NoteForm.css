@@ -1,0 +1,27 @@
+.score-slider {
+  height: 50px;
+  width: 300px;
+}
+
+.score-thumb {
+  padding: 3px 25px;
+  background-color: white;
+  color: grey;
+  border: 1px solid grey;
+  cursor: grab;
+}
+
+.score-track {
+  background-color: grey;
+  top: 11px;
+  height: 3px;
+}
+
+/* .score-track.score-track-0 {
+  background: red;
+} */
+
+.actual-score {
+  width: 200px;
+  text-align: center;
+}

@@ -37,6 +37,8 @@ class TastingNote(db.Model):
             # 'steep_time': self.steep_time,
             # 'temperature': self.temperature,
             'flavors': self.flavors,
+            'user': self.user.username,
+            'tea': self.tea.name,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

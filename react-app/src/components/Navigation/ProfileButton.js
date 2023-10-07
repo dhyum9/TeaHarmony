@@ -41,6 +41,11 @@ function ProfileButton({ user }) {
   const goToTealog = () => {
     history.push(`/tealog`);
   };
+
+  const goToTastingNotes = () => {
+    history.push(`/tastingnotes`);
+  };
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -48,16 +53,18 @@ function ProfileButton({ user }) {
     <>
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
+        <div>USER MENU</div>
       </button>
       <ul className={ulClassName} ref={ulRef} style={{backgroundColor:"lavender"}}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
+            <div>{user.username}</div>
+            <div>{user.email}</div>
+            <div>
               <div onClick={goToTealog}>Tealog</div>
+              <div onClick={goToTastingNotes}>Tasting Notes</div>
               <button onClick={handleLogout}>Log Out</button>
-            </li>
+            </div>
           </>
         ) : (
           <>
