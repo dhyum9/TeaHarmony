@@ -1,3 +1,6 @@
+import OpenModalButton from "../OpenModalButton";
+import EditNoteForm from "../EditNoteForm";
+
 const UserTastingNote = ({tastingNote}) => {
   const {
     note,
@@ -10,7 +13,7 @@ const UserTastingNote = ({tastingNote}) => {
   return (
     <div>
       <div>
-        USER: {user}
+        TEA: {tea}
       </div>
       <div>
         SCORE: {score}
@@ -18,6 +21,12 @@ const UserTastingNote = ({tastingNote}) => {
       <div>
         NOTE: {note}
       </div>
+      <OpenModalButton
+          buttonText="Edit this tea"
+          modalComponent={
+            <EditNoteForm note={tastingNote}/>
+      }/>
+      <button>Delete this Note</button>
     </div>
   );
 }

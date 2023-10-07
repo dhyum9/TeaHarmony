@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { thunkCreateTastingNote } from '../../store/tastingnotes';
+import { thunkCreateTastingNote, thunkUpdateTastingNote } from '../../store/tastingnotes';
 import { useModal } from "../../context/Modal";
 import ReactSlider from 'react-slider';
 import './NoteForm.css'
@@ -51,6 +51,18 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
         const combinedErrors = { ...errors, Errors: addTastingNote.errors };
 
         if (addTastingNote.errors) {
+          setErrors(combinedErrors);
+        } else {
+          closeModal();
+        }
+      }
+    } else {
+      if (!Object.values(errors).length) {
+        const updateTastingNote = await dispatch(thunkUpdateTastingNote(newTastingNote, tastingNote.id));
+
+        const combinedErrors = { ...errors, Errors: updateTastingNote.errors };
+
+        if (updateTastingNote.errors) {
           setErrors(combinedErrors);
         } else {
           closeModal();
