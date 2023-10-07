@@ -1,3 +1,10 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #967259;
+  color: #ece0d1;
+}
+
 .profile-dropdown {
   position: absolute;
 }
