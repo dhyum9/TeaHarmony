@@ -85,6 +85,9 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
             className='note-form-note'
             value={note}
             onChange={(e) => setNote(e.target.value)}/>
+          {errors.note && submitted && (
+            <div className="note-form-submit-errors">{errors.note}</div>
+          )}
         </div>
 
         <div className='note-form-score-container'>

@@ -166,6 +166,8 @@ const TeaForm = ({tea, formType}) => {
 
   checkCheckboxes();
 
+  console.log("HERE IS THE NEW TEA", tea);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -280,6 +282,7 @@ const TeaForm = ({tea, formType}) => {
           </label>
           <select
             onChange={(e) => setCaffeine(e.target.value)}
+            value={caffeine}
             className='form-caffeine'>
               <option></option>
               <option value='Low'>Low</option>
