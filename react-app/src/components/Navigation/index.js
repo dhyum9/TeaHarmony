@@ -17,6 +17,7 @@ function Navigation({ isLoaded }){
   };
 
 	return (
+	<div className="nav-bar-container">
 		<div className='nav-bar'>
 			<div className='nav-bar-left-section'>
 				<div className='nav-bar-logo' onClick={goToHome}>
@@ -29,6 +30,12 @@ function Navigation({ isLoaded }){
 				<div onClick={goToTeaIndex}>
 					Teas
 				</div>
+				<div>
+					Places
+				</div>
+				<div>
+					Explore
+				</div>
 			</div>
 			<div className='nav-bar-right-section'>
 				{isLoaded && (
@@ -38,6 +45,7 @@ function Navigation({ isLoaded }){
 				)}
 			</div>
 		</div>
+	</div>
 	);
 }
 
