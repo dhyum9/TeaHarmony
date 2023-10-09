@@ -12,30 +12,35 @@
 }
 
 .nav-bar-left-section{
-  width: 50%;
   display: flex;
   align-items: center;
-  /* background-color: lightblue; */
-  justify-content: space-around;
-  font-size: 15px;
+  width: 50%;
 }
 
 .nav-bar-logo{
-  /* background-color: red; */
   display: flex;
-  font-weight: 500;
   align-items: center;
-  padding: 7px 20px;
+  font-weight: 500;
+  padding: 7px 15px;
 }
 
 .nav-bar-logo > div {
-  font-size: 18px;
+  font-size: 17px;
   margin: 0 4px;
 }
 
 .nav-bar-logo > i {
   font-size: 24px;
   margin: 0 4px 7px 4px;
+}
+
+.nav-bar-options{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 200px;
+  font-size: 14px;
+  margin: 0 15px;
 }
 
 .profile-dropdown {
