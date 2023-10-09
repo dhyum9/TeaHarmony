@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
@@ -25,11 +25,6 @@ function LoginFormModal() {
     <div className="login-form-modal">
       <p>Log In</p>
       <form className='login-form' onSubmit={handleSubmit}>
-        {/* <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul> */}
         <label for='credential-field'>
           Email
         </label>
@@ -50,6 +45,11 @@ function LoginFormModal() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        <div>
+          {errors.map((error, idx) => (
+            <div className='login-error' key={idx}>{error}</div>
+          ))}
+        </div>
         <button className='login-submit' type="submit">LOG IN</button>
       </form>
     </div>
