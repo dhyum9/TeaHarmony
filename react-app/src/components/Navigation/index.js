@@ -20,6 +20,10 @@ function Navigation({ isLoaded }){
     history.push(`/teas`);
   };
 
+	const comingSoon = () => {
+		window.alert("Feature In Progress")
+	}
+
 	return (
 	<div className="nav-bar-container">
 		<div className='nav-bar'>
@@ -29,17 +33,17 @@ function Navigation({ isLoaded }){
 					<img src={logo}></img>
 					<div>TeaHarmony</div>
 				</div>
-				<div className='nav-bar-left-options'>
-					<div onClick={goToHome}>
+				<div className='nav-bar-left-option-container'>
+					<div className='nav-bar-left-option' onClick={goToHome}>
 						Home
 					</div>
-					<div onClick={goToTeaIndex}>
+					<div className='nav-bar-left-option' onClick={goToTeaIndex}>
 						Teas
 					</div>
-					<div>
+					<div className='nav-bar-left-option' onClick={comingSoon}>
 						Places
 					</div>
-					<div>
+					<div className='nav-bar-left-option' onClick={comingSoon}>
 						Explore
 					</div>
 				</div>
@@ -51,21 +55,19 @@ function Navigation({ isLoaded }){
 					</div>
 				)}
 				{isLoaded && !sessionUser && (
-					<>
-						<div> Learn More </div>
-						<div className = "nav-bar-right-options">
-							<OpenModalButton
-								buttonText="Log In"
-								modalComponent={<LoginFormModal />}
-							/>
-						</div>
-						<div className = "nav-bar-right-options">
-							<OpenModalButton
-								buttonText="Sign Up"
-								modalComponent={<SignupFormModal />}
-							/>
-						</div>
-					</>
+					<div className='nav-bar-right-option-container'>
+						<div className='nav-bar-right-option'> Learn More </div>
+						<OpenModalButton
+							buttonText="Log In"
+							modalComponent={<LoginFormModal />}
+							buttonType="nav-bar-option"
+						/>
+						<OpenModalButton
+							buttonText="Sign Up"
+							modalComponent={<SignupFormModal />}
+							buttonType="nav-bar-option"
+						/>
+					</div>
 				)}
 			</div>
 		</div>
