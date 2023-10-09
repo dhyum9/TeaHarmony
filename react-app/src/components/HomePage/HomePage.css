@@ -1,0 +1,31 @@
+.home-first-row{
+  height: 600px;
+  background: url('teaharmony-splash-image.jpeg') no-repeat center bottom;
+  background-size: cover;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.home-first-left{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 65%;
+  height: 100%;
+}
+
+.home-heading{
+  font-size: 30px;
+  font-weight: 600;
+  color: #ece0d1;
+  margin: 0;
+}
+
+.home-subheading{
+  font-size: 23px;
+  font-weight: 500;
+  color: #ece0d1;
+  text-align: center;
+}
