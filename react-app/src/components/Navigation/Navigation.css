@@ -34,13 +34,24 @@
   margin: 0 4px 7px 4px;
 }
 
-.nav-bar-options{
+.nav-bar-left-options{
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-width: 200px;
   font-size: 14px;
   margin: 0 15px;
+}
+
+.nav-bar-right-section{
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar-right-options{
+  background-color: red;
+  font-size: 14px;
+  font-family: 'Lora', serif;;
 }
 
 .profile-dropdown {

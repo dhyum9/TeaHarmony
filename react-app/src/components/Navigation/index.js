@@ -27,7 +27,7 @@ function Navigation({ isLoaded }){
 					<i className="fa-solid fa-mug-hot"></i>
 					<div>TeaHarmony</div>
 				</div>
-				<div className='nav-bar-options'>
+				<div className='nav-bar-left-options'>
 					<div onClick={goToHome}>
 						Home
 					</div>
@@ -51,13 +51,13 @@ function Navigation({ isLoaded }){
 				{isLoaded && !sessionUser && (
 					<>
 						<div> Learn More </div>
-						<div>
+						<div className = "nav-bar-right-options">
 							<OpenModalButton
 								buttonText="Log In"
 								modalComponent={<LoginFormModal />}
 							/>
 						</div>
-						<div>
+						<div className = "nav-bar-right-options">
 							<OpenModalButton
 								buttonText="Sign Up"
 								modalComponent={<SignupFormModal />}
