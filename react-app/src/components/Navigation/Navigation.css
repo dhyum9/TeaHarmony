@@ -21,17 +21,17 @@
   display: flex;
   align-items: center;
   font-weight: 500;
-  padding: 7px 15px;
+  padding: 0px 15px;
 }
 
 .nav-bar-logo > div {
   font-size: 17px;
-  margin: 0 4px;
 }
 
-.nav-bar-logo > i {
-  font-size: 24px;
-  margin: 0 4px 7px 4px;
+.nav-bar-logo > img {
+  width: 45px;
+  object-fit: cover;
+  margin: 0 0 10px 0;
 }
 
 .nav-bar-left-options{

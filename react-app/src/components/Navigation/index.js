@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import logo from './teaharmony-icon.png';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -24,7 +25,8 @@ function Navigation({ isLoaded }){
 		<div className='nav-bar'>
 			<div className='nav-bar-left-section'>
 				<div className='nav-bar-logo' onClick={goToHome}>
-					<i className="fa-solid fa-mug-hot"></i>
+					{/* <i className="fa-solid fa-mug-hot"></i> */}
+					<img src={logo}></img>
 					<div>TeaHarmony</div>
 				</div>
 				<div className='nav-bar-left-options'>
