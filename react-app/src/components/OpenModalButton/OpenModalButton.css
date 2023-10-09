@@ -5,6 +5,7 @@
   color: #ece0d1;
   border: none;
   border-radius: 6px;
+  margin: 0 2px;
   transition:
   background-color 0.3s,
   color 0.3s;
