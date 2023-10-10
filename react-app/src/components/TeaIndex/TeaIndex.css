@@ -1,5 +1,5 @@
 .tea-index-body{
-  background-color: lightblue;
+  /* background-color: lightblue; */
   max-width: 800px;
   margin: 0 auto;
   padding: 25px 0px;
@@ -14,14 +14,15 @@
 .tea-index-subheading{
   font-size: 13px;
   font-weight: 400;
-  margin: 10px 24px 10px;
+  margin: 10px 24px 30px;
 }
 
 .tea-index-grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 7px;
-  align-items: center;
+  row-gap: 20px;
+  align-items: start;
   justify-items: center;
 }
 
