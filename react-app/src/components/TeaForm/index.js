@@ -216,7 +216,7 @@ const TeaForm = ({tea, formType}) => {
 
         <div className='tea-form-type-container'>
           <label>
-            <div>Type</div>
+            <div>Type (optional)</div>
             <div>Check all that apply</div>
           </label>
           {type_choices.map((type) => (
@@ -234,7 +234,7 @@ const TeaForm = ({tea, formType}) => {
 
         <div className='tea-form-sold-in-container'>
           <label>
-            <div>Available In</div>
+            <div>Available In (optional)</div>
             <div>Check all that apply</div>
           </label>
           {sold_in_choices.map((sold_in) => (
@@ -251,7 +251,7 @@ const TeaForm = ({tea, formType}) => {
 
         <div className='tea-form-certification-container'>
           <label>
-            <div>Certifications</div>
+            <div>Certifications (optional)</div>
             <div>Check all that apply</div>
           </label>
           {certification_choices.map((certification) => (
@@ -268,7 +268,7 @@ const TeaForm = ({tea, formType}) => {
 
         <div className='tea-form-ingredients-container'>
           <label>
-            <div>Ingredients</div>
+            <div>Ingredients (optional)</div>
           </label>
           <input
             className='form-ingredients'
@@ -279,7 +279,7 @@ const TeaForm = ({tea, formType}) => {
 
         <div className='tea-form-caffeine-container'>
           <label>
-            <div>Caffeine Level</div>
+            <div>Caffeine Level (optional)</div>
           </label>
           <select
             onChange={(e) => setCaffeine(e.target.value)}
@@ -296,7 +296,7 @@ const TeaForm = ({tea, formType}) => {
 
         <div className='tea-form-description-container'>
           <label>
-            <div>Tea Info</div>
+            <div>Tea Info (optional)</div>
             <div>How the tea company describes it (optional)</div>
           </label>
           <textarea
