@@ -76,7 +76,7 @@ const TeaDetails = () => {
       <div>
         {notesList.reverse().map((note) => {
             return (
-              <TeaTastingNote key={note.id} currentUserId={currentUser.Id} tastingNote={note} teaId={teaId}/>
+              <TeaTastingNote key={note.id} currentUserId={currentUserId} tastingNote={note} teaId={teaId}/>
             );
           })}
       </div>
