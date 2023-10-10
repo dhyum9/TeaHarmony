@@ -34,7 +34,9 @@ def get_all_teas():
             tea["avg_score"] = None
             tea["num_notes"] = 0
 
-    return {"teas": teas_list}
+    sorted_teas_list = sorted(teas_list, key=lambda tea: tea["avg_score"], reverse=True)
+
+    return {"teas": sorted_teas_list}
 
 
 @tea_routes.route('/<int:id>')
