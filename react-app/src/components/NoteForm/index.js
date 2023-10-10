@@ -86,7 +86,7 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
             value={note}
             onChange={(e) => setNote(e.target.value)}/>
           {errors.note && submitted && (
-            <div className="note-form-submit-errors">{errors.note}</div>
+            <div className="note-form-errors">{errors.note}</div>
           )}
         </div>
 
@@ -112,7 +112,7 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
 
         <div className='note-form-flavors-container'>
           <label>
-            <div>Flavors</div>
+            <div>Flavors (optional)</div>
             <div>What flavors and scents do you notice?</div>
           </label>
           <input

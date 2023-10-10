@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { thunkCreateTea, thunkUpdateTea } from '../../store/teas';
+import './TeaForm.css';
 
 const TeaForm = ({tea, formType}) => {
   const [name, setName] = useState(tea.name);
@@ -194,7 +195,7 @@ const TeaForm = ({tea, formType}) => {
             value={name}
             onChange={(e) => setName(e.target.value)}/>
           {errors.name && submitted && (
-            <div className="tea-form-submit-errors">{errors.name}</div>
+            <div className="tea-form-errors">{errors.name}</div>
           )}
         </div>
 
@@ -209,7 +210,7 @@ const TeaForm = ({tea, formType}) => {
             value={company}
             onChange={(e) => setCompany(e.target.value)}/>
           {errors.company && submitted && (
-            <div className="tea-form-submit-errors">{errors.company}</div>
+            <div className="tea-form-errors">{errors.company}</div>
           )}
         </div>
 

@@ -25,6 +25,19 @@ const TeaDetails = () => {
 
   if (!singleTea) return null;
 
+  //Checks if we need a Post-Your-Review button
+  let currentUserId;
+  let postNoteSwitch = true;
+  if(currentUser) {
+    currentUserId = currentUser.id;
+    notesList.forEach((note) => {
+      if (note.user_id === currentUserId) postNoteSwitch = false;
+    })
+    if(singleTea.user_id === currentUserId) postNoteSwitch = false;
+  } else {
+    postNoteSwitch = false;
+  }
+
   const {
     name,
     company,
@@ -52,7 +65,7 @@ const TeaDetails = () => {
         <li>Tea Info: {description}</li>
       </ul>
 
-      {currentUser && (
+      {postNoteSwitch && (
           <OpenModalButton
           buttonText="Review this tea"
           modalComponent={
