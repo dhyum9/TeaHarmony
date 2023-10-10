@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import logo from './teaharmony-icon.png';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -19,25 +20,30 @@ function Navigation({ isLoaded }){
     history.push(`/teas`);
   };
 
+	const comingSoon = () => {
+		window.alert("Feature In Progress")
+	}
+
 	return (
 	<div className="nav-bar-container">
 		<div className='nav-bar'>
 			<div className='nav-bar-left-section'>
 				<div className='nav-bar-logo' onClick={goToHome}>
-					<i className="fa-solid fa-mug-hot"></i>
+					{/* <i className="fa-solid fa-mug-hot"></i> */}
+					<img src={logo}></img>
 					<div>TeaHarmony</div>
 				</div>
-				<div className='nav-bar-left-options'>
-					<div onClick={goToHome}>
+				<div className='nav-bar-left-option-container'>
+					<div className='nav-bar-left-option' onClick={goToHome}>
 						Home
 					</div>
-					<div onClick={goToTeaIndex}>
+					<div className='nav-bar-left-option' onClick={goToTeaIndex}>
 						Teas
 					</div>
-					<div>
+					<div className='nav-bar-left-option' onClick={comingSoon}>
 						Places
 					</div>
-					<div>
+					<div className='nav-bar-left-option' onClick={comingSoon}>
 						Explore
 					</div>
 				</div>
@@ -49,21 +55,19 @@ function Navigation({ isLoaded }){
 					</div>
 				)}
 				{isLoaded && !sessionUser && (
-					<>
-						<div> Learn More </div>
-						<div className = "nav-bar-right-options">
-							<OpenModalButton
-								buttonText="Log In"
-								modalComponent={<LoginFormModal />}
-							/>
-						</div>
-						<div className = "nav-bar-right-options">
-							<OpenModalButton
-								buttonText="Sign Up"
-								modalComponent={<SignupFormModal />}
-							/>
-						</div>
-					</>
+					<div className='nav-bar-right-option-container'>
+						<div className='nav-bar-right-option'> Learn More </div>
+						<OpenModalButton
+							buttonText="Log In"
+							modalComponent={<LoginFormModal />}
+							buttonType="nav-bar-option"
+						/>
+						<OpenModalButton
+							buttonText="Sign Up"
+							modalComponent={<SignupFormModal />}
+							buttonType="nav-bar-option"
+						/>
+					</div>
 				)}
 			</div>
 		</div>

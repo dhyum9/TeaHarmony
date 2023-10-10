@@ -1,0 +1,50 @@
+.login-form-modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  padding: 15px;
+  background-color: #ece0d1;
+  color: #38220f;
+  border-radius: 20px;
+}
+
+.login-form-modal> p{
+  margin: 3px;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+}
+
+.login-form > label{
+  display: block;
+  margin: 10px 0 2px 0;
+  font-size: 14px;
+}
+
+.login-submit{
+  font-family: 'Lora', serif;
+  padding: 5px 10px;
+  margin: 15px auto 5px;
+  border: none;
+  background-color: #38220f;
+  color: #ece0d1;
+  border-radius: 5px;
+}
+
+.login-submit:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.login-error{
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}

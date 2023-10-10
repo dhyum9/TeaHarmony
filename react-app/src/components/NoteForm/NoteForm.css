@@ -25,3 +25,7 @@
   width: 200px;
   text-align: center;
 }
+
+.note-form-errors{
+  color: red;
+}
