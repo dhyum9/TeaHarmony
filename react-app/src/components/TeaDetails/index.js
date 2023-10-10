@@ -6,6 +6,7 @@ import { thunkGetTeaTastingNotes } from "../../store/tastingnotes";
 import TeaTastingNote from "../TeaTastingNote";
 import OpenModalButton from "../OpenModalButton";
 import CreateNoteForm from "../CreateNoteForm";
+import kettle from './teaharmony-kettle-icon.png'
 import './TeaDetails.css'
 
 const TeaDetails = () => {
@@ -49,25 +50,46 @@ const TeaDetails = () => {
     caffeine,
     description,
     image_url,
+    avg_score,
+    num_notes
   } = singleTea;
 
   return (
     <div className='tea-details-page'>
+        <img src={image_url} className='tea-details-banner'></img>
       <div className='tea-details-container'>
-        <img
-          src={image_url}></img>
-        <img
-          src={image_url}></img>
-        <h1>{name}</h1>
-        <h2>by {company}</h2>
-        <ul>
-          <li>Type: {type}</li>
-          <li>Available In: {sold_in}</li>
-          <li>Certification: {certification}</li>
-          <li>Ingredients: {ingredients}</li>
-          <li>Caffeine: {caffeine}</li>
-          <li>Tea Info: {description}</li>
-        </ul>
+      <div className="tea-details-banner-row">
+          <p className="tea-details-name">{name}</p>
+          <p className='tea-details-company'>by {company}</p>
+          <img src={image_url} className='tea-details-image'></img>
+      </div>
+      <div className='tea-details-info-row'>
+        <div className='tea-details-score-row-container'>
+          <div className='tea-details-score-row'>
+            <div className='tea-details-score-row-left'>
+              <div className='tea-details-score-num'>
+                {avg_score}
+              </div>
+              <img className='tea-details-score-kettle' src={kettle}></img>
+            </div>
+            <div className='tea-details-score-row-right'>
+              <div className='tea-details-score-label-top'>TeaHarmony Score</div>
+              <div className='tea-details-score-label-bottom'>
+                <div className='tea-details-num-notes'>with {num_notes} Ratings</div>
+                <div className='tea-details-create-note'>Rate this tea</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>Type: {type}</div>
+          <div>Available In: {sold_in}</div>
+          <div>Certification: {certification}</div>
+          <div>Ingredients: {ingredients}</div>
+          <div>Caffeine: {caffeine}</div>
+          <div>Tea Info: {description}</div>
+        </div>
+      </div>
 
         {postNoteSwitch && (
             <OpenModalButton

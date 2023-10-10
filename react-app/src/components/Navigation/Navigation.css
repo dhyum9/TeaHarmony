@@ -123,6 +123,7 @@
   right: 17px;
   border-radius: 6px;
   width: 170px;
+  z-index: 100;
 }
 
 .profile-dropdown-options{

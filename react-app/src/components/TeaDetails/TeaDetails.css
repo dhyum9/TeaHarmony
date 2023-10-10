@@ -1,9 +1,105 @@
-.tea-details-page{
-  background-color: red;
-}
-
 .tea-details-container{
-  background-color: lavender;
   max-width: 765px;
   margin: 0 auto;
+}
+
+.tea-details-banner{
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  filter: brightness(40%);
+  position: absolute;
+}
+
+.tea-details-banner-row{
+  position: relative;
+}
+
+.tea-details-name{
+  position: absolute;
+  font-size: 30px;
+  color: #ece0d1;
+  top: 25px;
+  left: 165px;
+}
+
+.tea-details-company{
+  position: absolute;
+  font-size: 14px;
+  color: #ece0d1;
+  top: 80px;
+  left: 170px;
+}
+
+.tea-details-image{
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  top: 45px;
+}
+
+.tea-details-score-row-container{
+  background-color: red;
+  /* height: 60px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tea-details-score-row{
+  display: flex;
+  align-items: center;
+  background-color: lavender;
+  width: 55%;
+}
+
+.tea-details-score-row-left{
+  position: relative;
+  display: flex;
+}
+
+.tea-details-score-num{
+  position: absolute;
+  font-size: 21px;
+  font-weight: 500;
+  color: #ece0d1;
+  top: 24px;
+  left: 24px;
+}
+
+.tea-details-score-kettle{
+  width: 70px;
+  height: 70px;
+}
+
+.tea-details-score-row-right{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.tea-details-score-label-top{
+  background-color: orange;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.tea-details-score-label-bottom{
+  background-color: aqua;
+  display: flex;
+}
+
+.tea-details-num-notes{
+  padding: 0 5px 0 0;
+  border-right: 1px solid grey;
+}
+
+.tea-details-create-note{
+  padding: 0 0 0 5px;
+}
+
+.tea-details-info-row{
+  border: 1px solid red;
+  padding-top: 118px;
 }
