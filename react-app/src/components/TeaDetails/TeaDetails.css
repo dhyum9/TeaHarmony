@@ -106,7 +106,33 @@
   color: blue;
 }
 
-.tea-details-info-row{
-  border: 1px solid red;
+.tea-details-main-row{
   padding-top: 120px;
+}
+
+.tea-details-info-row{
+  /* border: 1px solid red; */
+  margin: 35px auto 35px;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  row-gap: 5px;
+}
+
+.tea-details-info-label{
+  font-weight: bold;
+  font-size: 13px;
+  justify-self: flex-end;
+  /* background-color: lightgreen; */
+}
+
+.tea-details-info-information{
+  font-size: 13px;
+  margin-left: 12px;
+  font-weight: 500;
+  /* background-color: lightcoral; */
+}
+
+.tea-details-company-row{
+  border-top: 1px solid rgba(56, 34, 15, 0.5);
+  padding-top: 30px;
 }

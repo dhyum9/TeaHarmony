@@ -63,7 +63,7 @@ const TeaDetails = () => {
           <p className='tea-details-company'>by {company}</p>
           <img src={image_url} className='tea-details-image'></img>
       </div>
-      <div className='tea-details-info-row'>
+      <div className='tea-details-main-row'>
         <div className='tea-details-score-row-container'>
           <div className='tea-details-score-row'>
             <div className='tea-details-score-row-left'>
@@ -81,14 +81,22 @@ const TeaDetails = () => {
             </div>
           </div>
         </div>
-        <div>
-          <div>Type: {type}</div>
-          <div>Available In: {sold_in}</div>
-          <div>Certification: {certification}</div>
-          <div>Ingredients: {ingredients}</div>
-          <div>Caffeine: {caffeine}</div>
-          <div>Tea Info: {description}</div>
+        <div className='tea-details-info-row'>
+          <div className='tea-details-info-label'>Tea Type</div>
+          <div className='tea-details-info-information'>{type}</div>
+          <div className='tea-details-info-label'>Ingredients</div>
+          <div className='tea-details-info-information'>{ingredients}</div>
+          <div className='tea-details-info-label'>Sold In</div>
+          <div className='tea-details-info-information'>{sold_in}</div>
+          <div className='tea-details-info-label'>Caffeine</div>
+          <div className='tea-details-info-information'>{caffeine}</div>
+          <div className='tea-details-info-label'>Certification</div>
+          <div className='tea-details-info-information'>{certification}</div>
         </div>
+      </div>
+      <div className='tea-details-company-row'>
+        <div>From {company}</div>
+        <div>{description}</div>
       </div>
 
         {postNoteSwitch && (
