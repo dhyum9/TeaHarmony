@@ -1,0 +1,9 @@
+.tea-details-page{
+  background-color: red;
+}
+
+.tea-details-container{
+  background-color: lavender;
+  max-width: 765px;
+  margin: 0 auto;
+}

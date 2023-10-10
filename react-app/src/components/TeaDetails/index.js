@@ -6,6 +6,7 @@ import { thunkGetTeaTastingNotes } from "../../store/tastingnotes";
 import TeaTastingNote from "../TeaTastingNote";
 import OpenModalButton from "../OpenModalButton";
 import CreateNoteForm from "../CreateNoteForm";
+import './TeaDetails.css'
 
 const TeaDetails = () => {
   const dispatch = useDispatch();
@@ -51,34 +52,38 @@ const TeaDetails = () => {
   } = singleTea;
 
   return (
-    <div>
-      <img
-        src={image_url}></img>
-      <h1>{name}</h1>
-      <h2>by {company}</h2>
-      <ul>
-        <li>Type: {type}</li>
-        <li>Available In: {sold_in}</li>
-        <li>Certification: {certification}</li>
-        <li>Ingredients: {ingredients}</li>
-        <li>Caffeine: {caffeine}</li>
-        <li>Tea Info: {description}</li>
-      </ul>
+    <div className='tea-details-page'>
+      <div className='tea-details-container'>
+        <img
+          src={image_url}></img>
+        <img
+          src={image_url}></img>
+        <h1>{name}</h1>
+        <h2>by {company}</h2>
+        <ul>
+          <li>Type: {type}</li>
+          <li>Available In: {sold_in}</li>
+          <li>Certification: {certification}</li>
+          <li>Ingredients: {ingredients}</li>
+          <li>Caffeine: {caffeine}</li>
+          <li>Tea Info: {description}</li>
+        </ul>
 
-      {postNoteSwitch && (
-          <OpenModalButton
-          buttonText="Review this tea"
-          modalComponent={
-            <CreateNoteForm teaId={teaId}/>
-          }/>
-      )}
+        {postNoteSwitch && (
+            <OpenModalButton
+            buttonText="Review this tea"
+            modalComponent={
+              <CreateNoteForm teaId={teaId}/>
+            }/>
+        )}
 
-      <div>
-        {notesList.reverse().map((note) => {
-            return (
-              <TeaTastingNote key={note.id} currentUserId={currentUserId} tastingNote={note} teaId={teaId}/>
-            );
-          })}
+        <div>
+          {notesList.reverse().map((note) => {
+              return (
+                <TeaTastingNote key={note.id} currentUserId={currentUserId} tastingNote={note} teaId={teaId}/>
+              );
+            })}
+        </div>
       </div>
     </div>
   );

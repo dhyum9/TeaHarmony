@@ -51,7 +51,7 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <div>
+    <div className='profile-dropdown-container'>
       <button onClick={openMenu} className='profile-button'>
         <div className='profile-button-item'>You</div>
         {/* <i className="fas fa-user-circle profile-button-item" /> */}

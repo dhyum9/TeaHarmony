@@ -87,10 +87,15 @@
   cursor: pointer;
 }
 
+.profile-dropdown-container{
+  /* background-color: red; */
+  position: relative;
+}
+
 .profile-button{
   display: flex;
   align-items: center;
-  margin: 0 9px;
+  margin: 0 18px;
   background-color:#ece0d1;
   border: none;
   border-radius: 6px;
@@ -114,9 +119,10 @@
   padding: 10px;
   background-color: #38220f;
   color: #ece0d1;
-  top: 33px;
-  right: 9px;
+  top: 18px;
+  right: 17px;
   border-radius: 6px;
+  width: 170px;
 }
 
 .profile-dropdown-options{
@@ -127,10 +133,14 @@
 }
 
 .profile-dropdown-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #967259;
   border-radius: 2px;
   color: #ece0d1;
   padding: 0 10px;
+  overflow: scroll;
 }
 
 .profile-dropdown-option{
