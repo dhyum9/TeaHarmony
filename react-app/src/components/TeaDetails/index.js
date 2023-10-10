@@ -68,7 +68,7 @@ const TeaDetails = () => {
           <div className='tea-details-score-row'>
             <div className='tea-details-score-row-left'>
               <div className='tea-details-score-num'>
-                {avg_score}
+                {Number.parseFloat(avg_score).toFixed(0)}
               </div>
               <img className='tea-details-score-kettle' src={kettle}></img>
             </div>

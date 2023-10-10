@@ -1,6 +1,7 @@
 .tea-details-container{
   max-width: 765px;
   margin: 0 auto;
+  color: #38220f;
 }
 
 .tea-details-banner{
@@ -40,8 +41,7 @@
 }
 
 .tea-details-score-row-container{
-  background-color: red;
-  /* height: 60px; */
+  /* background-color: red; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,8 +50,8 @@
 .tea-details-score-row{
   display: flex;
   align-items: center;
-  background-color: lavender;
-  width: 55%;
+  /* background-color: lavender; */
+  width: 57%;
 }
 
 .tea-details-score-row-left{
@@ -65,41 +65,48 @@
   font-weight: 500;
   color: #ece0d1;
   top: 24px;
-  left: 24px;
+  left: 25px;
+  z-index: 1;
 }
 
 .tea-details-score-kettle{
   width: 70px;
   height: 70px;
+  filter: invert(11%) sepia(45%) saturate(925%) hue-rotate(347deg) brightness(96%) contrast(91%);
 }
 
 .tea-details-score-row-right{
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
 .tea-details-score-label-top{
-  background-color: orange;
-  font-size: 13px;
+  /* background-color: orange; */
+  font-size: 15px;
   font-weight: bold;
 }
 
 .tea-details-score-label-bottom{
-  background-color: aqua;
+  /* background-color: aqua; */
   display: flex;
+  align-items: center;
 }
 
 .tea-details-num-notes{
-  padding: 0 5px 0 0;
-  border-right: 1px solid grey;
+  padding: 0 10px 0 0;
+  border-right: 1px solid rgba(56, 34, 15, 0.5);
+  font-size: 15px;
+  margin: 2px 0;
 }
 
 .tea-details-create-note{
-  padding: 0 0 0 5px;
+  padding: 0 0 0 10px;
+  font-size: 15px;
+  color: blue;
 }
 
 .tea-details-info-row{
   border: 1px solid red;
-  padding-top: 118px;
+  padding-top: 120px;
 }
