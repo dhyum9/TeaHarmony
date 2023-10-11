@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import LearnMoreModal from '../LearnMoreModal';
 import logo from './teaharmony-icon.png';
 import './Navigation.css';
 
@@ -40,12 +41,12 @@ function Navigation({ isLoaded }){
 					<div className='nav-bar-left-option' onClick={goToTeaIndex}>
 						Teas
 					</div>
-					<div className='nav-bar-left-option' onClick={comingSoon}>
+					{/* <div className='nav-bar-left-option' onClick={comingSoon}>
 						Places
 					</div>
 					<div className='nav-bar-left-option' onClick={comingSoon}>
 						Explore
-					</div>
+					</div> */}
 				</div>
 			</div>
 			<div className='nav-bar-right-section'>
@@ -56,7 +57,13 @@ function Navigation({ isLoaded }){
 				)}
 				{isLoaded && !sessionUser && (
 					<div className='nav-bar-right-option-container'>
-						<div className='nav-bar-right-option'> Learn More </div>
+						<div>
+							<OpenModalButton
+								buttonText="Learn More"
+								modalComponent={<LearnMoreModal />}
+								buttonType="nav-bar-option"
+							/>
+						</div>
 						<OpenModalButton
 							buttonText="Log In"
 							modalComponent={<LoginFormModal />}
