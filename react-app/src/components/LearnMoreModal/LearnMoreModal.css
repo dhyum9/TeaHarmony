@@ -1,0 +1,21 @@
+.learn-more-modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #634832;
+  color: 	#ece0d1;
+  width: 400px;
+  height: 500px;
+  padding: 30px;
+  border: 3px solid #ece0d1;
+  border-radius: 10px;
+}
+
+.learn-more-modal a {
+  color: #ece0d1;
+}
+
+.learn-more-modal img{
+  margin-top: 10px;
+}
