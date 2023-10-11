@@ -17,9 +17,16 @@ function LoginFormModal() {
     if (data) {
       setErrors(data);
     } else {
-        closeModal()
+      closeModal();
     }
   };
+
+  const DemoUserLogin = () => {
+    let demoEmail = 'demo@aa.io';
+    let demoPassword = 'password'
+
+    dispatch(login(demoEmail, demoPassword)).then(closeModal);
+  }
 
   return (
     <div className="login-form-modal">
@@ -51,6 +58,7 @@ function LoginFormModal() {
           ))}
         </div>
         <button className='login-submit' type="submit">LOG IN</button>
+        <div className='login-demo-div' onClick={DemoUserLogin}>Testing the site? Click here.</div>
       </form>
     </div>
   );
