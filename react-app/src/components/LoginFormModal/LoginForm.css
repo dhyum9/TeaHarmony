@@ -24,7 +24,6 @@
 .login-submit{
   font-family: 'Lora', serif;
   padding: 5px 10px;
-  margin: 15px auto 5px;
   border: none;
   background-color: #38220f;
   color: #ece0d1;
@@ -47,14 +46,21 @@
 
 .login-error{
   color: red;
-  font-size: 14px;
+  font-size: 12px;
+}
+
+.login-bottom-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 5px 10px;
+  /* background-color: lightblue; */
 }
 
 .login-demo-div{
   /* background-color: red; */
-  text-align: center;
-  font-size: 14px;
-  margin: 10px 30px 5px;
+  width: 155px;
+  font-size: 12px;
 }
 
 .login-demo-div:hover{
