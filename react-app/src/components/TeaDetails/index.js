@@ -6,6 +6,8 @@ import { thunkGetTeaTastingNotes } from "../../store/tastingnotes";
 import TeaTastingNote from "../TeaTastingNote";
 import OpenModalButton from "../OpenModalButton";
 import CreateNoteForm from "../CreateNoteForm";
+import kettle from './teaharmony-kettle-icon.png'
+import './TeaDetails.css'
 
 const TeaDetails = () => {
   const dispatch = useDispatch();
@@ -48,37 +50,71 @@ const TeaDetails = () => {
     caffeine,
     description,
     image_url,
+    avg_score,
+    num_notes
   } = singleTea;
 
   return (
-    <div>
-      <img
-        src={image_url}></img>
-      <h1>{name}</h1>
-      <h2>by {company}</h2>
-      <ul>
-        <li>Type: {type}</li>
-        <li>Available In: {sold_in}</li>
-        <li>Certification: {certification}</li>
-        <li>Ingredients: {ingredients}</li>
-        <li>Caffeine: {caffeine}</li>
-        <li>Tea Info: {description}</li>
-      </ul>
-
-      {postNoteSwitch && (
-          <OpenModalButton
-          buttonText="Review this tea"
-          modalComponent={
-            <CreateNoteForm teaId={teaId}/>
-          }/>
-      )}
-
-      <div>
-        {notesList.reverse().map((note) => {
-            return (
-              <TeaTastingNote key={note.id} currentUserId={currentUser.Id} tastingNote={note} teaId={teaId}/>
-            );
-          })}
+    <div className='tea-details-page'>
+      <img src={image_url} className='tea-details-banner'></img>
+      <div className='tea-details-container'>
+        <div className="tea-details-banner-row">
+            <p className="tea-details-name">{name}</p>
+            <p className='tea-details-company'>by {company}</p>
+            <img src={image_url} className='tea-details-image'></img>
+        </div>
+        <div className='tea-details-main-row'>
+          <div className='tea-details-score-row-container'>
+            <div className='tea-details-score-row'>
+              <div className='tea-details-score-row-left'>
+                <div className='tea-details-score-num'>
+                  {Number.parseFloat(avg_score).toFixed(0)}
+                </div>
+                <img className='tea-details-score-kettle' src={kettle}></img>
+              </div>
+              <div className='tea-details-score-row-right'>
+                <div className='tea-details-score-label-top'>TeaHarmony Score</div>
+                <div className='tea-details-score-label-bottom'>
+                  <div className='tea-details-num-notes'>with {num_notes} Ratings</div>
+                  <div className='tea-details-create-note'>Rate this tea</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='tea-details-info-row'>
+            <div className='tea-details-info-label'>Tea Type</div>
+            <div className='tea-details-info-information'>{type}</div>
+            <div className='tea-details-info-label'>Ingredients</div>
+            <div className='tea-details-info-information'>{ingredients}</div>
+            <div className='tea-details-info-label'>Sold In</div>
+            <div className='tea-details-info-information'>{sold_in}</div>
+            <div className='tea-details-info-label'>Caffeine</div>
+            <div className='tea-details-info-information'>{caffeine}</div>
+            <div className='tea-details-info-label'>Certification</div>
+            <div className='tea-details-info-information'>{certification}</div>
+          </div>
+        </div>
+        <div className='tea-details-company-row'>
+          <div>From {company}</div>
+          <div>{description}</div>
+        </div>
+        <div className='tea-details-notes-row'>
+          <div>{num_notes} Tasting Notes</div>
+          <div>
+            {notesList.reverse().map((note) => {
+              return (
+                <TeaTastingNote key={note.id} currentUserId={currentUserId} tastingNote={note} teaId={teaId}/>
+                );
+              })}
+          </div>
+        </div>
+              {postNoteSwitch && (
+                  <OpenModalButton
+                  buttonText="Review this tea"
+                  modalComponent={
+                    <CreateNoteForm teaId={teaId}/>
+                  }/>
+              )}
       </div>
     </div>
   );

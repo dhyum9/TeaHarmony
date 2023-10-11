@@ -136,8 +136,9 @@ const teaReducer = (state = initialState, action) => {
 
     case GET_TEAS:
       newState = { ...state, allTeas: {} };
-      action.teas.teas.forEach((tea) => {
-        newState.allTeas[tea.id] = tea;
+      action.teas.teas.forEach((tea, index) => {
+        // console.log(index, tea)
+        newState.allTeas[index] = tea;
       });
       return newState;
 

@@ -1,6 +1,7 @@
 import { useHistory } from "react-router";
 import OpenModalButton from '../OpenModalButton';
 import { DeleteTeaModal } from '../DeleteTeaModal';
+import icon from './teaharmony-kettle-icon.png'
 import './TeaTile.css'
 
 const TeaTile = ({ tea, tiletype }) => {
@@ -32,14 +33,16 @@ const TeaTile = ({ tea, tiletype }) => {
 
 
   return (
-    <>
+    <div className='tea-tile-container'>
+      <div className='tea-tile-score'>{Number.parseFloat(avg_score).toFixed(1)}</div>
+      <img src={icon} className='tea-tile-icon'></img>
       <div className="tea-tile" key={tea.id} onClick={handleClick}>
         <img
           className="tea-tile-image"
           src={image_url}></img>
-        <div>{name}</div>
-        <div>{company}</div>
-        <div>{num_notes} Tasting Notes</div>
+        <div className='tea-tile-name'>{name}</div>
+        <div className='tea-tile-company'>{company}</div>
+        <div className='tea-tile-num-notes'>{num_notes} Tasting Notes</div>
       </div>
         {tiletype === "tealog" && (
         <button onClick={goToEditTeaForm}>Edit</button>)}
@@ -50,7 +53,7 @@ const TeaTile = ({ tea, tiletype }) => {
             <DeleteTeaModal teaId={tea.id} />
           }/>
         )}
-    </>
+    </div>
   );
 };
 
