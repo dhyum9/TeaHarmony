@@ -18,14 +18,19 @@ function SignupFormModal() {
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
-				setErrors(data);
+				let newData = {};
+				data.forEach(data => {
+					let dataParts = data.split(' : ');
+					newData[dataParts[0]] = dataParts[1];
+				});
+				setErrors(newData);
 			} else {
 				closeModal();
 			}
 		} else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
+			setErrors({
+				'confirmpassword': "Passwords must match.",
+			});
 		}
 	};
 
@@ -33,24 +38,25 @@ function SignupFormModal() {
 		<div className="signup-form-modal">
 			<p>Sign Up</p>
 			<form className='signup-form' onSubmit={handleSubmit}>
-				<ul>
-					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
-					))}
-				</ul>
-				<label for='signup-email-field'>
-					Email
-				</label>
+				<div className='signup-label-container'>
+					<label for='signup-email-field'>Email</label>
+					{errors.email && (
+						<div className='signup-error'>{errors.email}</div>
+						)}
+				</div>
 				<input
 					id='signup-email-field'
 					type="text"
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 					required
-				/>
-				<label for='signup-username-field'>
-					Username
-				</label>
+					/>
+				<div className='signup-label-container'>
+					<label for='signup-username-field'>Username</label>
+					{errors.username && (
+						<div className='signup-error'>{errors.username}</div>
+					)}
+				</div>
 				<input
 					id='signup-username-field'
 					type="text"
@@ -58,9 +64,12 @@ function SignupFormModal() {
 					onChange={(e) => setUsername(e.target.value)}
 					required
 				/>
-				<label for='signup-password-field'>
-					Password
-				</label>
+				<div className='signup-label-container'>
+					<label for='signup-password-field'>Password</label>
+					{errors.confirmpassword && (
+					<div className='signup-error'>{errors.confirmpassword}</div>
+					)}
+				</div>
 				<input
 					id='signup-password-field'
 					type="password"
@@ -68,9 +77,12 @@ function SignupFormModal() {
 					onChange={(e) => setPassword(e.target.value)}
 					required
 				/>
-				<label for='signup-confirm-password-field'>
-					Confirm Password
-				</label>
+				<div className='signup-label-container'>
+					<label for='signup-confirm-password-field'>Confirm Password</label>
+					{errors.confirmpassword && (
+					<div className='signup-error'>{errors.confirmpassword}</div>
+					)}
+				</div>
 					<input
 						id='signup-confirm-password-field'
 						type="password"
