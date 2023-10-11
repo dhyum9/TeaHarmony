@@ -15,7 +15,12 @@ function LoginFormModal() {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      let newData = {};
+      data.forEach(data => {
+        let dataParts = data.split(' : ');
+        newData[dataParts[0]] = dataParts[1];
+      });
+      setErrors(newData);
     } else {
       closeModal();
     }
@@ -32,9 +37,12 @@ function LoginFormModal() {
     <div className="login-form-modal">
       <p>Log In</p>
       <form className='login-form' onSubmit={handleSubmit}>
-        <label for='credential-field'>
-          Email
-        </label>
+        <div className='login-label-container'>
+          <label for='credential-field'>Email</label>
+          {errors.email && (
+              <div className='login-error'>{errors.email}</div>
+          )}
+        </div>
         <input
           id='credential-field'
           type="text"
@@ -42,9 +50,12 @@ function LoginFormModal() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label for='password-field'>
-          Password
-        </label>
+        <div className='login-label-container'>
+          <label for='password-field'>Password</label>
+          {errors.password && (
+              <div className='login-error'>{errors.password}</div>
+          )}
+        </div>
         <input
           id='password-field'
           type="password"
@@ -52,11 +63,6 @@ function LoginFormModal() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <div>
-          {errors.map((error, idx) => (
-            <div className='login-error' key={idx}>{error}</div>
-          ))}
-        </div>
         <button className='login-submit' type="submit">LOG IN</button>
         <div className='login-demo-div' onClick={DemoUserLogin}>Testing the site? Click here.</div>
       </form>
