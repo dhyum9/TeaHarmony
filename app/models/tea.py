@@ -20,6 +20,8 @@ class Tea(db.Model):
     caffeine = db.Column(db.String(255))
     description = db.Column(db.String)
     image_url = db.Column(db.String)
+    # avg_score = db.Column(db.Integer, default=50)
+    # num_notes = db.Column(db.Integer, default=0)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -41,6 +43,8 @@ class Tea(db.Model):
             'caffeine': self.caffeine,
             'description': self.description,
             'image_url': self.image_url,
+            # 'avg_score': self.avg_score,
+            # 'num_notes': self.num_notes,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
