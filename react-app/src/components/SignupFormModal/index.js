@@ -30,53 +30,59 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
-			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
+		<div className="signup-form-modal">
+			<p>Sign Up</p>
+			<form className='signup-form' onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
-				<label>
+				<label for='signup-email-field'>
 					Email
-					<input
-						type="text"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
 				</label>
-				<label>
+				<input
+					id='signup-email-field'
+					type="text"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+					required
+				/>
+				<label for='signup-username-field'>
 					Username
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
 				</label>
-				<label>
+				<input
+					id='signup-username-field'
+					type="text"
+					value={username}
+					onChange={(e) => setUsername(e.target.value)}
+					required
+				/>
+				<label for='signup-password-field'>
 					Password
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
 				</label>
-				<label>
+				<input
+					id='signup-password-field'
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+					required
+				/>
+				<label for='signup-confirm-password-field'>
 					Confirm Password
+				</label>
 					<input
+						id='signup-confirm-password-field'
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
 					/>
-				</label>
-				<button type="submit">Sign Up</button>
+					<div className='signup-bottom-row'>
+						<button className='signup-submit' type="submit">SIGN UP</button>
+					</div>
 			</form>
-		</>
+		</div>
 	);
 }
 
