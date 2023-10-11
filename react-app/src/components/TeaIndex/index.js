@@ -32,11 +32,14 @@ const TeaIndex = () => {
   return (
     <div className='tea-index-page'>
       <div className='tea-index-body'>
-        <div>
-          {sessionUser &&
-            <button onClick={goToCreateTeaForm}>Add a Tea</button>
-          }
-        </div>
+        {sessionUser && (
+          <div className='tea-index-post-tea-container'>
+            <div className='tea-index-post-tea-clickable' onClick={goToCreateTeaForm}>
+              <i className="fa-regular fa-square-plus"></i>
+              <div className='tea-index-post-words'>Add a Tea</div>
+            </div>
+          </div>
+        )}
         <p className='tea-index-heading'>Best Teas</p>
         <p className='tea-index-subheading'>As rated by the TeaHarmony community</p>
         <div className='tea-index-grid'>
