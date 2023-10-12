@@ -113,10 +113,15 @@ const TeaForm = ({tea, formType}) => {
 
     if(decider.checked){
       type.push(decider.value)
-      console.log(type)
     } else {
-      type.pop()
-      console.log(type)
+      let targetIdx;
+      for (let j = 0; j < type.length; j++){
+        let ele = type[j]
+        if (ele === name){
+          targetIdx = j;
+        }
+      }
+      type.splice(targetIdx, 1);
     }
   }
 
@@ -134,7 +139,14 @@ const TeaForm = ({tea, formType}) => {
     if(decider.checked){
       sold_in.push(decider.value)
     } else {
-      sold_in.pop()
+      let targetIdx;
+      for (let j = 0; j < sold_in.length; j++){
+        let ele = sold_in[j]
+        if (ele === name){
+          targetIdx = j;
+        }
+      }
+      sold_in.splice(targetIdx, 1);
     }
   }
 
@@ -152,7 +164,14 @@ const TeaForm = ({tea, formType}) => {
     if(decider.checked){
       certification.push(decider.value)
     } else {
-      certification.pop()
+      let targetIdx;
+      for (let j = 0; j < certification.length; j++){
+        let ele = certification[j]
+        if (ele === name){
+          targetIdx = j;
+        }
+      }
+      certification.splice(targetIdx, 1);
     }
   }
 
