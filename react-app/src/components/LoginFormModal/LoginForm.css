@@ -44,6 +44,10 @@
   margin: 10px 0 2px 0;
 }
 
+.login-field{
+  font-family: 'Lora', serif;
+}
+
 .login-error{
   color: red;
   font-size: 12px;

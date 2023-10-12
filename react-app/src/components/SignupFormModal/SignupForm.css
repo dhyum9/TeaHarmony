@@ -1,4 +1,4 @@
-.signup-form-modal{
+.signup-form-modal.signup-nav{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,10 +9,28 @@
   border-radius: 20px;
 }
 
-.signup-form-modal> p{
+.signup-form-modal.signup-home{
+  border: 3px solid #ece0d1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 230px;
+  padding: 15px;
+  background-color: #634832;
+  color: hsl(33, 42%, 87%);
+  border-radius: 20px;
+  margin-top: -100px;
+}
+
+.signup-heading{
   margin: 5px 0;
   font-size: 25px;
   font-weight: 600;
+}
+
+.signup-home-subheading{
+  font-size: 12px;
+  margin: 5px 0px 20px;
 }
 
 .signup-form{
@@ -28,6 +46,10 @@
   justify-content: space-between;
   font-size: 14px;
   margin: 10px 0 2px 0;
+}
+
+.signup-field{
+  font-family: 'Lora', serif;
 }
 
 .signup-error{
@@ -52,13 +74,23 @@
   width: 100%;
 }
 
-.signup-submit{
+.signup-submit.signup-nav{
   font-family: 'Lora', serif;
   padding: 5px 10px;
   border: none;
   background-color: #38220f;
   color: #ece0d1;
   border-radius: 5px;
+}
+
+.signup-submit.signup-home{
+  font-family: 'Lora', serif;
+  padding: 5px 10px;
+  border: none;
+  background-color: #967259;
+  color: #ece0d1;
+  border-radius: 5px;
+  margin: 10px auto;
 }
 
 .signup-submit:hover{
@@ -70,7 +102,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0 0 0;
+  margin: 35px 0 10px;
   font-size: 12px;
   border: 2px #38220f solid;
   border-radius: 10px;

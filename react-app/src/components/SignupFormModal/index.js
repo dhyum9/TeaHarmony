@@ -6,7 +6,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import "./SignupForm.css";
 
-function SignupFormModal() {
+function SignupFormModal({modalType}) {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
@@ -37,11 +37,23 @@ function SignupFormModal() {
 		}
 	};
 
+	const appendModalTypetoClass = (str) => {
+		return str + ' ' + modalType;
+	}
 	console.log(errors);
 
 	return (
-		<div className="signup-form-modal">
-			<p>Sign Up</p>
+		<div className={appendModalTypetoClass('signup-form-modal')}>
+			{modalType === 'signup-home' ? <p className='signup-heading'>Sign Up (It's Free!)</p> : <p className='signup-heading'>Sign Up</p>}
+			{modalType === 'signup-home' && (
+				<div className="signup-home-subheading">Already have an account?
+					<OpenModalButton
+					buttonText="Log In"
+					modalComponent={<LoginFormModal />}
+					buttonType="signup-home-option"
+					/>
+			</div>
+			)}
 			<form className='signup-form' onSubmit={handleSubmit}>
 				<div className='signup-label-container'>
 					<label for='signup-email-field'>Email</label>
@@ -50,6 +62,7 @@ function SignupFormModal() {
 						)}
 				</div>
 				<input
+					className='signup-field'
 					id='signup-email-field'
 					type="email"
 					value={email}
@@ -63,6 +76,7 @@ function SignupFormModal() {
 					)}
 				</div>
 				<input
+					className='signup-field'
 					id='signup-username-field'
 					type="text"
 					value={username}
@@ -76,6 +90,7 @@ function SignupFormModal() {
 					)}
 				</div>
 				<input
+					className='signup-field'
 					id='signup-password-field'
 					type="password"
 					value={password}
@@ -89,6 +104,7 @@ function SignupFormModal() {
 					)}
 				</div>
 					<input
+						className='signup-field'
 						id='signup-confirm-password-field'
 						type="password"
 						value={confirmPassword}
@@ -97,22 +113,26 @@ function SignupFormModal() {
 					/>
 					<div className='signup-bottom-row'>
 						<div className='signup-bottom-button-row'>
-							<div>Already have an account?
-								<OpenModalButton
-								buttonText="Log In"
-								modalComponent={<LoginFormModal />}
-								buttonType="signup-modal-option"
-								/>
+							{modalType === 'signup-nav' && (
+								<div>Already have an account?
+									<OpenModalButton
+									buttonText="Log In"
+									modalComponent={<LoginFormModal />}
+									buttonType="signup-modal-option"
+									/>
+								</div>
+							)}
+							<button className={appendModalTypetoClass('signup-submit')} type="submit">SIGN UP</button>
+						</div>
+						{modalType === 'signup-nav' && (
+							<div className='signup-tips'>
+								<div className='signup-tip-label'>Sign Up Tips:</div>
+								<div className='signup-tip'>All fields are required.</div>
+								<div className='signup-tip'>Must use a valid email.</div>
+								<div className='signup-tip'>Username must be 4 characters or more.</div>
+								<div className='signup-tip'>Password must be 6 characters or more.</div>
 							</div>
-							<button className='signup-submit' type="submit">SIGN UP</button>
-						</div>
-						<div className='signup-tips'>
-							<div className='signup-tip-label'>Sign Up Tips:</div>
-							<div className='signup-tip'>All fields are required.</div>
-							<div className='signup-tip'>Must use a valid email.</div>
-							<div className='signup-tip'>Username must be 4 characters or more.</div>
-							<div className='signup-tip'>Password must be 6 characters or more.</div>
-						</div>
+						)}
 					</div>
 			</form>
 		</div>

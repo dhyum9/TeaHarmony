@@ -44,6 +44,7 @@ function LoginFormModal() {
           )}
         </div>
         <input
+          className='login-field'
           id='credential-field'
           type="text"
           value={email}
@@ -57,6 +58,7 @@ function LoginFormModal() {
           )}
         </div>
         <input
+          className='login-field'
           id='password-field'
           type="password"
           value={password}

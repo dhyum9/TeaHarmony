@@ -71,7 +71,7 @@ function Navigation({ isLoaded }){
 						/>
 						<OpenModalButton
 							buttonText="Sign Up"
-							modalComponent={<SignupFormModal />}
+							modalComponent={<SignupFormModal modalType={'signup-nav'}/>}
 							buttonType="nav-bar-option"
 						/>
 					</div>
