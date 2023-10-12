@@ -5,7 +5,7 @@
 .home-first-row{
   display: flex;
   align-items: center;
-  height:625px;
+  height: 700px;
   background: url('teaharmony-splash-image.jpeg') no-repeat center bottom;
   background-size: cover;
   max-width: 800px;
