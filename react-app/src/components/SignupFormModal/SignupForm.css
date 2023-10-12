@@ -10,7 +10,6 @@
 }
 
 .signup-form-modal.signup-home{
-  border: 3px solid #ece0d1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +18,7 @@
   background-color: #634832;
   color: hsl(33, 42%, 87%);
   border-radius: 20px;
+  border: 3px solid #ece0d1;
   margin-top: -100px;
 }
 
@@ -30,7 +30,7 @@
 
 .signup-home-subheading{
   font-size: 12px;
-  margin: 5px 0px 20px;
+  margin: 5px 0px 10px;
 }
 
 .signup-form{
@@ -39,13 +39,35 @@
   width: 95%;
 }
 
-.signup-label-container{
+.signup-section-container.signup-nav{
+  /* background-color: lemonchiffon; */
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-section-container.signup-home{
+  /* background-color: lemonchiffon; */
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+}
+
+.signup-label-container.signup-nav{
   display: flex;
   align-items: center;
   /* background-color: lightgreen; */
   justify-content: space-between;
   font-size: 14px;
   margin: 10px 0 2px 0;
+}
+
+.signup-label-container.signup-home{
+  display: flex;
+  align-items: center;
+  /* background-color: lightgreen; */
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 2px 0;
 }
 
 .signup-field{
@@ -90,7 +112,7 @@
   background-color: #967259;
   color: #ece0d1;
   border-radius: 5px;
-  margin: 10px auto;
+  margin: 0px auto 10px;
 }
 
 .signup-submit:hover{
