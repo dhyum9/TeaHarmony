@@ -23,6 +23,8 @@ const TeaDetails = () => {
   useEffect(() => {
     dispatch(thunkGetTeaInfo(teaId));
     dispatch(thunkGetTeaTastingNotes(teaId));
+
+    // return () => clearTea();
   }, [dispatch, teaId, notesList.length]);
 
   if (!singleTea) return null;

@@ -7,6 +7,7 @@ const GET_TEA = "teas/getTea";
 const CREATE_TEA = "teas/createTea";
 const UPDATE_TEA = "teas/updateTea";
 const DELETE_TEA = "teas/deleteTea";
+const CLEAR_TEA = "teas/clearTea";
 
 
 // ACTION CREATORS
@@ -45,6 +46,11 @@ const deleteTea = (teaId) => {
   };
 };
 
+// export const clearTea = () => {
+//   return {
+//     type: CLEAR_TEA
+//   }
+// }
 
 // THUNK ACTION CREATORS
 export const thunkGetTeas = () => async (dispatch) => {
@@ -174,6 +180,14 @@ const teaReducer = (state = initialState, action) => {
         };
         delete newState.allTeas[action.teaId];
         return newState;
+
+      // case CLEAR_TEA:
+      //   newState = {
+      //     ...state,
+      //     allTeas: {},
+      //     singleTea: {}
+      //   }
+      //   return newState;
 
     default:
       return state;
