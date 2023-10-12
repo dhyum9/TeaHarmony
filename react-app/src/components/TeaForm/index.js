@@ -113,8 +113,10 @@ const TeaForm = ({tea, formType}) => {
 
     if(decider.checked){
       type.push(decider.value)
+      console.log(type)
     } else {
       type.pop()
+      console.log(type)
     }
   }
 
@@ -163,7 +165,7 @@ const TeaForm = ({tea, formType}) => {
       }
     }
   }
-
+  console.log(type);
   checkCheckboxes();
 
   return (
