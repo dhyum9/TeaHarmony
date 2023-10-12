@@ -1,5 +1,4 @@
 .footer{
-  background-color: red;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,7 +9,7 @@
 }
 
 .footer-right{
-  background-color: black;
+  /* background-color: black; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,6 +20,8 @@
   /* background-color: red; */
   display: flex;
   align-items: center;
+  color: #ece0d1;
+  text-decoration: none;
 }
 
 .footer-right-option:hover{
