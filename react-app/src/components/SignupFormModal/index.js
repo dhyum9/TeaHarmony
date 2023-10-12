@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
+import OpenModalButton from "../OpenModalButton";
+import LoginFormModal from "../LoginFormModal";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -94,13 +96,23 @@ function SignupFormModal() {
 						required
 					/>
 					<div className='signup-bottom-row'>
-						<ul className='signup-tips'>
-							<li className='signup-tip'>All fields are required.</li>
-							<li className='signup-tip'>Must use a valid email.</li>
-							<li className='signup-tip'>Username must be 4 characters or more.</li>
-							<li className='signup-tip'>Password must be 6 characters or more.</li>
-						</ul>
-						<button className='signup-submit' type="submit">SIGN UP</button>
+						<div className='signup-bottom-button-row'>
+							<div>Already have an account?
+								<OpenModalButton
+								buttonText="Log In"
+								modalComponent={<LoginFormModal />}
+								buttonType="signup-modal-option"
+								/>
+							</div>
+							<button className='signup-submit' type="submit">SIGN UP</button>
+						</div>
+						<div className='signup-tips'>
+							<div className='signup-tip-label'>Sign Up Tips:</div>
+							<div className='signup-tip'>All fields are required.</div>
+							<div className='signup-tip'>Must use a valid email.</div>
+							<div className='signup-tip'>Username must be 4 characters or more.</div>
+							<div className='signup-tip'>Password must be 6 characters or more.</div>
+						</div>
 					</div>
 			</form>
 		</div>
