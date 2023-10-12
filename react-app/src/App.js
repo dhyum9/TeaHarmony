@@ -12,6 +12,7 @@ import CreateTeaForm from "./components/CreateTeaForm";
 import TeaLog from "./components/Tealog";
 import EditTeaForm from "./components/EditTeaForm";
 import TastingNotesLog from "./components/TastingNotesLog";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
