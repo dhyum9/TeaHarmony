@@ -11,7 +11,7 @@ const TeaLog = () => {
 
   useEffect(() => {
     dispatch(thunkGetUserTeas());
-  }, [dispatch]);
+  }, [dispatch, teas.length]);
 
   return (
     <div>

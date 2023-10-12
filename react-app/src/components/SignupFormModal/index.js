@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
+import OpenModalButton from "../OpenModalButton";
+import LoginFormModal from "../LoginFormModal";
 import "./SignupForm.css";
 
-function SignupFormModal() {
+function SignupFormModal({modalType}) {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
@@ -18,65 +20,147 @@ function SignupFormModal() {
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
-				setErrors(data);
+				let newData = {};
+				data.forEach(data => {
+					let dataParts = data.split(' : ');
+					newData[dataParts[0]] = dataParts[1];
+				});
+				setErrors(newData);
 			} else {
 				closeModal();
 			}
 		} else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
+			setErrors({
+				'password': "Passwords must match.",
+				'confirmpassword': "Passwords must match.",
+			});
 		}
 	};
 
+	const appendModalTypetoClass = (str) => {
+		return str + ' ' + modalType;
+	}
+	console.log(errors);
+
 	return (
-		<>
-			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
-				<ul>
-					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
-					))}
-				</ul>
-				<label>
-					Email
+		<div className={appendModalTypetoClass('signup-form-modal')}>
+			{modalType === 'signup-home' ? <p className='signup-heading'>Sign Up (It's Free!)</p> : <p className='signup-heading'>Sign Up</p>}
+			{modalType === 'signup-home' && (
+				<div className="signup-home-subheading">Already have an account?
+					<OpenModalButton
+					buttonText="Log In"
+					modalComponent={<LoginFormModal />}
+					buttonType="signup-home-option"
+					/>
+			</div>
+			)}
+			<form className='signup-form' onSubmit={handleSubmit}>
+
+				<div className={appendModalTypetoClass('signup-section-container')}>
+					<div className={appendModalTypetoClass('signup-label-container')}>
+						<label for='signup-email-field'>Email</label>
+						{errors.email && modalType === 'signup-nav' && (
+							<div className='signup-error'>{errors.email}</div>
+						)}
+					</div>
 					<input
-						type="text"
+						className={appendModalTypetoClass('signup-field')}
+						id='signup-email-field'
+						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
-				</label>
-				<label>
-					Username
+					{errors.email && modalType === 'signup-home' && (
+						<div className='signup-error'>{errors.email}</div>
+					)}
+				</div>
+
+				<div className={appendModalTypetoClass('signup-section-container')}>
+					<div className={appendModalTypetoClass('signup-label-container')}>
+						<label for='signup-username-field'>Username</label>
+						{errors.username && modalType === 'signup-nav' && (
+							<div className='signup-error'>{errors.username}</div>
+						)}
+					</div>
 					<input
+						className={appendModalTypetoClass('signup-field')}
+						id='signup-username-field'
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						required
 					/>
-				</label>
-				<label>
-					Password
+					{errors.username && modalType === 'signup-home' && (
+						<div className='signup-error'>{errors.username}</div>
+					)}
+				</div>
+
+				<div className={appendModalTypetoClass('signup-section-container')}>
+					<div className={appendModalTypetoClass('signup-label-container')}>
+						<label for='signup-password-field'>Password</label>
+						{errors.password && modalType === 'signup-nav' && (
+						<div className='signup-error'>{errors.password}</div>
+						)}
+					</div>
 					<input
+						className={appendModalTypetoClass('signup-field')}
+						id='signup-password-field'
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
-				</label>
-				<label>
-					Confirm Password
+					{errors.password && modalType === 'signup-home' && (
+						<div className='signup-error'>{errors.password}</div>
+					)}
+				</div>
+
+				<div className={appendModalTypetoClass('signup-section-container')}>
+					<div className={appendModalTypetoClass('signup-label-container')}>
+						<label for='signup-confirm-password-field'>Confirm Password</label>
+						{errors.confirmpassword && modalType === 'signup-nav' && (
+						<div className='signup-error'>{errors.confirmpassword}</div>
+						)}
+					</div>
 					<input
+						className={appendModalTypetoClass('signup-field')}
+						id='signup-confirm-password-field'
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
 					/>
-				</label>
-				<button type="submit">Sign Up</button>
+					{errors.confirmpassword && modalType === 'signup-home' && (
+						<div className='signup-error'>{errors.confirmpassword}</div>
+					)}
+				</div>
+
+				<div className='signup-bottom-row'>
+					<div className='signup-bottom-button-row'>
+						{modalType === 'signup-nav' && (
+							<div>Already have an account?
+								<OpenModalButton
+								buttonText="Log In"
+								modalComponent={<LoginFormModal />}
+								buttonType="signup-modal-option"
+								/>
+							</div>
+						)}
+						<button className={appendModalTypetoClass('signup-submit')} type="submit">SIGN UP</button>
+					</div>
+					{modalType === 'signup-nav' && (
+						<div className='signup-tips'>
+							<div className='signup-tip-label'>Sign Up Tips:</div>
+							<div className='signup-tip'>All fields are required.</div>
+							<div className='signup-tip'>Must use a valid email.</div>
+							<div className='signup-tip'>Username must be 4 characters or more.</div>
+							<div className='signup-tip'>Password must be 6 characters or more.</div>
+						</div>
+					)}
+				</div>
 			</form>
-		</>
+		</div>
 	);
 }
 

@@ -161,13 +161,10 @@ const TeaForm = ({tea, formType}) => {
       if (type.indexOf(checkbox.value) !== -1 || sold_in.indexOf(checkbox.value) !== -1 || certification.indexOf(checkbox.value) !== -1){
         checkbox.checked = true;
       }
-
     }
   }
 
   checkCheckboxes();
-
-  console.log("HERE IS THE NEW TEA", tea);
 
   return (
     <div>

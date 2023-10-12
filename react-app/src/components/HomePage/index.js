@@ -1,3 +1,4 @@
+import SignupFormModal from '../SignupFormModal';
 import './HomePage.css'
 
 const HomePage = () => {
@@ -10,7 +11,7 @@ const HomePage = () => {
           <p className='home-subheading'>Write a tea journal, see what others are drinking and get recommendations from people you trust.</p>
         </div>
         <div className='home-first-right'>
-
+          <SignupFormModal modalType={'signup-home'}/>
         </div>
       </main>
     </div>

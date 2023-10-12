@@ -16,3 +16,34 @@
   color: #38220f;
   cursor: pointer;
 }
+
+.signup-modal-option{
+  background-color: inherit;
+  border: none;
+  font-size: 12px;
+  font-family: 'Lora', serif;
+  margin: 0 2px;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.signup-modal-option:hover{
+  text-shadow: 0px 0px 10px rgba(56, 34, 15, 0.3);
+  cursor: pointer;
+}
+
+.signup-home-option{
+  background-color: inherit;
+  border: none;
+  font-size: 12px;
+  font-family: 'Lora', serif;
+  margin: 0 2px;
+  padding: 0;
+  text-decoration: underline;
+  color: #ece0d1;
+}
+
+.signup-home-option:hover{
+  text-shadow: 0px 0px 10px #ece0d1;
+  cursor: pointer;
+}

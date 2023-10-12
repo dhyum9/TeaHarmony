@@ -1,4 +1,10 @@
+.home-page{
+  background-color: #634832;
+}
+
 .home-first-row{
+  display: flex;
+  align-items: center;
   height:625px;
   background: url('teaharmony-splash-image.jpeg') no-repeat center bottom;
   background-size: cover;
@@ -14,6 +20,7 @@
   justify-content: flex-end;
   width: 65%;
   height: 100%;
+  /* background-color: aqua; */
 }
 
 .home-heading{
@@ -24,8 +31,15 @@
 }
 
 .home-subheading{
-  font-size: 23px;
+  font-size: 20px;
   font-weight: 500;
   color: #ece0d1;
   text-align: center;
+}
+
+.home-first-right{
+  display: flex;
+  justify-content: center;
+  /* background-color: aquamarine; */
+  /* width: 50%; */
 }

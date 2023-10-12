@@ -10,7 +10,7 @@
 }
 
 .login-form-modal> p{
-  margin: 3px;
+  margin: 5px 0;
   font-size: 25px;
   font-weight: 600;
 }
@@ -21,16 +21,9 @@
   width: 95%;
 }
 
-.login-form > label{
-  display: block;
-  margin: 10px 0 2px 0;
-  font-size: 14px;
-}
-
 .login-submit{
   font-family: 'Lora', serif;
   padding: 5px 10px;
-  margin: 15px auto 5px;
   border: none;
   background-color: #38220f;
   color: #ece0d1;
@@ -42,9 +35,39 @@
   cursor: pointer;
 }
 
+.login-label-container{
+  display: flex;
+  align-items: center;
+  /* background-color: lightgreen; */
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 10px 0 2px 0;
+}
+
+.login-field{
+  font-family: 'Lora', serif;
+}
+
 .login-error{
   color: red;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 10px;
+  font-size: 12px;
+}
+
+.login-bottom-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 5px 10px;
+  /* background-color: lightblue; */
+}
+
+.login-demo-div{
+  /* background-color: red; */
+  width: 155px;
+  font-size: 12px;
+}
+
+.login-demo-div:hover{
+  text-shadow: 0px 0px 10px rgba(56, 34, 15, 0.3);
+  cursor: pointer;
 }
