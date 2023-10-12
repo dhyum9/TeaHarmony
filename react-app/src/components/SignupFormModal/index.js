@@ -49,7 +49,7 @@ function SignupFormModal() {
 				</div>
 				<input
 					id='signup-email-field'
-					type="text"
+					type="email"
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 					required
@@ -94,6 +94,12 @@ function SignupFormModal() {
 						required
 					/>
 					<div className='signup-bottom-row'>
+						<ul className='signup-tips'>
+							<li className='signup-tip'>All fields are required.</li>
+							<li className='signup-tip'>Must use a valid email.</li>
+							<li className='signup-tip'>Username must be 4 characters or more.</li>
+							<li className='signup-tip'>Password must be 6 characters or more.</li>
+						</ul>
 						<button className='signup-submit' type="submit">SIGN UP</button>
 					</div>
 			</form>

@@ -19,13 +19,18 @@ def username_exists(form, field):
     if user:
         raise ValidationError('Username is already in use.')
 
-def field_length(form, field):
+def username_field_length(form, field):
     userData = field.data
     if (len(userData) < 4):
-        raise ValidationError('Field must be 4 characters or more.')
+        raise ValidationError('Username must be 4+ characters.')
+
+def password_field_length(form, field):
+    userData = field.data
+    if (len(userData) < 6):
+        raise ValidationError('Password must be 6+ characters.')
 
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), username_exists, field_length])
-    email = StringField('email', validators=[DataRequired(), user_exists, field_length])
-    password = StringField('password', validators=[DataRequired(), field_length])
+        'username', validators=[DataRequired(), username_exists, username_field_length])
+    email = StringField('email', validators=[DataRequired(), user_exists])
+    password = StringField('password', validators=[DataRequired(), password_field_length])

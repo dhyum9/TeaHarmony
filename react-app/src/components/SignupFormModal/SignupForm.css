@@ -52,8 +52,19 @@
 
 .signup-bottom-row{
   display: flex;
-  align-items: center;
-  justify-content: end;
-  margin: 20px 5px 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 15px 5px 0px 0px;
   /* background-color: lightblue; */
+}
+
+.signup-tips{
+  font-size: 13px;
+  margin: 0;
+  /* background-color: antiquewhite; */
+  width: 150px;
+}
+
+.signup-tip{
+  margin: 5px 0;
 }
