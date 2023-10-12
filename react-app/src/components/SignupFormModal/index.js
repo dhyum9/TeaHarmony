@@ -29,10 +29,13 @@ function SignupFormModal() {
 			}
 		} else {
 			setErrors({
+				'password': "Passwords must match.",
 				'confirmpassword': "Passwords must match.",
 			});
 		}
 	};
+
+	console.log(errors);
 
 	return (
 		<div className="signup-form-modal">
@@ -66,8 +69,8 @@ function SignupFormModal() {
 				/>
 				<div className='signup-label-container'>
 					<label for='signup-password-field'>Password</label>
-					{errors.confirmpassword && (
-					<div className='signup-error'>{errors.confirmpassword}</div>
+					{errors.password && (
+					<div className='signup-error'>{errors.password}</div>
 					)}
 				</div>
 				<input
