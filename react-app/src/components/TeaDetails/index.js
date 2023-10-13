@@ -70,7 +70,7 @@ const TeaDetails = () => {
             <div className='tea-details-score-row'>
               <div className='tea-details-score-row-left'>
                 <div className='tea-details-score-num'>
-                  {Number.parseFloat(avg_score).toFixed(0)}
+                  {avg_score ? <div>{Number.parseFloat(avg_score).toFixed(0)}</div> : <div>00</div>}
                 </div>
                 <img className='tea-details-score-kettle' src={kettle}></img>
               </div>
@@ -90,18 +90,18 @@ const TeaDetails = () => {
               </div>
             </div>
           </div>
-          <div className='tea-details-info-row'>
-            <div className='tea-details-info-label'>Tea Type</div>
-            {type ? <div className='tea-details-info-information'>{type}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
-            <div className='tea-details-info-label'>Ingredients</div>
-            {ingredients ? <div className='tea-details-info-information'>{ingredients}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
-            <div className='tea-details-info-label'>Sold In</div>
-            {sold_in ? <div className='tea-details-info-information'>{sold_in}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
-            <div className='tea-details-info-label'>Caffeine</div>
-            {caffeine ? <div className='tea-details-info-information'>{caffeine}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
-            <div className='tea-details-info-label'>Certification</div>
-            {certification ? <div className='tea-details-info-information'>{certification}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
-          </div>
+        </div>
+        <div className='tea-details-info-row'>
+          <div className='tea-details-info-label'>Tea Type</div>
+          {type ? <div className='tea-details-info-information'>{type}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
+          <div className='tea-details-info-label'>Ingredients</div>
+          {ingredients ? <div className='tea-details-info-information'>{ingredients}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
+          <div className='tea-details-info-label'>Sold In</div>
+          {sold_in ? <div className='tea-details-info-information'>{sold_in}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
+          <div className='tea-details-info-label'>Caffeine</div>
+          {caffeine ? <div className='tea-details-info-information'>{caffeine}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
+          <div className='tea-details-info-label'>Certification</div>
+          {certification ? <div className='tea-details-info-information'>{certification}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
         </div>
         <div className='tea-details-company-row'>
           <div className='tea-details-company-row-heading'>From {company}</div>

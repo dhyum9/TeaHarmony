@@ -34,7 +34,7 @@ const TeaTile = ({ tea, tiletype }) => {
 
   return (
     <div className='tea-tile-container'>
-      <div className='tea-tile-score'>{Number.parseFloat(avg_score).toFixed(1)}</div>
+      {avg_score ? <div className='tea-tile-score'>{Number.parseFloat(avg_score).toFixed(1)}</div> : <div className='tea-tile-score zero'>0.0</div>}
       <img src={icon} className='tea-tile-icon'></img>
       <div className="tea-tile" key={tea.id} onClick={handleClick}>
         <img

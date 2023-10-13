@@ -8,8 +8,12 @@
   color: #ece0d1;
   position: absolute;
   top: 5px;
-  left: 2px;
+  left: 3px;
   z-index: 2;
+}
+
+.zero{
+  left: 6px;
 }
 
 .tea-tile-icon{

@@ -20,6 +20,7 @@ body{
 
 .tea-details-banner-row{
   position: relative;
+  width: 100%;
 }
 
 .tea-details-name{
@@ -28,6 +29,10 @@ body{
   color: #ece0d1;
   top: 25px;
   left: 165px;
+  /* background-color: red; */
+  width: 75%;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .tea-details-company{
@@ -36,6 +41,11 @@ body{
   color: #ece0d1;
   top: 80px;
   left: 170px;
+  /* background-color: blue; */
+  width: 74%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .tea-details-image{
@@ -128,6 +138,8 @@ body{
   font-size: 13px;
   margin-left: 12px;
   font-weight: 500;
+  overflow-wrap: break-word;
+  overflow: hidden;
   /* background-color: lightcoral; */
 }
 
@@ -147,10 +159,12 @@ body{
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 20px;
+  overflow-wrap: break-word;
 }
 
 .tea-details-company-row-body{
   font-size: 13px;
+  overflow-wrap: break-word;
 }
 
 .tea-details-notes-row{
