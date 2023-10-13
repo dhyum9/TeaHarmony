@@ -44,15 +44,20 @@ const TeaTile = ({ tea, tiletype }) => {
         <div className='tea-tile-company'>{company}</div>
         <div className='tea-tile-num-notes'>{num_notes} Tasting Notes</div>
       </div>
+      <div className='tea-tile-edit-delete-row'>
         {tiletype === "tealog" && (
-        <button onClick={goToEditTeaForm}>Edit</button>)}
+        <button className='tea-tile-edit-button' onClick={goToEditTeaForm}>Edit</button>)}
         {tiletype==="tealog" && (
-          <OpenModalButton
-          buttonText="Delete This Tea"
-          modalComponent={
-            <DeleteTeaModal teaId={tea.id} />
-          }/>
+          <div>
+            <OpenModalButton
+            buttonText="Delete"
+            buttonType='tea-tile-delete-button'
+            modalComponent={
+              <DeleteTeaModal teaId={tea.id} />
+            }/>
+          </div>
         )}
+      </div>
     </div>
   );
 };
