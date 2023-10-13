@@ -1,3 +1,6 @@
+import icon from './teaharmony-icon.png'
+import './TeaTastingNote.css'
+
 const TeaTastingNote = ({currentUser, tastingNote, teaId}) => {
   const {
     note,
@@ -8,15 +11,24 @@ const TeaTastingNote = ({currentUser, tastingNote, teaId}) => {
   } = tastingNote;
 
   return (
-    <div>
-      <div>
-        USER: {user}
+    <div className='tea-note'>
+      <div className='tea-note-left'>
+          <div className='tea-note-user-pic-container'>
+            <img className='tea-note-user-pic' src={icon}></img>
+          </div>
+          <div className='tea-note-user-score-container'>
+            <div>
+              {score}
+            </div>
+          </div>
       </div>
-      <div>
-        SCORE: {score}
-      </div>
-      <div>
-        NOTE: {note}
+      <div className='tea-note-right'>
+        <div className='tea-note-user-name'>
+          {user}
+        </div>
+        <div className='tea-note-user-note'>
+          {note}
+        </div>
       </div>
     </div>
   );

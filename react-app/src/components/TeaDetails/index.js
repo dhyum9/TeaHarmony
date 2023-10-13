@@ -101,7 +101,7 @@ const TeaDetails = () => {
           <div className='tea-details-company-row-body'>{description}</div>
         </div>
         <div className='tea-details-notes-row'>
-          <div>{num_notes} Tasting Notes</div>
+          <div className='tea-details-notes-row-heading'>{num_notes} Tasting Notes</div>
           <div>
             {notesList.reverse().map((note) => {
               return (
