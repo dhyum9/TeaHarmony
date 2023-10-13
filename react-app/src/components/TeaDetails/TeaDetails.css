@@ -101,15 +101,8 @@ body{
 
 .tea-details-num-notes{
   padding: 0 10px 0 0;
-  border-right: 1px solid rgba(56, 34, 15, 0.5);
   font-size: 15px;
   margin: 2px 0;
-}
-
-.tea-details-create-note{
-  padding: 0 0 0 10px;
-  font-size: 15px;
-  color: blue;
 }
 
 .tea-details-main-row{

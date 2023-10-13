@@ -78,7 +78,14 @@ const TeaDetails = () => {
                 <div className='tea-details-score-label-top'>TeaHarmony Score</div>
                 <div className='tea-details-score-label-bottom'>
                   <div className='tea-details-num-notes'>with {num_notes} Ratings</div>
-                  <div className='tea-details-create-note'>Rate this tea</div>
+                  {postNoteSwitch && (
+                    <OpenModalButton
+                    buttonText="Rate this tea"
+                    buttonType="create-note"
+                    modalComponent={
+                      <CreateNoteForm teaId={teaId}/>
+                    }/>
+                  )}
                 </div>
               </div>
             </div>
@@ -110,13 +117,6 @@ const TeaDetails = () => {
               })}
           </div>
         </div>
-              {postNoteSwitch && (
-                  <OpenModalButton
-                  buttonText="Review this tea"
-                  modalComponent={
-                    <CreateNoteForm teaId={teaId}/>
-                  }/>
-              )}
       </div>
     </div>
   );
