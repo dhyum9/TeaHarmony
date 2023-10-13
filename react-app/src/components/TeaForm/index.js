@@ -194,11 +194,11 @@ const TeaForm = ({tea, formType}) => {
       <form className='tea-form' onSubmit={handleSubmit}>
         <img src={banner} className='tea-form-left'></img>
         <div className='tea-form-right'>
-          {formType === "create" ? <p>Add a Tea</p> : <p>Update a Tea</p>}
+          {formType === "create" ? <p>Add a Tea</p> : <p>Update Your Tea</p>}
           <div className='tea-form-string-container'>
             <label className='tea-form-label-row'>
               <div>Image Url (optional)</div>
-              <div className='grey-text'>Give your tea an image</div>
+              <div>Give your tea an image</div>
             </label>
             <input
               className='tea-form-string-input'
