@@ -92,15 +92,15 @@ const TeaDetails = () => {
           </div>
           <div className='tea-details-info-row'>
             <div className='tea-details-info-label'>Tea Type</div>
-            <div className='tea-details-info-information'>{type}</div>
+            {type ? <div className='tea-details-info-information'>{type}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
             <div className='tea-details-info-label'>Ingredients</div>
-            <div className='tea-details-info-information'>{ingredients}</div>
+            {ingredients ? <div className='tea-details-info-information'>{ingredients}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
             <div className='tea-details-info-label'>Sold In</div>
-            <div className='tea-details-info-information'>{sold_in}</div>
+            {sold_in ? <div className='tea-details-info-information'>{sold_in}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
             <div className='tea-details-info-label'>Caffeine</div>
-            <div className='tea-details-info-information'>{caffeine}</div>
+            {caffeine ? <div className='tea-details-info-information'>{caffeine}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
             <div className='tea-details-info-label'>Certification</div>
-            <div className='tea-details-info-information'>{certification}</div>
+            {certification ? <div className='tea-details-info-information'>{certification}</div> : <div className='tea-details-info-information tea-details-invalid-info'>Not available</div>}
           </div>
         </div>
         <div className='tea-details-company-row'>

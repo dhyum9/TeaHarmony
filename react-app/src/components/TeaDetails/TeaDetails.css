@@ -131,6 +131,10 @@ body{
   /* background-color: lightcoral; */
 }
 
+.tea-details-invalid-info{
+  color: grey;
+}
+
 .tea-details-company-row{
   border-top: 1px solid rgba(56, 34, 15, 0.5);
   padding: 30px 0;
