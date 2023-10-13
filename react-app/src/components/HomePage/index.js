@@ -19,6 +19,10 @@ const HomePage = () => {
           <SignupFormModal modalType={'signup-home'}/>
         </div>
       </main>
+      <div className='home-second-row'>
+        <div className='home-second-left'></div>
+        <div className='home-second-right'></div>
+      </div>
     </div>
   );
 };
