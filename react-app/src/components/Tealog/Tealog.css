@@ -1,0 +1,38 @@
+.tealog{
+  background-color: red;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tealog-heading{
+  font-size: 20px;
+  font-weight: 600;
+  margin: 20px 24px;
+}
+
+.tealog-subheading{
+  font-size: 13px;
+  font-weight: 400;
+  margin: 10px 24px 30px;
+}
+
+.tealog-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 7px;
+  row-gap: 15px;
+  align-items: start;
+  justify-items: center;
+}
+
+@media screen and (max-width: 700px) and (min-width: 531px) {
+  .tealog-grid{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .tealog-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
