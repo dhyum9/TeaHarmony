@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { thunkCreateTea, thunkUpdateTea } from '../../store/teas';
+import banner from './teaharmony-tea-form-side-banner.jpeg'
 import './TeaForm.css';
 
 const TeaForm = ({tea, formType}) => {
@@ -113,8 +114,17 @@ const TeaForm = ({tea, formType}) => {
 
     if(decider.checked){
       type.push(decider.value)
+      // console.log(type);
     } else {
-      type.pop()
+      let targetIdx;
+      for (let j = 0; j < type.length; j++){
+        let ele = type[j]
+        if (ele === name){
+          targetIdx = j;
+        }
+      }
+      type.splice(targetIdx, 1);
+      // console.log(type);
     }
   }
 
@@ -132,7 +142,14 @@ const TeaForm = ({tea, formType}) => {
     if(decider.checked){
       sold_in.push(decider.value)
     } else {
-      sold_in.pop()
+      let targetIdx;
+      for (let j = 0; j < sold_in.length; j++){
+        let ele = sold_in[j]
+        if (ele === name){
+          targetIdx = j;
+        }
+      }
+      sold_in.splice(targetIdx, 1);
     }
   }
 
@@ -150,7 +167,14 @@ const TeaForm = ({tea, formType}) => {
     if(decider.checked){
       certification.push(decider.value)
     } else {
-      certification.pop()
+      let targetIdx;
+      for (let j = 0; j < certification.length; j++){
+        let ele = certification[j]
+        if (ele === name){
+          targetIdx = j;
+        }
+      }
+      certification.splice(targetIdx, 1);
     }
   }
 
@@ -163,146 +187,156 @@ const TeaForm = ({tea, formType}) => {
       }
     }
   }
-
   checkCheckboxes();
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {formType === "create" ? <h1>Create a Tea</h1> : <h1>Update a Tea</h1>}
-        <div className='tea-form-image-container'>
-          <label>
-            <div>Image Url (optional)</div>
-          </label>
-          <input
-            className='form-image-url'
-            type="url"
-            value={image_url}
-            onChange={(e) => setImageUrl(e.target.value)}/>
-        </div>
+    <div className='tea-form-page'>
+      <form className='tea-form' onSubmit={handleSubmit}>
+        <img src={banner} className='tea-form-left'></img>
+        <div className='tea-form-right'>
+          {formType === "create" ? <p>Add a Tea</p> : <p>Update Your Tea</p>}
+          <div className='tea-form-string-container'>
+            <label className='tea-form-label-row'>
+              <div>Image Url (optional)</div>
+              <div>Give your tea an image</div>
+            </label>
+            <input
+              className='tea-form-string-input'
+              type="url"
+              value={image_url}
+              onChange={(e) => setImageUrl(e.target.value)}/>
+          </div>
 
-        <div className='tea-form-name-container'>
-          <label>
-            <div>Tea Name</div>
-            <div>ie. Earl Grey, Golden Yunnan</div>
-          </label>
-          <input
-            className='form-name'
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}/>
-          {errors.name && submitted && (
-            <div className="tea-form-errors">{errors.name}</div>
-          )}
-        </div>
+          <div className='tea-form-string-container'>
+            <label className='tea-form-label-row'>
+              <div>Tea Name</div>
+              <div>ie. Earl Grey, Golden Yunnan</div>
+            </label>
+            <input
+              className='tea-form-string-input'
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}/>
+            {errors.name && submitted && (
+              <div className="tea-form-errors">{errors.name}</div>
+            )}
+          </div>
 
-        <div className='tea-form-company-container'>
-          <label>
-            <div>Company Name</div>
-            <div>ie. Mighty Leaf, Adagio Teas</div>
-          </label>
-          <input
-            className='form-company'
-            type="text"
-            value={company}
-            onChange={(e) => setCompany(e.target.value)}/>
-          {errors.company && submitted && (
-            <div className="tea-form-errors">{errors.company}</div>
-          )}
-        </div>
+          <div className='tea-form-string-container'>
+            <label className='tea-form-label-row'>
+              <div>Company Name</div>
+              <div>ie. Mighty Leaf, Adagio Teas</div>
+            </label>
+            <input
+              className='tea-form-string-input'
+              type="text"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}/>
+            {errors.company && submitted && (
+              <div className="tea-form-errors">{errors.company}</div>
+            )}
+          </div>
 
-        <div className='tea-form-type-container'>
-          <label>
-            <div>Type (optional)</div>
-            <div>Check all that apply</div>
-          </label>
-          {type_choices.map((type) => (
-            <div>
-              <input
-                type="checkbox"
-                value={type}
-                className='form-type checkbox'
-                onClick={() => modifyType(type)}
-                />
-                {type}
+          <div className='tea-form-checkbox-container'>
+            <label className='tea-form-label-row checkbox-label-row'>
+              <div>Type (optional)</div>
+              <div>Check all that apply</div>
+            </label>
+            <div className='tea-form-checkbox-grid'>
+              {type_choices.map((type) => (
+                <div>
+                  <input
+                    type="checkbox"
+                    value={type}
+                    className='form-type checkbox'
+                    onClick={() => modifyType(type)}
+                    />
+                    {type}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
 
-        <div className='tea-form-sold-in-container'>
-          <label>
-            <div>Available In (optional)</div>
-            <div>Check all that apply</div>
-          </label>
-          {sold_in_choices.map((sold_in) => (
-            <div>
-              <input
-                type="checkbox"
-                value={sold_in}
-                className='form-sold-in checkbox'
-                onClick={() => modifySoldIn(sold_in)}/>
-                {sold_in}
+          <div className='tea-form-checkbox-container'>
+            <label className='tea-form-label-row checkbox-label-row'>
+              <div>Available In (optional)</div>
+              <div>Check all that apply</div>
+            </label>
+            <div className='tea-form-checkbox-grid'>
+              {sold_in_choices.map((sold_in) => (
+                <div>
+                  <input
+                    type="checkbox"
+                    value={sold_in}
+                    className='form-sold-in checkbox'
+                    onClick={() => modifySoldIn(sold_in)}/>
+                    {sold_in}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
 
-        <div className='tea-form-certification-container'>
-          <label>
-            <div>Certifications (optional)</div>
-            <div>Check all that apply</div>
-          </label>
-          {certification_choices.map((certification) => (
-            <div>
-              <input
-                type="checkbox"
-                value={certification}
-                className='form-certification checkbox'
-                onClick={() => modifyCertification(certification)}/>
-                {certification}
+          <div className='tea-form-checkbox-container'>
+            <label className='tea-form-label-row checkbox-label-row'>
+              <div>Certifications (optional)</div>
+              <div>Check all that apply</div>
+            </label>
+            <div className='tea-form-checkbox-grid'>
+              {certification_choices.map((certification) => (
+                <div>
+                  <input
+                    type="checkbox"
+                    value={certification}
+                    className='form-certification checkbox'
+                    onClick={() => modifyCertification(certification)}/>
+                    {certification}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
 
-        <div className='tea-form-ingredients-container'>
-          <label>
-            <div>Ingredients (optional)</div>
-          </label>
-          <input
-            className='form-ingredients'
-            type="text"
-            value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}/>
-        </div>
+          <div className='tea-form-string-container'>
+            <label className='tea-form-label-row'>
+              <div>Ingredients (optional)</div>
+              <div>eg. Green Tea Leaves, Jasmine Petals, etc.</div>
+            </label>
+            <input
+              className='tea-form-string-input'
+              type="text"
+              value={ingredients}
+              onChange={(e) => setIngredients(e.target.value)}/>
+          </div>
 
-        <div className='tea-form-caffeine-container'>
-          <label>
-            <div>Caffeine Level (optional)</div>
-          </label>
-          <select
-            onChange={(e) => setCaffeine(e.target.value)}
-            value={caffeine}
-            className='form-caffeine'>
-              <option></option>
-              <option value='Low'>Low</option>
-              <option value='Medium'>Medium</option>
-              <option value='High'>High</option>
-              <option value='Decaffeinated'>Decaffeinated</option>
-              <option value='Caffeine Free'>Caffeine Free</option>
-          </select>
-        </div>
+          <div className='tea-form-select-container'>
+            <label className='tea-form-label-row'>
+              <div>Caffeine Level (optional)</div>
+            </label>
+            <select
+              onChange={(e) => setCaffeine(e.target.value)}
+              value={caffeine}
+              className='tea-form-select-input'>
+                <option></option>
+                <option value='Low'>Low</option>
+                <option value='Medium'>Medium</option>
+                <option value='High'>High</option>
+                <option value='Decaffeinated'>Decaffeinated</option>
+                <option value='Caffeine Free'>Caffeine Free</option>
+            </select>
+          </div>
 
-        <div className='tea-form-description-container'>
-          <label>
-            <div>Tea Info (optional)</div>
-            <div>How the tea company describes it (optional)</div>
-          </label>
-          <textarea
-            className='form-description'
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}/>
-        </div>
+          <div className='tea-form-textarea-container'>
+            <label className='tea-form-label-row'>
+              <div>Tea Info (optional)</div>
+              <div>How the tea company describes it</div>
+            </label>
+            <textarea
+              className='tea-form-textarea-input'
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}/>
+          </div>
 
-        <button type="submit">Submit Tea</button>
+          <button className='tea-form-submit' type="submit">Submit Tea</button>
+        </div>
       </form>
     </div>
   );

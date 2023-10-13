@@ -47,3 +47,35 @@
   text-shadow: 0px 0px 10px #ece0d1;
   cursor: pointer;
 }
+
+.footer-option{
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  color: #ece0d1;
+  font-family: 'Lora', serif;
+  border: none;
+}
+
+.footer-option:hover{
+  text-shadow: 0px 0px 10px #ece0d1;
+  cursor: pointer;
+}
+
+.create-note{
+  padding: 0 0 0 10px;
+  background-color: inherit;
+  border: none;
+  border-left: 1px solid rgba(56, 34, 15, 0.5);
+  font-size: 15px;
+  color: #38220f;
+  text-decoration: underline;
+  font-family: 'Lora', serif;
+}
+
+.create-note:hover{
+  text-shadow: 0px 0px 10px rgba(56, 34, 15, 0.3);
+  cursor: pointer;
+}

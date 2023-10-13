@@ -1,3 +1,129 @@
+.tea-form-page{
+  display: flex;
+  /* background-color: red; */
+  color: #38220f;
+}
+
+.tea-form{
+  display: flex;
+  max-width: 800px;
+  margin: 40px auto;
+  /* background-color: red; */
+}
+
+.tea-form-left{
+  width: 350px;
+  object-fit: cover;
+}
+.tea-form-right{
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  /* background-color: aqua; */
+}
+
+.tea-form-right > p{
+  font-size: 25px;
+  font-weight: 500;
+  margin: 15px 0 20px 20px;
+}
+
+.tea-form-label-row{
+  /* background-color: lightblue; */
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  padding: 2px 0;
+}
+
+.checkbox-label-row{
+  border-bottom: 1px solid rgba(56, 34, 15, 0.5);
+}
+
+.tea-form-string-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lightgreen; */
+  font-size: 13px;
+  height: 62px;
+  /* margin: 10px 0 2px 0; */
+}
+
+.tea-form-string-input{
+  font-family: 'Lora', serif;
+  width: 90%;
+}
+
+.tea-form-checkbox-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lightgreen; */
+  font-size: 13px;
+  margin: 5px 0 15px 0;
+}
+
+.tea-form-checkbox-grid{
+  /* background-color: red; */
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 10px 0;
+}
+
+.tea-form-select-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lightgreen; */
+  font-size: 13px;
+  height: 62px;
+  /* margin: 10px 0 2px 0; */
+}
+
+.tea-form-select-input{
+  font-family: 'Lora', serif;
+  align-self: flex-start;
+  margin-left: 20px;
+}
+
+.tea-form-textarea-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lightgreen; */
+  font-size: 13px;
+  margin: 0px 0 20px 0;
+}
+
+.tea-form-textarea-input{
+  font-family: 'Lora', serif;
+  width: 90%;
+  height: 100px;
+}
+
+.tea-form-submit{
+  font-family: 'Lora', serif;
+  padding: 5px 10px;
+  border: none;
+  background-color: #38220f;
+  color: #ece0d1;
+  border-radius: 5px;
+  width: 20%;
+  align-self: flex-end;
+  margin-right: 20px;
+}
+
+.tea-form-submit:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 .tea-form-errors{
+  align-self: flex-start;
+  margin-top: 2px;
+  margin-left: 20px;
+  font-size: 11px;
   color: red;
 }

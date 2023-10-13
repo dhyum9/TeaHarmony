@@ -1,7 +1,12 @@
+import { useSelector } from 'react-redux';
 import SignupFormModal from '../SignupFormModal';
 import './HomePage.css'
+import { Redirect } from 'react-router-dom';
 
 const HomePage = () => {
+  const sessionUser = useSelector(state => state.session.user);
+
+  if (sessionUser) return <Redirect to="/teas" />;
 
   return (
     <div className='home-page'>
@@ -14,6 +19,10 @@ const HomePage = () => {
           <SignupFormModal modalType={'signup-home'}/>
         </div>
       </main>
+      <div className='home-second-row'>
+        <div className='home-second-left'></div>
+        <div className='home-second-right'></div>
+      </div>
     </div>
   );
 };

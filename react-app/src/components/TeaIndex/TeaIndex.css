@@ -5,8 +5,14 @@
   color: #38220f;
 }
 
+.tea-index-post-tea-background{
+  background-color: #967259;
+}
+
 .tea-index-post-tea-container{
   background-color: #967259;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .tea-index-post-tea-clickable{
