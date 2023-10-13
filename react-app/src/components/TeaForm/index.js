@@ -113,6 +113,7 @@ const TeaForm = ({tea, formType}) => {
 
     if(decider.checked){
       type.push(decider.value)
+      console.log(type);
     } else {
       let targetIdx;
       for (let j = 0; j < type.length; j++){
@@ -122,6 +123,7 @@ const TeaForm = ({tea, formType}) => {
         }
       }
       type.splice(targetIdx, 1);
+      console.log(type);
     }
   }
 
@@ -184,31 +186,31 @@ const TeaForm = ({tea, formType}) => {
       }
     }
   }
-  console.log(type);
   checkCheckboxes();
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {formType === "create" ? <h1>Create a Tea</h1> : <h1>Update a Tea</h1>}
-        <div className='tea-form-image-container'>
-          <label>
+    <div className='tea-form-page'>
+      <form className='tea-form' onSubmit={handleSubmit}>
+        {formType === "create" ? <p>Add a Tea</p> : <p>Update a Tea</p>}
+        <div className='tea-form-string-container'>
+          <label className='tea-form-label-row'>
             <div>Image Url (optional)</div>
+            <div>Give your tea an image</div>
           </label>
           <input
-            className='form-image-url'
+            className='tea-form-string-input'
             type="url"
             value={image_url}
             onChange={(e) => setImageUrl(e.target.value)}/>
         </div>
 
-        <div className='tea-form-name-container'>
-          <label>
+        <div className='tea-form-string-container'>
+          <label className='tea-form-label-row'>
             <div>Tea Name</div>
             <div>ie. Earl Grey, Golden Yunnan</div>
           </label>
           <input
-            className='form-name'
+            className='tea-form-string-input'
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}/>
@@ -217,13 +219,13 @@ const TeaForm = ({tea, formType}) => {
           )}
         </div>
 
-        <div className='tea-form-company-container'>
-          <label>
+        <div className='tea-form-string-container'>
+          <label className='tea-form-label-row'>
             <div>Company Name</div>
             <div>ie. Mighty Leaf, Adagio Teas</div>
           </label>
           <input
-            className='form-company'
+            className='tea-form-string-input'
             type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}/>
@@ -232,7 +234,7 @@ const TeaForm = ({tea, formType}) => {
           )}
         </div>
 
-        <div className='tea-form-type-container'>
+        <div className='tea-form-checkbox-container'>
           <label>
             <div>Type (optional)</div>
             <div>Check all that apply</div>
@@ -284,25 +286,26 @@ const TeaForm = ({tea, formType}) => {
           ))}
         </div>
 
-        <div className='tea-form-ingredients-container'>
-          <label>
+        <div className='tea-form-string-container'>
+          <label className='tea-form-label-row'>
             <div>Ingredients (optional)</div>
+            <div>eg. Green Tea Leaves, Jasmine Petals, etc.</div>
           </label>
           <input
-            className='form-ingredients'
+            className='tea-form-string-input'
             type="text"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}/>
         </div>
 
-        <div className='tea-form-caffeine-container'>
-          <label>
+        <div className='tea-form-select-container'>
+          <label className='tea-form-label-row'>
             <div>Caffeine Level (optional)</div>
           </label>
           <select
             onChange={(e) => setCaffeine(e.target.value)}
             value={caffeine}
-            className='form-caffeine'>
+            className='tea-form-select-input'>
               <option></option>
               <option value='Low'>Low</option>
               <option value='Medium'>Medium</option>
@@ -312,18 +315,18 @@ const TeaForm = ({tea, formType}) => {
           </select>
         </div>
 
-        <div className='tea-form-description-container'>
-          <label>
+        <div className='tea-form-textarea-container'>
+          <label className='tea-form-label-row'>
             <div>Tea Info (optional)</div>
             <div>How the tea company describes it (optional)</div>
           </label>
           <textarea
-            className='form-description'
+            className='tea-form-textarea-input'
             value={description}
             onChange={(e) => setDescription(e.target.value)}/>
         </div>
 
-        <button type="submit">Submit Tea</button>
+        <button className='tea-form-submit' type="submit">Submit Tea</button>
       </form>
     </div>
   );
