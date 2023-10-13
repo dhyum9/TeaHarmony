@@ -97,8 +97,8 @@ const TeaDetails = () => {
           </div>
         </div>
         <div className='tea-details-company-row'>
-          <div>From {company}</div>
-          <div>{description}</div>
+          <div className='tea-details-company-row-heading'>From {company}</div>
+          <div className='tea-details-company-row-body'>{description}</div>
         </div>
         <div className='tea-details-notes-row'>
           <div>{num_notes} Tasting Notes</div>
