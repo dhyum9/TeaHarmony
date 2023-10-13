@@ -2,6 +2,7 @@ import { useHistory } from "react-router";
 import OpenModalButton from '../OpenModalButton';
 import { DeleteTeaModal } from '../DeleteTeaModal';
 import icon from './teaharmony-kettle-icon.png'
+import defaultImg from './teaharmony-default-banner.jpeg'
 import './TeaTile.css'
 
 const TeaTile = ({ tea, tiletype }) => {
@@ -37,9 +38,7 @@ const TeaTile = ({ tea, tiletype }) => {
       {avg_score ? <div className='tea-tile-score'>{Number.parseFloat(avg_score).toFixed(1)}</div> : <div className='tea-tile-score zero'>0.0</div>}
       <img src={icon} className='tea-tile-icon'></img>
       <div className="tea-tile" key={tea.id} onClick={handleClick}>
-        <img
-          className="tea-tile-image"
-          src={image_url}></img>
+        {image_url ? <img className="tea-tile-image" src={image_url}></img> : <img className="tea-tile-image" src={defaultImg}></img>}
         <div className='tea-tile-name'>{name}</div>
         <div className='tea-tile-company'>{company}</div>
         <div className='tea-tile-num-notes'>{num_notes} Tasting Notes</div>
