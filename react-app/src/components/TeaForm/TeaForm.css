@@ -15,6 +15,7 @@
   width: 350px;
   object-fit: cover;
 }
+
 .tea-form-right{
   display: flex;
   flex-direction: column;

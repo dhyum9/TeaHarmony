@@ -5,7 +5,7 @@ import { useModal } from "../../context/Modal";
 import ReactSlider from 'react-slider';
 import './NoteForm.css'
 
-const NoteForm = ({ formType, tastingNote, teaId }) => {
+const NoteForm = ({ formType, tastingNote, tea }) => {
   const [note, setNote] = useState(tastingNote.note);
   const [score, setScore] = useState(tastingNote.score);
   const [flavors, setFlavors] = useState(tastingNote.flavors);
@@ -46,7 +46,7 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
 
     if(formType==='create'){
       if (!Object.values(errors).length) {
-        const addTastingNote = await dispatch(thunkCreateTastingNote(newTastingNote, teaId));
+        const addTastingNote = await dispatch(thunkCreateTastingNote(newTastingNote, tea.id));
 
         const combinedErrors = { ...errors, Errors: addTastingNote.errors };
 
@@ -73,10 +73,10 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {formType === "create" ? <h1>Create a Note</h1> : <h1>Update a Note</h1>}
-
+    <div className='note-form-modal'>
+      <form className='note-form' onSubmit={handleSubmit}>
+        {formType === "create" ? <p className='note-form-heading'>Add a Tasting Note</p> : <p className='note-form-heading'>Update Your Tasting Note</p>}
+        <p className='note-form-subheading'>For {tea.name}</p>
         <div className='note-form-note-container'>
           <label>
             <div>Add a Note</div>

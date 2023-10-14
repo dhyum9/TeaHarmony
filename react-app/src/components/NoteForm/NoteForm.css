@@ -1,3 +1,24 @@
+.note-form-modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  background-color: #ece0d1;
+  color: #38220f;
+  border-radius: 20px;
+  /* padding: 15px; */
+}
+
+.note-form-heading{
+  /* margin: 5px 0; */
+  font-size: 25px;
+  font-weight: 500;
+  background-color: lightblue;
+}
+
+.note-form-subheading{
+  background-color: lightgreen;
+}
 .score-slider {
   height: 50px;
   width: 300px;
@@ -28,4 +49,61 @@
 
 .note-form-errors{
   color: red;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+}
+
+.login-submit{
+  font-family: 'Lora', serif;
+  padding: 5px 10px;
+  border: none;
+  background-color: #38220f;
+  color: #ece0d1;
+  border-radius: 5px;
+}
+
+.login-submit:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.login-label-container{
+  display: flex;
+  align-items: center;
+  /* background-color: lightgreen; */
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 10px 0 2px 0;
+}
+
+.login-field{
+  font-family: 'Lora', serif;
+}
+
+.login-error{
+  color: red;
+  font-size: 12px;
+}
+
+.login-bottom-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 5px 10px;
+  /* background-color: lightblue; */
+}
+
+.login-demo-div{
+  /* background-color: red; */
+  width: 155px;
+  font-size: 12px;
+}
+
+.login-demo-div:hover{
+  text-shadow: 0px 0px 10px rgba(56, 34, 15, 0.3);
+  cursor: pointer;
 }
