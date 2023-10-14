@@ -77,12 +77,13 @@ const NoteForm = ({ formType, tastingNote, tea }) => {
       <form className='note-form' onSubmit={handleSubmit}>
         {formType === "create" ? <p className='note-form-heading'>Add a Tasting Note</p> : <p className='note-form-heading'>Update Your Tasting Note</p>}
         <p className='note-form-subheading'>For {tea.name}</p>
-        <div className='note-form-note-container'>
-          <label>
-            <div>Add a Note</div>
+        <div className='note-form-textarea-container'>
+          <label className='note-form-label-row'>
+            <div>Your Note</div>
+            <div>Must be at least 10 characters</div>
           </label>
           <textarea
-            className='note-form-note'
+            className='note-form-textarea-input'
             value={note}
             onChange={(e) => setNote(e.target.value)}/>
           {errors.note && submitted && (
@@ -91,8 +92,8 @@ const NoteForm = ({ formType, tastingNote, tea }) => {
         </div>
 
         <div className='note-form-score-container'>
-          <label>
-            <div>Score</div>
+          <label className='note-form-label-row'>
+            <div>How would you rate this tea?</div>
           </label>
           <div className="actual-score">Score: {score}</div>
           <ReactSlider
