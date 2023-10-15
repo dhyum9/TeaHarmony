@@ -84,7 +84,7 @@ const TeaDetails = () => {
                     buttonText="Rate this tea"
                     buttonType="create-note"
                     modalComponent={
-                      <CreateNoteForm tea={singleTea.name}/>
+                      <CreateNoteForm tea={singleTea}/>
                     }/>
                   )}
                 </div>
