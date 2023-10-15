@@ -93,3 +93,18 @@
   opacity: 0.7;
   cursor: pointer;
 }
+
+.user-note-button{
+  font-family: 'Lora', serif;
+  padding: 5px 10px;
+  border: none;
+  background-color: #38220f;
+  color: #ece0d1;
+  border-radius: 5px;
+  margin: 0 10px 10px;
+}
+
+.user-note-button:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}

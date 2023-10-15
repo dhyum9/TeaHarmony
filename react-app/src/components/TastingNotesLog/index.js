@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetUserTastingNotes } from "../../store/tastingnotes";
 import UserTastingNote from "../UserTastingNote";
+import './TastingNotesLog.css'
 
 const TastingNotesLog = () => {
   const dispatch = useDispatch();
@@ -14,13 +15,15 @@ const TastingNotesLog = () => {
   }, [dispatch, notesList.length]);
 
   return (
-    <div>
-      <h1>Tasting Notes</h1>
-      {notesList.reverse().map((note) => {
-          return (
-            <UserTastingNote key={note.id} tastingNote={note}/>
-          );
-        })}
+    <div className="tasting-notes-log-page">
+      <div className="tasting-notes-log">
+        <p className='tasting-notes-log-heading'>Tasting Notes</p>
+        {notesList.reverse().map((note) => {
+            return (
+              <UserTastingNote key={note.id} tastingNote={note}/>
+            );
+          })}
+      </div>
     </div>
   );
 };
