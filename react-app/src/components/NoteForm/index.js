@@ -85,7 +85,8 @@ const NoteForm = ({ formType, tastingNote, tea }) => {
           <textarea
             className='note-form-textarea-input'
             value={note}
-            onChange={(e) => setNote(e.target.value)}/>
+            onChange={(e) => setNote(e.target.value)}
+            rows='4'/>
           {errors.note && submitted && (
             <div className="note-form-errors">{errors.note}</div>
           )}
@@ -94,8 +95,9 @@ const NoteForm = ({ formType, tastingNote, tea }) => {
         <div className='note-form-score-container'>
           <label className='note-form-label-row'>
             <div>How would you rate this tea?</div>
+            <div>Score ranges from 1 to 100</div>
           </label>
-          <div className="actual-score">Score: {score}</div>
+          {/* <div className="actual-score">Score: {score}</div> */}
           <ReactSlider
             value={score}
             onAfterChange={(val) => {
@@ -106,24 +108,24 @@ const NoteForm = ({ formType, tastingNote, tea }) => {
             trackClassName="score-track"
             min={1}
             max={100}
-            renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+            renderThumb={(props, state) => <div {...props}><div>{state.valueNow}</div></div>}
           />
         </div>
 
 
-        <div className='note-form-flavors-container'>
-          <label>
+        <div className='note-form-string-container'>
+          <label className='note-form-label-row'>
             <div>Flavors (optional)</div>
             <div>What flavors and scents do you notice?</div>
           </label>
           <input
-            className='note-form-flavors'
+            className='note-form-string-input'
             type="text"
             value={flavors}
             onChange={(e) => setFlavors(e.target.value)}/>
         </div>
 
-        <button type="submit">Submit Note</button>
+        <button className='note-form-submit' type="submit">Submit Note</button>
       </form>
     </div>
   )
