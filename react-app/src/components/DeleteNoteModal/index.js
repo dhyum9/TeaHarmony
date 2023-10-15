@@ -22,10 +22,10 @@ export const DeleteNoteModal = ({ noteId }) => {
         </p>
         <div className='delete-note-button-row'>
           <button className='delete-note-button' type="button" onClick={handleClick}>
-            Yes (Delete)
+            Yes (Delete note)
           </button>
           <button className='delete-note-button' type="button" onClick={closeModal}>
-            No (Keep)
+            No (Keep note)
           </button>
         </div>
       </div>

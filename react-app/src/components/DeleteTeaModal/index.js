@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkDeleteTea } from "../../store/teas";
+import './DeleteTeaModal.css'
 
 export const DeleteTeaModal = ({ teaId }) => {
   const dispatch = useDispatch();
@@ -13,21 +14,19 @@ export const DeleteTeaModal = ({ teaId }) => {
   };
 
   return (
-    <div>
-      <div>
-        <h3>Confirm Delete</h3>
+    <div className="delete-tea-modal">
+      <div className="delete-tea-content">
+        <p className="delete-tea-heading">Confirm Delete</p>
         <p>
-          Are you sure you want to remove this restaurant from the listings?
+          Are you sure you want to remove this tea from our website?
         </p>
-        <div>
-
-          <button type="button" onClick={handleClick}>
+        <div className="delete-tea-button-row">
+          <button className='delete-tea-button' type="button" onClick={handleClick}>
             Yes (Delete tea)
           </button>
-          <button type="button" onClick={closeModal}>
+          <button className='delete-tea-button' type="button" onClick={closeModal}>
             No (Keep tea)
           </button>
-
         </div>
       </div>
     </div>
