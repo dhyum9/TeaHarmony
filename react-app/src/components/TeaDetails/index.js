@@ -7,6 +7,7 @@ import TeaTastingNote from "../TeaTastingNote";
 import OpenModalButton from "../OpenModalButton";
 import CreateNoteForm from "../CreateNoteForm";
 import kettle from './teaharmony-kettle-icon.png'
+import defaultImg from './teaharmony-default-banner.jpeg'
 import './TeaDetails.css'
 
 const TeaDetails = () => {
@@ -58,12 +59,12 @@ const TeaDetails = () => {
 
   return (
     <div className='tea-details-page'>
-      <img src={image_url} className='tea-details-banner'></img>
+      {image_url ? <img src={image_url} className='tea-details-banner'></img> : <img src={defaultImg} className='tea-details-banner'></img>}
       <div className='tea-details-container'>
         <div className="tea-details-banner-row">
             <p className="tea-details-name">{name}</p>
             <p className='tea-details-company'>by {company}</p>
-            <img src={image_url} className='tea-details-image'></img>
+            {image_url ? <img src={image_url} className='tea-details-image'></img> : <img src={defaultImg} className='tea-details-image'></img>}
         </div>
         <div className='tea-details-main-row'>
           <div className='tea-details-score-row-container'>
@@ -83,7 +84,7 @@ const TeaDetails = () => {
                     buttonText="Rate this tea"
                     buttonType="create-note"
                     modalComponent={
-                      <CreateNoteForm teaId={teaId}/>
+                      <CreateNoteForm tea={singleTea}/>
                     }/>
                   )}
                 </div>

@@ -29,6 +29,7 @@ const TeaTastingNote = ({currentUser, tastingNote, teaId}) => {
         <div className='tea-note-user-note'>
           {note}
         </div>
+        {flavors && <div className='tea-note-user-flavors'>Flavors: {flavors}</div>}
       </div>
     </div>
   );

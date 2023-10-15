@@ -1,6 +1,6 @@
 import NoteForm from "../NoteForm";
 
-const CreateNoteForm = ({ teaId }) => {
+const CreateNoteForm = ({ tea }) => {
   const note = {
     note: '',
     score: 50,
@@ -8,7 +8,7 @@ const CreateNoteForm = ({ teaId }) => {
   };
 
   return (
-    <NoteForm formType={"create"} tastingNote={note} teaId={teaId}/>
+    <NoteForm formType={"create"} tastingNote={note} tea={tea}/>
   );
 }
 

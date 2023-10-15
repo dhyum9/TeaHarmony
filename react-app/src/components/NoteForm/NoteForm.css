@@ -1,31 +1,134 @@
+.note-form-modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  background-color: #ece0d1;
+  color: #38220f;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.note-form{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+}
+
+.note-form-heading{
+  margin: 5px 0 5px 20px;
+  font-size: 25px;
+  font-weight: 500;
+  /* background-color: lightblue; */
+}
+
+.note-form-subheading{
+  /* background-color: lightgreen; */
+  font-size: 16px;
+  margin: 0 0 30px 20px;
+}
+
+.note-form-label-row{
+  /* background-color: lightblue; */
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  padding: 2px 0;
+}
+
+.note-form-textarea-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lightgreen; */
+  font-size: 13px;
+  min-height: 120px;
+  /* margin: 0px 0 20px 0; */
+}
+
+.note-form-textarea-input{
+  font-family: 'Lora', serif;
+  width: 90%;
+}
+
+.note-form-score-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lightgreen; */
+  font-size: 13px;
+  margin: 0px 0 20px 0;
+}
+
 .score-slider {
   height: 50px;
-  width: 300px;
+  width: 90%;
+  margin-top: 5px;
 }
 
 .score-thumb {
-  padding: 3px 25px;
-  background-color: white;
-  color: grey;
-  border: 1px solid grey;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ece0d1;
+  font-weight: bold;
+  color: #38220f;
+  border: 3px solid #38220f;
+  border-radius: 100px;
   cursor: grab;
 }
 
 .score-track {
   background-color: grey;
-  top: 11px;
-  height: 3px;
+  top: 20px;
+  height: 4px;
 }
 
-/* .score-track.score-track-0 {
-  background: red;
-} */
+.score-track.score-track-0 {
+  background: #967259;
+}
 
-.actual-score {
+/* .actual-score {
   width: 200px;
   text-align: center;
+} */
+
+.note-form-string-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lightgreen; */
+  font-size: 13px;
+  height: 62px;
+}
+
+.note-form-string-input{
+  font-family: 'Lora', serif;
+  width: 90%;
+}
+
+.note-form-submit{
+  font-family: 'Lora', serif;
+  padding: 5px 10px;
+  border: none;
+  background-color: #38220f;
+  color: #ece0d1;
+  border-radius: 5px;
+  align-self: flex-end;
+  margin: 10px 20px 10px 0;
+}
+
+.note-form-submit:hover{
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .note-form-errors{
   color: red;
+  font-size: 12px;
+  padding: 4px 0;
+  align-self: flex-start;
+  margin-left: 20px;
 }

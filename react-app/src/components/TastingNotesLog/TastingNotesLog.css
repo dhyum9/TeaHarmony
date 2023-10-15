@@ -1,0 +1,11 @@
+.tasting-notes-log{
+  /* background-color: lightblue; */
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tasting-notes-log-heading{
+  font-size: 20px;
+  font-weight: 600;
+  margin: 20px 24px;
+}

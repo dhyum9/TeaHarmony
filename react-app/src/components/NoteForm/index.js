@@ -5,7 +5,7 @@ import { useModal } from "../../context/Modal";
 import ReactSlider from 'react-slider';
 import './NoteForm.css'
 
-const NoteForm = ({ formType, tastingNote, teaId }) => {
+const NoteForm = ({ formType, tastingNote, tea }) => {
   const [note, setNote] = useState(tastingNote.note);
   const [score, setScore] = useState(tastingNote.score);
   const [flavors, setFlavors] = useState(tastingNote.flavors);
@@ -46,7 +46,7 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
 
     if(formType==='create'){
       if (!Object.values(errors).length) {
-        const addTastingNote = await dispatch(thunkCreateTastingNote(newTastingNote, teaId));
+        const addTastingNote = await dispatch(thunkCreateTastingNote(newTastingNote, tea.id));
 
         const combinedErrors = { ...errors, Errors: addTastingNote.errors };
 
@@ -73,28 +73,31 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {formType === "create" ? <h1>Create a Note</h1> : <h1>Update a Note</h1>}
-
-        <div className='note-form-note-container'>
-          <label>
-            <div>Add a Note</div>
+    <div className='note-form-modal'>
+      <form className='note-form' onSubmit={handleSubmit}>
+        {formType === "create" ? <p className='note-form-heading'>Add a Tasting Note</p> : <p className='note-form-heading'>Update Your Tasting Note</p>}
+        {formType === "create" ? <p className='note-form-subheading'>For {tea.name}</p> : <p className='note-form-subheading'>For {tea}</p>}
+        <div className='note-form-textarea-container'>
+          <label className='note-form-label-row'>
+            <div>Your Note</div>
+            <div>Must be at least 10 characters</div>
           </label>
           <textarea
-            className='note-form-note'
+            className='note-form-textarea-input'
             value={note}
-            onChange={(e) => setNote(e.target.value)}/>
+            onChange={(e) => setNote(e.target.value)}
+            rows='4'/>
           {errors.note && submitted && (
             <div className="note-form-errors">{errors.note}</div>
           )}
         </div>
 
         <div className='note-form-score-container'>
-          <label>
-            <div>Score</div>
+          <label className='note-form-label-row'>
+            <div>How would you rate this tea?</div>
+            <div>Score ranges from 1 to 100</div>
           </label>
-          <div className="actual-score">Score: {score}</div>
+          {/* <div className="actual-score">Score: {score}</div> */}
           <ReactSlider
             value={score}
             onAfterChange={(val) => {
@@ -105,24 +108,24 @@ const NoteForm = ({ formType, tastingNote, teaId }) => {
             trackClassName="score-track"
             min={1}
             max={100}
-            renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+            renderThumb={(props, state) => <div {...props}><div>{state.valueNow}</div></div>}
           />
         </div>
 
 
-        <div className='note-form-flavors-container'>
-          <label>
+        <div className='note-form-string-container'>
+          <label className='note-form-label-row'>
             <div>Flavors (optional)</div>
             <div>What flavors and scents do you notice?</div>
           </label>
           <input
-            className='note-form-flavors'
+            className='note-form-string-input'
             type="text"
             value={flavors}
             onChange={(e) => setFlavors(e.target.value)}/>
         </div>
 
-        <button type="submit">Submit Note</button>
+        <button className='note-form-submit' type="submit">Submit Note</button>
       </form>
     </div>
   )
