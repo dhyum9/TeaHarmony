@@ -25,7 +25,7 @@ const UserTastingNote = ({tastingNote}) => {
       <OpenModalButton
           buttonText="Edit this tea"
           modalComponent={
-            <EditNoteForm note={tastingNote}/>
+            <EditNoteForm tea={tea} note={tastingNote}/>
       }/>
       <OpenModalButton
       buttonText="Delete This Note"

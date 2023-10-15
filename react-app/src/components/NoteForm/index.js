@@ -76,7 +76,7 @@ const NoteForm = ({ formType, tastingNote, tea }) => {
     <div className='note-form-modal'>
       <form className='note-form' onSubmit={handleSubmit}>
         {formType === "create" ? <p className='note-form-heading'>Add a Tasting Note</p> : <p className='note-form-heading'>Update Your Tasting Note</p>}
-        <p className='note-form-subheading'>For {tea.name}</p>
+        <p className='note-form-subheading'>For {tea}</p>
         <div className='note-form-textarea-container'>
           <label className='note-form-label-row'>
             <div>Your Note</div>

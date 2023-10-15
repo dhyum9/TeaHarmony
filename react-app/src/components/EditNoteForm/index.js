@@ -1,9 +1,9 @@
 import NoteForm from "../NoteForm";
 
-const EditNoteForm = ({ note }) => {
+const EditNoteForm = ({ note, tea }) => {
 
   return (
-    <NoteForm formType={"update"} tastingNote={note}/>
+    <NoteForm formType={"update"} tea={tea} tastingNote={note}/>
   );
 }
 
