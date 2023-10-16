@@ -20,6 +20,14 @@
   margin: 0 auto;
 }
 
+.footer-left{
+  display: flex;
+  /* background-color: red; */
+  width: 450px;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
 .footer-right{
   /* background-color: black; */
   display: flex;
